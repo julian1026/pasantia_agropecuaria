@@ -9,7 +9,7 @@ class Modelo_Agricultor
         $this->pdo = new Conexion();
     }
 
-    function registrarAgricultor($numPersonas, $activad_agro)
+    function registrarAgricultor($numPersonas)
     {
 
         $userId = $this->pdo->conectar()->prepare('SELECT idPersona FROM persona ORDER BY idPersona DESC LIMIT 1');
@@ -22,12 +22,11 @@ class Modelo_Agricultor
         }
         if ($ultimoidPers) {
             $insertar = $this->pdo->conectar()->prepare(
-                'INSERT INTO agricultor (PersonasAcargo,Actividad_Agro,idPersona) 
-                 VALUES (:numPer, :actividad_agro, :userIdPers)'
+                'INSERT INTO agricultor (PersonasAcargo,idPersona) 
+                 VALUES (:numPer, :userIdPers)'
             );
 
             $insertar->bindparam(':numPer', $numPersonas, PDO::PARAM_INT);
-            $insertar->bindparam(':actividad_agro', $activad_agro);
             $insertar->bindparam(':userIdPers', $ultimoidPers, PDO::PARAM_INT);
 
             $insertar->execute();

@@ -85,4 +85,20 @@ class Modelo_Finca
         $this->pdo->cerrar();
         return 0;
     }
+
+    function mostrarGeneral($idFinca)
+    {
+        $listar = $this->pdo->conectar()->prepare("SELECT concat(p.primer_nombre,' ',p.segundo_nombre,' ',p.primer_apellido,' ',p.segundo_apellido) nombreCompleto, p.tipo_identificacion,p.num_identificacion, p.fecha_ncm,p.sexo,p.etnia,p.nivel_escolaridad,a.PersonasAcargo,f.nombre_finca, f.hectareas,f.actividadAgropecuaria,f.lineaProductiva,f.latitud, f.longitud, v.nombreVereda, c.nombre_corregimiento, m.nombre_mncp, d.nombre_department
+         from persona p join agricultor a on (p.idPersona=a.idPersona) join finca f on (a.idAgricultor=f.idAgricultor) join vereda v on (f.id_Vereda=v.id_vereda) join corregimiento c on (v.corregimiento_id=c.idCorregimiento)
+          join municipio m on (c.idMunicipio=m.idMunicipio) join departamento d on (m.id_departamento=d.id_departamento) where f.idFinca=:idFinca");
+        $listar->bindparam(':idFinca', $idFinca);
+        if ($listar->execute()) {
+            $valores = $listar->fetchAll(PDO::FETCH_ASSOC);
+            $this->pdo->cerrar();
+            return $valores;
+        }
+        $arreglo = array();
+        return $arreglo;
+        $this->pdo->cerrar();
+    }
 }

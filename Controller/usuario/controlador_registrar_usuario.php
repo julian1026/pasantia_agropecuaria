@@ -40,7 +40,6 @@ if ($rol == '3') {
     $usuario = $numero_ide;
     $contra = md5($numero_ide);
     $numPersonas = htmlspecialchars($_POST['personas_acargo'], ENT_QUOTES, 'utf-8');
-    $activad_agro = htmlspecialchars($_POST['actividad_agro'], ENT_QUOTES, 'utf-8');
 }
 
 $consultaUsu = $MU->registrarUsuario($usuario, $contra, $estado, $rol);
@@ -88,7 +87,7 @@ if ($consultaUsu[0] == '1') {
                 break;
             case 3:
                 $agricultor = new Modelo_Agricultor();
-                $consultarAgri = $agricultor->registrarAgricultor($numPersonas, $activad_agro);
+                $consultarAgri = $agricultor->registrarAgricultor($numPersonas);
                 $data = json_encode($consultarAgri);
                 echo $data;
                 break;

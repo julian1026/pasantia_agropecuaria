@@ -32,7 +32,6 @@ tabla = $("#tabla_persona").DataTable({
        {"data":"nivel_escolaridad"},
        {"data":"telefono"},
        {"data":"correo"},
-       {"data":"idUsuario"},
        {"data":"idRol",
        render: function (data,type,row){
             if(data=='3'){
@@ -194,6 +193,7 @@ var options={
     maximunAge:0
 }
 var getPosition=(position)=>{
+    // console.log(position);
     cargarVeredas();
     $("#txt_latitud").val(position.coords.latitude);
     $("#txt_longitud").val(position.coords.longitude);

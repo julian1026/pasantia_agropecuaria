@@ -269,11 +269,6 @@ var cadena=document.querySelector('#txt_com_rol_editar');
                         <label for="">Personas Acargo</label><br/>
                         <input type="number" class='form-control' placeholder='Ingresar # personas' id='txt_personasAcargo'>
                     </div>
-
-                    <div class="col-md-9">
-                        <label for="">Actividad Agropecuaria</label><br/>
-                        <textarea class="form-control" id='txt_actividad_agro' aria-label="With textarea" id="txt_act_agro"></textarea>
-                    </div>
                 `;
                     
             break;
@@ -340,19 +335,16 @@ if(rol_usu=='2'){
     }else{
         nuevo3.append('des_estudio',des_estudio);
         nuevo3.append('personas_acargo','');
-        nuevo3.append('actividad_agro','');
     }
 }
 
 if(rol_usu=='3'){
     /* DATOS DEL AGROPECUARIO */
     personas_acargo=$('#txt_personasAcargo').val();
-    actividad_agro=$('#txt_actividad_agro').val(); 
-    if(personas_acargo==null || actividad_agro.length==0){
+    if(personas_acargo==null){
         return Swal.fire("Mensaje De Error","Por favor ingresar datos en los campos personas acargo y su actividad agropecuaria ","warning");
     }else{
         nuevo3.append('personas_acargo',personas_acargo);
-        nuevo3.append('actividad_agro',actividad_agro);
         nuevo3.append('des_estudio','');
     }
 }

@@ -26,7 +26,7 @@ tabla = $("#tabla_finca").DataTable({
        "<button style='font-size:10px;' type='button' class='editar btn btn-warning'><i class='fa fa-edit'></i> </button>&nbsp;"+
        "<button style='font-size:10px;' type='button' class='plantas btn btn-secondary'><i class='fa fa-pagelines'></i>"
         + "</button>&nbsp; <button style='font-size:10px;' type='button' class='animales btn btn-secondary'><i class='fa fa-paw'></i></button>"
-        + "</button>&nbsp; <button style='font-size:10px;' type='button' class='vista btn btn-secondary'><i class='fa  fa-eye'></i></button>"}
+        + "</button>&nbsp; <button style='font-size:10px;' type='button' class='vista_datos btn btn-secondary'><i class='fa  fa-eye'></i></button>"}
    ],
 
    "language":idioma_espanol,
@@ -156,7 +156,8 @@ $('#tabla_finca').on('click','.plantas',function(){
     //  geolocalizacion.getCurrentPosition(getPosition,error,options)//geolocalizador  
     $("#modalRegistrarVegetales").modal({backdrop:'static', keyboard:false});
     $("#modalRegistrarVegetales").modal('show');
-    // console.log(data);
+    idFinca=data.idFinca;
+    
     // $("#txt_longitud").val(data.longitud);
     // $("#txt_latitud").val(data.latitud);
     // $("#txt_fincaNombre").val(data.nombre_finca);
@@ -166,14 +167,50 @@ $('#tabla_finca').on('click','.plantas',function(){
     // $("#txt_vereda").val(data.id_Vereda);
     // fincaId=data.idFinca;
 })
+function registrarPlantas(){
+    nombreVegetal=$('#txt_nombrePlanta').val();
+    tipoVegetal=$('#txt_tipoVegetal').val();
+    cantidadVegetal=$('#txt_vegetales_cantidad').val();
+    informacionVegetal=$('#txt_informacionVgt').val();
+   if(nombreVegetal.length==0 || tipoVegetal.length==0 
+    || cantidadVegetal.length==0 || informacionVegetal.length==0 ){
+        swal.fire("Mensaje De Error","Por favor complete todos los datos solicitados","Warning");   
+   }
+   var Rplantas = new FormData();
+   Rplantas.append('nombreVegetal',nombreVegetal);
+   Rplantas.append('tipoVegetal',tipoVegetal);
+   Rplantas.append('cantidadVegetal',cantidadVegetal);
+   Rplantas.append('informacionVegetal',informacionVegetal);
+   Rplantas.append('idFinca',idFinca);
 
+    let url='../Controller/vegetales/controlador_registrar_vegetales.php';
+        const xhttp=new XMLHttpRequest();
+        xhttp.open('POST',url,true);
+        xhttp.send(Rplantas);
+
+        xhttp.onreadystatechange=function(){
+                if(this.status==200 && this.readyState==4){
+                    console.log(this.responseText);
+                    let datos=JSON.parse(this.responseText);
+                    if(datos>0){
+                        $("#modalRegistrarVegetales").modal('hide');
+                        Swal.fire("Mensaje De Confirmacion","Registro Exitoso ","success");
+                        tabla.ajax.reload();
+                    }else{
+                        Swal.fire("Mensaje De Error","El registro no se pudo llevar acabo... ","warning");
+                    }
+                }
+            
+        }
+    
+}
 
 
 //----------- cerrar gestion de  registro de vegetales-----------------------//
 
 
 
-//----------- abrir gestion de  registro de vegetales-----------------------//
+//----------- abrir gestion de  registro de animales-----------------------//
 
 $('#tabla_finca').on('click','.animales',function(){
     var data=tabla.row($(this).parents('tr')).data();
@@ -201,4 +238,96 @@ $('#tabla_finca').on('click','.animales',function(){
 
 
 
-//----------- cerrar gestion de  registro de vegetales-----------------------//
+//----------- cerrar gestion de animales-----------------------//
+
+
+
+//----------- visualizacion  de datos de finca-----------------------//
+// var contenido_global=document.querySelector("#contenido_principal");
+$('#tabla_finca').on('click','.vista_datos',function(){
+    var data=tabla.row($(this).parents('tr')).data();
+    // console.log(data);
+    if(tabla.row(this).child.isShown()){
+        var data=tabla.row(this).data();
+    }
+   
+    // $("#txt_actividadAgro").val(data.actividadAgropecuaria);
+    cargar_contenido('contenido_principal','fincas/vista_productor.php');
+   
+    idFinca=data.idFinca;
+    
+    mostrar();
+})
+// ------carga todos los datos referentes al dueno de la finca--------------
+function mostrar(){
+    
+    var general = new FormData();
+    general.append('idFinca',idFinca);
+    let url='../Controller/finca/controlador_datos_generales.php';
+        const xhttp=new XMLHttpRequest();
+        xhttp.open('POST',url,true);
+        xhttp.send(general);
+
+    xhttp.onreadystatechange=function(){
+        if(this.status==200 && this.readyState==4){
+            // console.log(this.responseText);
+            let datos=JSON.parse(this.responseText);
+            
+            if(datos.length>0){
+                dato=datos[0];
+                document.querySelector('#_nombreCompleto').innerHTML=`<p>${dato.nombreCompleto}</p>`;
+                document.querySelector('#_tipoIdentificacion').innerHTML=`<p>${dato.tipo_identificacion}</p>`;
+                document.querySelector('#_numeroIdentificacion').innerHTML=`<p>${dato.num_identificacion}</p>`;
+                document.querySelector('#_edad').innerHTML=`<p>${dato.fecha_ncm}</p>`;
+                document.querySelector('#_sexo').innerHTML=`<p>${dato.sexo}</p>`;
+                document.querySelector('#_etnia').innerHTML=`<p>${dato.etnia}</p>`;
+                document.querySelector('#_escolaridad').innerHTML=`<p>${dato.nivel_escolaridad}</p>`;
+                document.querySelector('#_personasAcargo').innerHTML=`<p>${dato.PersonasAcargo}</p>`;
+                document.querySelector('#_nombreFinca').innerHTML=`<p>${dato.nombre_finca}</p>`;
+                
+                document.querySelector('#_actividadAgropecuaria').innerHTML=`<p>${dato.actividadAgropecuaria}</p>`;
+                document.querySelector('#_lineaProductiva').innerHTML=`<p>${dato.lineaProductiva}</p>`;
+                document.querySelector('#_vereda').innerHTML=`<p>${dato.nombreVereda}</p>`;
+                document.querySelector('#_corregimiento').innerHTML=`<p>${dato.nombre_corregimiento}</p>`;
+                document.querySelector('#_municipio').innerHTML=`<p>${dato.nombre_mncp}</p>`;
+                document.querySelector('#_via').innerHTML=`<p>via ${dato.nombreVereda}</p>`;
+                document.querySelector('#_latitud').innerHTML=`<p>${dato.latitud}</p>`;
+                document.querySelector('#_longitud').innerHTML=`<p>${dato.longitud}</p>`;   
+                document.querySelector('#_departamento').innerHTML=`<p>${dato.nombre_department}</p>`;
+                
+            }else{
+                Swal.fire("Mensaje De Error","La actualizacion no se pudo llevar acabo... ","warning");
+            }
+        }
+        
+    }
+
+}
+
+//-----------visualizacion de datos de finca-----------------------//
+
+
+// -------  funciones que permiten cargar mapa --------------//
+
+function showGoogleMaps() {
+    //Creamos el punto a partir de la latitud y longitud de una dirección:
+    // var point = new google.maps.LatLng('41.397122', '2.152873');
+    var point = new google.maps.LatLng('2.606093','-76.561364');
+//  '2.606093'  , '-76.561364'
+    //Configuramos las opciones indicando zoom, punto y tipo de mapa
+    var myOptions = {
+        zoom: 15,
+        center: point,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    //Creamos el mapa y lo asociamos a nuestro contenedor
+    var map = new google.maps.Map(document.getElementById("map-container-google-3"), myOptions);
+
+    //Mostramos el marcador en el punto que hemos creado
+    var marker = new google.maps.Marker({
+        position: point,
+        map: map,
+        title: "Nombre empresa - Calle Balmes 192, Barcelona"
+    });
+}

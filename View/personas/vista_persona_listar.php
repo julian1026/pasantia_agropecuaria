@@ -49,7 +49,7 @@
             <th scope="col">Nivel Estudio</th>
             <th scope="col">Telefono</th>
             <th scope="col">Correo</th>
-            <th scope="col">Cod Usuario</th>
+
             <th>Acci&oacute;n</th>
           </tr>
         </thead>
@@ -65,7 +65,7 @@
             <th scope="col">Nivel Estudio</th>
             <th scope="col">Telefono</th>
             <th scope="col">Correo</th>
-            <th scope="col">Cod Usuario</th>
+
             <th>Acci&oacute;n</th>
           </tr>
         </tfoot>

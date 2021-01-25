@@ -629,6 +629,7 @@ if (!isset($_SESSION['S_iduser'])) {
   <!-- jQuery UI 1.11.4 -->
   <script src="../plantilla/bower_components/jquery-ui/jquery-ui.min.js"></script>
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
   <script>
     var idioma_espanol = {
       select: {
@@ -695,6 +696,10 @@ if (!isset($_SESSION['S_iduser'])) {
 
   <!-- AdminLTE for demo purposes -->
   <script src="../plantilla/dist/js/demo.js"></script>
+  <!-- google maps -->
+  <script src="https://maps.google.com/maps/api/js"></script>
+
+
 
 
   <!--ruta del dataTable js -->
