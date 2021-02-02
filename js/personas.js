@@ -19,15 +19,15 @@ tabla = $("#tabla_persona").DataTable({
        {"data":"nombreCompleto"},
        {"data":"tipo_identificacion"},
        {"data":"num_identificacion"},
-       {"data":"sexo",
-       render: function (data, type, row ) {
-           if(data=='M'){
-            return "Maculino";                    
-           }else{
-            return "Femenino";                 
-           }
-         }
-       },  
+    //    {"data":"sexo",
+    //    render: function (data, type, row ) {
+    //        if(data=='M'){
+    //         return "Maculino";                    
+    //        }else{
+    //         return "Femenino";                 
+    //        }
+    //      }
+    //    },  
        {"data":"fecha_ncm"},
        {"data":"nivel_escolaridad"},
        {"data":"telefono"},

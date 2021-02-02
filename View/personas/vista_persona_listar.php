@@ -7,10 +7,7 @@
     <div class="box-header with-border">
       <h3 class="box-title">Gestion De Datos Personales</h3>
 
-      <div class="box-tools pull-right">
-        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-        </button>
-      </div>
+
       <!-- /.box-tools -->
     </div>
     <!-- /.box-header -->
@@ -19,20 +16,18 @@
 
       <div class="form-group">
 
-        <div class="col-lg-10">
-          <div class="input-group">
-            <input type="text" class="global_filter1 form-control" id="global_filter1" placeholder="Buscar">
-            <span class="input-group-addon"><i class="fa fa-search"></i></span>
-          </div>
-        </div>
-
         <div class="col-lg-2">
-          <button class="btn btn-danger" onclick='AbrirModalRegistro()' style="width:100%">
+          <button class="btn btn-success" onclick='AbrirModalRegistro()' style="width:100%">
             <i class="glyphicon glyphicon-plus"></i>
             Nuevo Registro
           </button>
         </div>
+
+        <div class="col-lg-10">
+
+        </div>
       </div>
+      <br>
 
 
 
@@ -44,7 +39,7 @@
             <th scope="col">nombre Completo</th>
             <th scope="col">Tipo Identificacion</th>
             <th scope="col">NUmero Identificacion</th>
-            <th scope="col">Sexo</th>
+
             <th scope="col">Fecha NCM</th>
             <th scope="col">Nivel Estudio</th>
             <th scope="col">Telefono</th>
@@ -60,7 +55,7 @@
             <th scope="col">nombre Completo</th>
             <th scope="col">Tipo Identificacion</th>
             <th scope="col">NUmero Identificacion</th>
-            <th scope="col">Sexo</th>
+
             <th scope="col">Fecha NCM</th>
             <th scope="col">Nivel Estudio</th>
             <th scope="col">Telefono</th>

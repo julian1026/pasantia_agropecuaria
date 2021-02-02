@@ -340,19 +340,19 @@ if (!isset($_SESSION['S_iduser'])) {
         </div>
         <!-- search form 0000000000000000000000000000000000000000000000000-->
         <form action="#" method="get" class="sidebar-form">
-          <div class="input-group">
+          <!-- <div class="input-group">
             <input type="text" name="q" class="form-control" placeholder="Search...">
             <span class="input-group-btn">
               <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
               </button>
             </span>
-          </div>
+          </div> -->
         </form>
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
 
-          <li class="header">Menu</li>
+          <li class="header"><b>Menu</b></li>
           <li class="active treeview">
             <a onclick="cargar_contenido('contenido_principal','usuarios/vista_usuario_listar.php')">
               <i class="fa fa-users"></i> <span>Usuarios</span>
@@ -363,7 +363,7 @@ if (!isset($_SESSION['S_iduser'])) {
 
           <li class="active treeview">
             <a onclick="cargar_contenido('contenido_principal','personas/vista_persona_listar.php')">
-              <i class="fa fa-dashboard"></i> <span>Datos Personales</span>
+              <i class="fa fa-user"></i> <span>Datos Personales</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -372,7 +372,7 @@ if (!isset($_SESSION['S_iduser'])) {
 
           <li class="active treeview">
             <a onclick="cargar_contenido('contenido_principal','fincas/vista_finca.php')">
-              <i class="fa fa-dashboard"></i> <span>Datos Fincas</span>
+              <i class="fa fa-leaf"></i> <span>Datos Fincas</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>

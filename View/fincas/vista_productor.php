@@ -22,7 +22,7 @@
             <h3 class="box-title">Caracterizacion Del Pequeno Productor</h3>
 
             <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa  fa-arrow-left"></i>
                 </button>
             </div>
             <!-- /.box-tools -->
@@ -57,6 +57,9 @@
 
                     <label for="">Edad:</label>
                     <div id="_edad"></div>
+
+                    <label for="">Fecha Nacimiento:</label>
+                    <div id="_fechaNacimiento"></div>
 
                     <label for="">Sexo:</label>
                     <div id="_sexo"></div>

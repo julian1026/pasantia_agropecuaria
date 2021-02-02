@@ -152,23 +152,11 @@ table = $("#tabla_usuario").DataTable({
    select: true
 });
 
-document.getElementById("tabla_usuario_filter").style.display="none";
-
-    $('input.global_filter').on( 'keyup click', function () {
-        filterGlobal();
-    } );
-    $('input.column_filter').on( 'keyup click', function () {
-        filterColumn( $(this).parents('tr').attr('data-column') );
-    });
  }
 
 ///////////////////
 
-function filterGlobal() {
-    $('#tabla_usuario').DataTable().search(
-    $('#global_filter').val(),
-    ).draw();
-}
+
 
 function AbrirModalRegistro(){
     $("#modal_registro").modal({backdrop:'static', keyboard:false});

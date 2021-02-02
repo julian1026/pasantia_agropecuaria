@@ -6,10 +6,7 @@
         <div class="box-header with-border">
             <h3 class="box-title">Gestion De Fincas</h3>
 
-            <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-            </div>
+
             <!-- /.box-tools -->
         </div>
         <!-- /.box-header -->
@@ -18,20 +15,19 @@
 
             <div class="form-group">
 
-                <div class="col-lg-10">
-                    <div class="input-group">
-                        <input type="text" class="global_filter1 form-control" id="global_filter1" placeholder="Buscar">
-                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                    </div>
-                </div>
-
                 <div class="col-lg-2">
-                    <button class="btn btn-danger" onclick='AbrirModalRegistro()' style="width:100%">
+                    <button class="btn btn-success" onclick='AbrirModalRegistro()' style="width:100%">
                         <i class="glyphicon glyphicon-plus"></i>
                         Nuevo Registro
                     </button>
                 </div>
+
+                <div class="col-lg-10">
+
+                </div>
             </div>
+
+            <br>
 
 
 
@@ -401,7 +397,7 @@
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" onclick='RegistrarAnimales()'>Registro</button>
+                <button type="button" class="btn btn-success" onclick='registrarAnimales()'>Registro</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
 
             </div>
@@ -410,6 +406,78 @@
 </div>
 
 <!-- cierre de modal de registro de Animales -->
+
+
+<!-- boton de decision vegetales  modal-->
+
+
+
+<div class="modal bd-example-modal-sm" id="modalDecisionVegetal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLongTitle">Vegetales</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+
+                <button type="button" class="btn btn-success  " onclick="abrirModalRegistroVegetales()" data-dismiss="modal">Registrar</button>
+                <button type="button" class="btn btn-primary  " onclick="redirigirVegetales()" data-dismiss="modal">Listar</button>
+
+
+
+            </div>
+
+            <br>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- cierre de modal decision vegetal -->
+
+
+<!-- abrir modal decision animal -->
+
+
+<div class="modal bd-example-modal-sm" id="modalDecisionAnimal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLongTitle">Animales</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <button type="button" class="btn btn-success " onclick="abrirModalRegistroAnimales()" data-dismiss="modal">Registrar</button>
+
+                <button type="button" class="btn btn-primary " onclick="redirigirAnimales()" id="redirigirA" data-dismiss="modal">Listar</button>
+
+            </div>
+            <br>
+            <br>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- cerrar modal decision animal -->
 
 <script>
     $(document).ready(function() {
