@@ -97,3 +97,36 @@ var actualizarAnimales=()=>{
 }
 
 //-----cerrar actualizacion de animales-------//
+
+// funcion para listar animales, vista agricultor-----//
+
+function listarAnimales2(){
+    $.ajax({
+        url:'../Controller/animales/controlador_animales_listar.php',
+        type:'POST',
+        data:{
+            idFinca:idFinca
+        }
+    }).done(function(res){
+       
+          datos=JSON.parse(res);
+          datosV=datos.data;
+          if(datosV){
+                if(datosV.length>0){
+                    document.getElementById('pintarAnimales').innerHTML='';
+                        for(animales of datosV){
+                            document.getElementById('pintarAnimales').innerHTML+=`
+                            <tr>
+                                <td>${animales.tipo}</td>
+                                <td>${animales.raza}</td>
+                                <td>${animales.cantidad_animales}</td>
+                                <td>${animales.nombre_vacunas}</td>
+                                <td>${animales.informacion}</td>
+                            </tr>`;
+                        }
+                    }
+                }else{
+                    document.getElementById('tablaAnimalesVisualizacion').innerHTML='';
+                }
+    })
+}

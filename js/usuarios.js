@@ -27,16 +27,18 @@ function verificarUsuario(){
                 Swal.fire("Mensaje De Error","el usuario y/o contrase\u00f1a incorrecta","warning");
             }else{
                 let R_usuario=datos[0];
+                
                 controlarSessiones(R_usuario)
             }
         }
     }
-
 }
 
 
-
 function controlarSessiones(R_usuario){
+    console.log(R_usuario);
+    cedula_registrador=R_usuario.num_identificacion;
+    console.log(cedula_registrador);
     if(R_usuario.estado==='INACTIVO'){
         Swal.fire("Mensaje De Advertencia","Lo sentimos el usuario <b> "+R_usuario.user_name+ " </b> se encuentra suspendido, comuniquese con el administrador  ","warning");
     }else{
@@ -143,8 +145,8 @@ table = $("#tabla_usuario").DataTable({
          }
        },  
        {"defaultContent":
-       "<button style='font-size:10px;' type='button' class='editar btn btn-warning'><i class='fa fa-edit'></i> </button>&nbsp;"+
-       "<button style='font-size:10px;' type='button' class='desactivar btn btn-danger'><i class='fa fa-trash'></i>"
+       "<button style='font-size:10px;' type='button' class='editar btn btn-warning'><i class='fa fa-edit'></i></button>&nbsp;"+
+       "<button style='font-size:10px;' type='button' class='desactivar btn btn-danger'><i class='fa fa-trash'></i></button>&nbsp;"
         + "</button>&nbsp; <button style='font-size:10px;' type='button' class='activar btn btn-success'><i class='fa fa-check'></i></button>"}
    ],
 
@@ -181,9 +183,11 @@ var cadena=document.querySelector('#txt_com_rol_editar');
             let datos=JSON.parse(this.responseText);
             if(datos.length>0){
                 $("#opciones").val('0');
+                if(contenedorSelect){
                 contenedorSelect.innerHTML=`
                 <option value="0">Selecionar Rol</option>
                 `;
+            }
                 if(cadena){
                 cadena.innerHTML='';
                 for(let s of datos){
@@ -193,9 +197,10 @@ var cadena=document.querySelector('#txt_com_rol_editar');
                     }
                 }
                 for(let d of datos){
+                    if (contenedorSelect){
                     contenedorSelect.innerHTML+=`
                     <option value="${d.idRol}">${d.nombre_rol} </option>
-                    `
+                    `}
                 }
 
                 opcionesRolSelect();

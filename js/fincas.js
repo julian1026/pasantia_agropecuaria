@@ -73,6 +73,7 @@ function cargarVeredas(){
         if(this.status==200 && this.readyState==4){
             let datos=JSON.parse(this.responseText);
             if(datos.length>0){
+                if(contenedorVereda){
                 contenedorVereda.innerHTML='';
                 contenedorVereda.innerHTML=`
                 <option value="0">Selecionar Vereda</option>
@@ -84,6 +85,7 @@ function cargarVeredas(){
                     `
                     }
                 } 
+            }
             }else{
                 contenedorSelect.innerHTML=`<option value="">valores no encontrados</option>`;
             }
@@ -384,7 +386,7 @@ function mostrar(){
                 document.querySelector('#_departamento').innerHTML=`<p>${dato.nombre_department}</p>`;
                 
             }else{
-                Swal.fire("Mensaje De Error","La actualizacion no se pudo llevar acabo... ","warning");
+                Swal.fire("Mensaje De Error","No se pueden visualizar los datos... ","warning");
             }
         }
         

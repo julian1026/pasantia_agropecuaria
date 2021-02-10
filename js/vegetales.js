@@ -97,3 +97,36 @@ var actualizarVegetales=()=>{
 }
 
 //-----cerrar actualizacion de vegetales-------//
+
+
+//---funcion para listar Vegetales en tabla normal----------
+
+function listarVegetales2(){
+    $.ajax({
+        url:'../Controller/vegetales/controlador_vegetales_listar.php',
+        type:'POST',
+        data:{
+            idFinca:idFinca
+        }
+    }).done(function(res){
+       
+          datos=JSON.parse(res);
+          datosV=datos.data;
+          if(datosV){
+            if(datosV.length>0){
+                     document.getElementById('pintarVegetales').innerHTML='';
+                        for(vegetales of datosV){
+                        document.getElementById('pintarVegetales').innerHTML+=`
+                        <tr>
+                            <td>${vegetales.nombre}</td>
+                            <td>${vegetales.tipo}</td>
+                            <td>${vegetales.vegetales_cantidad}</td>
+                            <td>${vegetales.informacion}</td>
+                        </tr>`;
+                    }
+            }
+        }else{
+            document.getElementById('tablaVegetalesVisualizacion').innerHTML='';
+        }
+    })
+}

@@ -1,4 +1,6 @@
 <script type="text/javascript" src="../js/fincas.js?rev=<?php echo time(); ?>"></script>
+<script type="text/javascript" src="../js/vegetales.js?rev=<?php echo time(); ?>"></script>
+<script type="text/javascript" src="../js/animales.js?rev=<?php echo time(); ?>"></script>
 <style>
     .map-container-3 {
         overflow: hidden;
@@ -22,7 +24,7 @@
             <h3 class="box-title">Caracterizacion Del Pequeno Productor</h3>
 
             <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa  fa-arrow-left"></i>
+                <button type="button" onclick="cargar_contenido('contenido_principal','fincas/vista_finca.php')" class="btn btn-box-tool" data-widget="collapse"><i class="fa  fa-arrow-left"></i>
                 </button>
             </div>
             <!-- /.box-tools -->
@@ -31,6 +33,7 @@
         <!-- ////////////////////////////////////////////// style="width: 360px; height: 400px;"-->
         <div class="box-body">
             <div class="form-group">
+                <!--Grid column-->
                 <div class="form-group col-md-4" id='dibujo_ubicacion'>
 
                     <h3>Ubicacion "Finca"</h3>
@@ -42,6 +45,8 @@
                     </div>
 
                 </div>
+
+
                 <div class="form-group col-md-3">
 
                     <label for="">Nombre Del Agricultor:</label>
@@ -129,6 +134,48 @@
 
             </div>
 
+            <div class="form-group">
+                <div class="col-md-6" id="tablaVegetalesVisualizacion">
+                    <h3>Vegetales</h3>
+                    <table class="table">
+
+                        <thead>
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Tipo</th>
+                                <th scope="col">cantidad</th>
+                                <th scope="col">informacion</th>
+
+                            </tr>
+                        </thead>
+                        <tbody id='pintarVegetales'>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col-md-6" id="tablaAnimalesVisualizacion">
+                    <h3>animales</h3>
+                    <table class="table">
+
+                        <thead>
+                            <tr>
+                                <th scope="col">Tipo</th>
+                                <th scope="col">Raza</th>
+                                <th scope="col"> #_animales</th>
+                                <th scope="col">Vacuna</th>
+                                <th scope="col">informacion</th>
+                            </tr>
+                        </thead>
+                        <tbody id='pintarAnimales'>
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+
             <!-- /.box-body -->
         </div>
         <!-- /.box -->
@@ -139,4 +186,6 @@
 <script>
     showGoogleMaps();
     mostrar();
+    listarVegetales2();
+    listarAnimales2();
 </script>

@@ -288,6 +288,7 @@ function RegistrarFinca(){
         r_finca.append('linea_productiva',linea_productiva);
         r_finca.append('vereda',vereda);
         r_finca.append('idAgricultor',idAgricultor);
+        r_finca.append('registrador',cedula_registrador);
 
         let url='../Controller/finca/controlador_registrar_finca.php';
         const xhttp=new XMLHttpRequest();

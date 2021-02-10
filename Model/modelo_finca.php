@@ -17,11 +17,12 @@ class Modelo_Finca
         $actividad_Agropecuaria,
         $linea_productiva,
         $vereda,
-        $idAgricultor
+        $idAgricultor,
+        $registrador
     ) {
         $insertar = $this->pdo->conectar()->prepare(
-            'INSERT INTO finca (nombre_finca,	hectareas,actividadAgropecuaria,lineaProductiva,latitud,longitud,idAgricultor,id_Vereda) 
-                 VALUES (:nombre,:hectareas,:actividadAgro,:lineaPro,:latitud,:longitud,:idAgricultor,:idVereda)'
+            'INSERT INTO finca (nombre_finca,	hectareas,actividadAgropecuaria,lineaProductiva,latitud,longitud,registrador,idAgricultor,id_Vereda) 
+                 VALUES (:nombre,:hectareas,:actividadAgro,:lineaPro,:latitud,:longitud,:registrador,:idAgricultor,:idVereda)'
         );
 
         $insertar->bindparam(':nombre', $nombre_finca);
@@ -30,6 +31,7 @@ class Modelo_Finca
         $insertar->bindparam(':lineaPro', $linea_productiva);
         $insertar->bindparam(':latitud', $latitud);
         $insertar->bindparam(':longitud', $longitud);
+        $insertar->bindparam(':registrador', $registrador);
         $insertar->bindparam(':idAgricultor', $idAgricultor, PDO::PARAM_INT);
         $insertar->bindparam(':idVereda', $vereda, PDO::PARAM_INT);
         if ($insertar->execute()) {

@@ -14,6 +14,7 @@ $actividad_Agropecuaria = htmlspecialchars($_POST['actividad_Agropecuaria'], ENT
 $linea_productiva = htmlspecialchars($_POST['linea_productiva'], ENT_QUOTES, 'utf-8');
 $vereda = htmlspecialchars($_POST['vereda'], ENT_QUOTES, 'utf-8');
 $idAgricultor = $_POST['idAgricultor'];
+$registrador = $_POST['registrador'];
 
 $registrar = $MU->registrarFinca(
     $longitud,
@@ -23,7 +24,8 @@ $registrar = $MU->registrarFinca(
     $actividad_Agropecuaria,
     $linea_productiva,
     $vereda,
-    $idAgricultor
+    $idAgricultor,
+    $registrador
 );
 $data = json_encode($registrar);
 echo $data;
