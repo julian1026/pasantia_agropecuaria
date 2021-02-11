@@ -1,10 +1,10 @@
 <script type="text/javascript" src="../js/usuarios.js?rev=<?php echo time(); ?>"></script>
-<script type="text/javascript" src="../js/fincas.js?rev=<?php echo time(); ?>"></script>
+<script type="text/javascript" src="../js/visitarFinca.js?rev=<?php echo time(); ?>"></script>
 
 <div class="col-md-12">
     <div class="box box-primary box-solid">
         <div class="box-header with-border">
-            <h3 class="box-title">Gestion De Fincas</h3>
+            <h3 class="box-title">Visitar Finca</h3>
 
 
             <!-- /.box-tools -->
@@ -32,33 +32,27 @@
 
 
 
-            <table id="tabla_finca" class="display responsive nowrap table-bordered " cellspacing='0' style="width:100%">
+            <table id="tabla_visitar_finca" class="display responsive nowrap table-bordered " cellspacing='0' style="width:100%">
                 <thead>
                     <tr class="bg-primary">
-                        <th scope="col">consecutivo</th>
-                        <th scope="col">Nombre</th>
+                        <th scope="col">Consecutivo</th>
+                        <th scope="col">Finca</th>
                         <th scope="col">Activida Agropecuaria</th>
-                        <th scope="col">Linea Productiva</th>
-                        <th scope="col">Hectareas</th>
-                        <th scope="col">latitud</th>
-                        <th scope="col">longitud</th>
-                        <th scope="col">cedula</th>
-                        <th scope="col">Fecha_rgstro</th>
+                        <th scope="col">Cedula</th>
+                        <th scope="col">Registrador</th>
+                        <th scope="col">Vereda</th>
                         <th>Acci&oacute;n</th>
                     </tr>
                 </thead>
 
                 <tfoot>
                     <tr class="bg-primary">
-                        <th scope="col">consecutivo</th>
-                        <th scope="col">Nombre</th>
+                        <th scope="col">Consecutivo</th>
+                        <th scope="col">Finca</th>
                         <th scope="col">Activida Agropecuaria</th>
-                        <th scope="col">Linea Productiva</th>
-                        <th scope="col">Hectareas</th>
-                        <th scope="col">latitud</th>
-                        <th scope="col">longitud</th>
-                        <th scope="col">cedula</th>
-                        <th scope="col">Fecha_rgstro</th>
+                        <th scope="col">Cedula</th>
+                        <th scope="col">Registrador</th>
+                        <th scope="col">Vereda</th>
                         <th>Acci&oacute;n</th>
                     </tr>
                 </tfoot>
@@ -257,233 +251,10 @@
     </form>
 </div>
 
-<!-- modal actualizar finca -->
-<!-- Modal -->
-<div class="modal fade has-success" id="modalActualizarFinca" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLabel">Actualizar Datos de Finca</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="txt_ActualizarFinca" autocomplete="false" onsubmit="return false">
-                    <div class="form-group">
-
-                        <label for="txt_longitud" class="col-form-label">Longitud:</label>
-                        <input type="text" class="form-control" id="txt_longitud" disabled>
-
-
-                        <label for="txt_latitud" class="col-form-label">Latitud:</label>
-                        <input type="text" class="form-control" id="txt_latitud" disabled>
-                        <br />
-                        <a href="#" role="button" class="btn btn-primary popover-test" title="Popover title" data-content="Popover body content is set in this attribute.">Obtener Nueva Ubicacion</a>
-                        <br />
-                        <label for="txt_fincaNombre" class="col-form-label">Nombre Finca:</label>
-                        <input type="text" class="form-control" id="txt_fincaNombre" maxlength="40">
-
-
-                        <label for="txt_hetareas" class="col-form-label">Hetareas de tierra de la Finca:</label>
-                        <input type="number" class="form-control" min="10" max="100" id="txt_hetareas">
-
-                        <label for="txt_actividadAgro" class="col-form-label">Actividad Agropecuaria:</label>
-                        <input type="text" class="form-control" maxlength="100" id="txt_actividadAgro">
-
-                        <label for="txt_lineaProductiva" class="col-form-label">Linea Productiva:</label>
-                        <input type="text" class="form-control" maxlength="100" id="txt_lineaProductiva">
-
-                        <label for="">Vereda</label>
-                        <select class="form-control" name="rol" id="txt_vereda" style='width: 100%;'>
-
-                        </select>
-
-
-                    </div>
-                </form>
-            </div>
-            <br />
-            <div class="modal-footer">
-                <br />
-                <button type="button" class="btn btn-success" onclick='actualizarFinca()'>Actualizar</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-
-            </div>
-        </div>
-    </div>
-</div>
-<!-- cierre de modal de actualizar finca -->
-
-<!-- modal de registro de plantas -->
-<div class="modal fade has-success" id="modalRegistrarVegetales" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLabel">Registro De Vegetales</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="txt_Registrar_plantas" autocomplete="false" onsubmit="return false">
-                    <div class="form-group">
-
-                        <label for="txt_nombrePlanta" class="col-form-label">Nombre Del Vegetal:</label>
-                        <input type="text" class="form-control" id="txt_nombrePlanta">
-
-
-                        <label for="txt_tipoVegetal" class="col-form-label">Tipo De Vegetal:</label>
-                        <input type="text" class="form-control" id="txt_tipoVegetal">
-
-                        <label for="txt_vegetales_cantidad" class="col-form-label">Cantidad De Plantas:</label>
-                        <input type="number" class="form-control" min="10" max="100" id="txt_vegetales_cantidad">
-
-                        <label for="txt_informacionVgt" class="col-form-label">Informacion General:</label>
-
-                        <textarea class="form-control" rows="4" id="txt_informacionVgt" placeholder="Enter ..."></textarea>
-
-
-                    </div>
-                </form>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" onclick='registrarPlantas()'>Registro</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- cierre de modal de registro de plantas -->
-
-
-
-<!-- abierto modal registro de animales -->
-<div class="modal fade has-success" id="modalRegistrarAnimales" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLabel">Registro De Animales</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="txt_Registrar_animales" autocomplete="false" onsubmit="return false">
-                    <div class="form-group">
-
-                        <label for="txt_tipoAnimal" class="col-form-label">Nombre Del Tipo De Animal:</label>
-                        <input type="text" class="form-control" id="txt_tipoAnimal">
-
-
-                        <label for="txt_razaAnimal" class="col-form-label">Nombre De La Raza Del Animal:</label>
-                        <input type="text" class="form-control" id="txt_razaAnimal">
-
-                        <label for="txt_nombreVacuna" class="col-form-label">Nombre De Vacuna:</label>
-                        <input type="text" class="form-control" id="txt_nombreVacuna">
-
-
-                        <label for="txt_cantidadAnimales" class="col-form-label">Cantidad De Animales:</label>
-                        <input type="number" class="form-control" min="10" max="100" id="txt_cantidadAnimales">
-
-                        <label for="txt_informacionAnimal" class="col-form-label">Informacion General Del Animal:</label>
-
-                        <textarea class="form-control" rows="4" id="txt_informacionAnimal" placeholder="Enter ..."></textarea>
-
-
-                    </div>
-                </form>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" onclick='registrarAnimales()'>Registro</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- cierre de modal de registro de Animales -->
-
-
-<!-- boton de decision vegetales  modal-->
-
-
-
-<div class="modal bd-example-modal-sm" id="modalDecisionVegetal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="exampleModalLongTitle">Vegetales</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
-            <div class="modal-body">
-
-
-                <button type="button" class="btn btn-success  " onclick="abrirModalRegistroVegetales()" data-dismiss="modal">Registrar</button>
-                <button type="button" class="btn btn-primary  " onclick="redirigirVegetales()" data-dismiss="modal">Listar</button>
-
-
-
-            </div>
-
-            <br>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-
-            </div>
-
-        </div>
-    </div>
-</div>
-<!-- cierre de modal decision vegetal -->
-
-
-<!-- abrir modal decision animal -->
-
-
-<div class="modal bd-example-modal-sm" id="modalDecisionAnimal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="exampleModalLongTitle">Animales</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
-            <div class="modal-body">
-
-                <button type="button" class="btn btn-success " onclick="abrirModalRegistroAnimales()" data-dismiss="modal">Registrar</button>
-
-                <button type="button" class="btn btn-primary " onclick="redirigirAnimales()" id="redirigirA" data-dismiss="modal">Listar</button>
-
-            </div>
-            <br>
-            <br>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<!-- cerrar modal decision animal -->
 
 <script>
     $(document).ready(function() {
-        $('#tabla_finca').DataTable({
+        $('#tabla_visitar_finca').DataTable({
             responsive: true
         })
         listar_fincas();

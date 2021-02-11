@@ -222,13 +222,12 @@ function cargarVeredas(){
                 contenedorVereda.innerHTML=`
                 <option value="0">Selecionar Vereda</option>
                 `;
-                if(contenedorVereda){
                 for(let s of datos){
                     contenedorVereda.innerHTML+=`
                     <option value="${s.id_vereda}">${s.nombreVereda} </option>
                     `
                     }
-                } 
+                
             }else{
                 contenedorSelect.innerHTML=`<option value="">valores no encontrados</option>`;
             }
@@ -288,7 +287,7 @@ function RegistrarFinca(){
         r_finca.append('linea_productiva',linea_productiva);
         r_finca.append('vereda',vereda);
         r_finca.append('idAgricultor',idAgricultor);
-        r_finca.append('registrador',cedula_registrador);
+       
 
         let url='../Controller/finca/controlador_registrar_finca.php';
         const xhttp=new XMLHttpRequest();

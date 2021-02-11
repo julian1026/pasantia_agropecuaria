@@ -21,6 +21,7 @@ tabla = $("#tabla_finca").DataTable({
        {"data":"hectareas"},  
        {"data":"latitud"},
        {"data":"longitud"},
+       {"data":"num_identificacion"},
        {"data":"fecha_registro"},
         {"defaultContent":
        "<button style='font-size:10px;' type='button' class='editar btn btn-warning'><i class='fa fa-edit'></i> </button>&nbsp;"+

@@ -21,7 +21,7 @@ class Modelo_Finca
         $registrador
     ) {
         $insertar = $this->pdo->conectar()->prepare(
-            'INSERT INTO finca (nombre_finca,	hectareas,actividadAgropecuaria,lineaProductiva,latitud,longitud,registrador,idAgricultor,id_Vereda) 
+            'INSERT INTO finca (nombre_finca,hectareas,actividadAgropecuaria,lineaProductiva,latitud,longitud,registrador,idAgricultor,id_Vereda) 
                  VALUES (:nombre,:hectareas,:actividadAgro,:lineaPro,:latitud,:longitud,:registrador,:idAgricultor,:idVereda)'
         );
 
@@ -45,7 +45,9 @@ class Modelo_Finca
 
     function listarFincas()
     {
-        $listar = $this->pdo->conectar()->prepare("SELECT * from finca ORDER BY idFinca DESC");
+        $listar = $this->pdo->conectar()->prepare("SELECT p.num_identificacion,f.idFinca,f.nombre_finca,f.hectareas,f.actividadAgropecuaria,
+        f.lineaProductiva,f.latitud,f.longitud,f.fecha_registro,f.registrador,v.nombreVereda from persona p join agricultor a on (p.idPersona=a.idPersona) join finca f on (a.idAgricultor=f.idAgricultor) join vereda v 
+        on (f.id_Vereda=v.id_vereda) ORDER BY idFinca DESC");
         $listar->execute();
         $arreglo = array();
         $valores = $listar->fetchAll(PDO::FETCH_ASSOC);

@@ -3,7 +3,7 @@ require '../../Model/modelo_finca.php';
 
 $MU = new Modelo_Finca();
 
-
+session_start();
 
 /* datos finca */
 $longitud = htmlspecialchars($_POST['longitud'], ENT_QUOTES, 'utf-8');
@@ -14,7 +14,7 @@ $actividad_Agropecuaria = htmlspecialchars($_POST['actividad_Agropecuaria'], ENT
 $linea_productiva = htmlspecialchars($_POST['linea_productiva'], ENT_QUOTES, 'utf-8');
 $vereda = htmlspecialchars($_POST['vereda'], ENT_QUOTES, 'utf-8');
 $idAgricultor = $_POST['idAgricultor'];
-$registrador = $_POST['registrador'];
+$registrador = $_SESSION['S_registrador'];
 
 $registrar = $MU->registrarFinca(
     $longitud,
@@ -28,4 +28,5 @@ $registrar = $MU->registrarFinca(
     $registrador
 );
 $data = json_encode($registrar);
+session_destroy();
 echo $data;

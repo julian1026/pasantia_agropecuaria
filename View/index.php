@@ -372,7 +372,16 @@ if (!isset($_SESSION['S_iduser'])) {
 
           <li class="active treeview">
             <a onclick="cargar_contenido('contenido_principal','fincas/vista_finca.php')">
-              <i class="fa fa-leaf"></i> <span>Datos Fincas</span>
+              <i class="fa fa-leaf"></i> <span>Fincas</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+
+
+          <li class="active treeview">
+            <a onclick="cargar_contenido('contenido_principal','fincas/vista_visitar_finca.php')">
+              <i class="fa fa-leaf"></i> <span>Visitar Fincas</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>

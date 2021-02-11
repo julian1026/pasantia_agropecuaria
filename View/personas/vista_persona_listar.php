@@ -196,7 +196,7 @@
                     <option value="Afrocolombiano">Afrocolombiano</option>
                     <option value="Afrodescendiente">Afrodescendiente</option>
                     <option value="Indigena">Indigena</option>
-                    <option value="GitanoORomm">Gitano o Rrom</option>
+                    <option value="GitanoORomm">Gitano o Romm</option>
                     <option value="Palenquero">Palenquero del san basilio</option>
                     <option value="Ninguna">Ninguna</option>
                   </select>

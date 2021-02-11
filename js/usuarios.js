@@ -5,7 +5,6 @@ function verificarUsuario(){
     var name=$('#txt_usu').val();
     var pass=$('#txt_con').val();
   
-  
   if(name.length==0 || pass.length==0){
       return Swal.fire("mensaje de Advertencia","llene los campos vacios","warning");
   }
@@ -34,7 +33,6 @@ function verificarUsuario(){
     }
 }
 
-
 function controlarSessiones(R_usuario){
     console.log(R_usuario);
     cedula_registrador=R_usuario.num_identificacion;
@@ -46,6 +44,8 @@ function controlarSessiones(R_usuario){
         nuevo1.append('idusuario', R_usuario.idUsuario);
         nuevo1.append('user', R_usuario.user_name);
         nuevo1.append('rol', R_usuario.idRol);
+        nuevo1.append('numero_registro', R_usuario.num_identificacion);
+
 
         let url='../Controller/usuario/controlador_crear_sessiones.php';
         const xhttp= new XMLHttpRequest();
