@@ -12,48 +12,47 @@
 
 
 // conexión
-// $mysqli = @new mysqli('localhost', 'root', '', 'appAgropecuaria');
+$mysqli = @new mysqli('localhost', 'root', '', 'appAgropecuaria');
 
-// if (isset($_POST['enviar'])) {
-//     $arreglo = array();
-//     $filename = $_FILES["file"]["name"];
-//     $info = new SplFileInfo($filename);
-//     $extension = pathinfo($info->getFilename(), PATHINFO_EXTENSION);
+if (isset($_POST['enviar'])) {
+    $arreglo = array();
+    $filename = $_FILES["file"]["name"];
+    $info = new SplFileInfo($filename);
+    $extension = pathinfo($info->getFilename(), PATHINFO_EXTENSION);
 
-//     if ($extension == 'csv') {
-//         $filename = $_FILES['file']['tmp_name'];
-//         $handle = fopen($filename, "r");
+    if ($extension == 'csv') {
+        $filename = $_FILES['file']['tmp_name'];
+        $handle = fopen($filename, "r");
 
-//         while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-//             $arreglo[] = $data;
-//         }
-//         // fclose($handle);
-//         // foreach ($arreglo as $x => $x_value) {
-//         //     echo "Key=" . $x . ", Value=" . $x_value;
-//         //     echo "<br>";
-//         // }
-//         $numero = 1;
-//         foreach ($arreglo as $val) {
-//             // print $val;
-//             foreach ($val as $v) {
-//                 print $numero;
-//                 print $v . '<br/>';
+        while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+            $arreglo[] = $data;
+            // $arreglo[] = $data[1];
+        }
+        fclose($handle);
+        // foreach ($arreglo as $x => $x_value) {
+        //     echo "Key=" . $x . ", Value=" . $x_value;
+        //     echo "<br>";
+        // }
 
-//                 $q = "INSERT INTO vereda (nombreVereda,corregimiento_id) VALUES ( 
-//                     '$v',
-//                     '$numero'
-//                 )";
+        foreach ($arreglo as $val) {
+            // print $val . '<br/>';
+            foreach ($val as $v) {
+                print $v . '<br/>';
 
-//                 $mysqli->query($q);
-//             }
-//             // fclose($handle);
-//             // print $numero;
-//             $numero++;
-//         }
-//     }
-// }
+                $q = "INSERT INTO linea_productiva (linea_nombre,id_clase_pro) VALUES ( 
+                    '$v',
+                    '1'
+                )";
 
-// 
+                $mysqli->query($q);
+            }
+            // fclose($handle);
+            // print $numero
+        }
+    }
+}
+
+
 ?>
 
 
@@ -66,17 +65,17 @@
 </head>
 
 <body>
-    <!-- 
+    <!-- <!--  -->
     <form enctype="multipart/form-data" method="post" action="">
         CSV File:<input type="file" name="file" id="file">
         <input type="submit" value="Enviar" name="enviar">
     </form> -->
     <!-- <script src="https://maps.google.com/maps/api/js?sensor=false"></script> -->
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
-    <div id="showMap" style="width: 450px; height: 350px;"> </div>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <div id="showMap" style="width: 450px; height: 350px;"> </div> -->
 </body>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     function showGoogleMaps() {
         //Creamos el punto a partir de la latitud y longitud de una dirección:
         var point = new google.maps.LatLng('2.606093', '-76.561364');
@@ -99,6 +98,6 @@
         });
     }
     showGoogleMaps();
-</script>
+</script> -->
 
 </html>

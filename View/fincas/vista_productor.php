@@ -1,6 +1,7 @@
 <script type="text/javascript" src="../js/fincas.js?rev=<?php echo time(); ?>"></script>
 <script type="text/javascript" src="../js/vegetales.js?rev=<?php echo time(); ?>"></script>
 <script type="text/javascript" src="../js/animales.js?rev=<?php echo time(); ?>"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxMel9pc3S55ie4XRxZodQ7Fd9yyuxFaQ&callback=showGoogleMaps"></script>
 <style>
     .map-container-3 {
         overflow: hidden;
@@ -181,6 +182,7 @@
         <!-- /.box -->
     </div>
     <!-- opcional -->
+
 </div>
 
 <script>

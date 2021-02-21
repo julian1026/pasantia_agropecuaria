@@ -10,9 +10,14 @@ $longitud = htmlspecialchars($_POST['longitud'], ENT_QUOTES, 'utf-8');
 $latitud = htmlspecialchars($_POST['latitud'], ENT_QUOTES, 'utf-8');
 $nombre_finca = htmlspecialchars($_POST['nombre_finca'], ENT_QUOTES, 'utf-8');
 $hectareas = htmlspecialchars($_POST['hetareas'], ENT_QUOTES, 'utf-8');
-$actividad_Agropecuaria = htmlspecialchars($_POST['actividad_Agropecuaria'], ENT_QUOTES, 'utf-8');
-$linea_productiva = htmlspecialchars($_POST['linea_productiva'], ENT_QUOTES, 'utf-8');
-$vereda = htmlspecialchars($_POST['vereda'], ENT_QUOTES, 'utf-8');
+$linea_productiva1 = htmlspecialchars($_POST['linea_productiva1'], ENT_QUOTES, 'utf-8');
+$linea_productiva2 = htmlspecialchars($_POST['linea_productiva2'], ENT_QUOTES, 'utf-8');
+$linea_productiva3 = htmlspecialchars($_POST['linea_productiva3'], ENT_QUOTES, 'utf-8');
+$agua = $_POST['agua'];
+$energiaElectrica = $_POST['energiaElectrica'];
+$energiaAlternativas = $_POST['energiaAlternativas'];
+$servicioSanitario = $_POST['servicioSanitario'];
+$vereda = $_POST['Vereda'];
 $idAgricultor = $_POST['idAgricultor'];
 $registrador = $_SESSION['S_registrador'];
 
@@ -21,12 +26,16 @@ $registrar = $MU->registrarFinca(
     $latitud,
     $nombre_finca,
     $hectareas,
-    $actividad_Agropecuaria,
-    $linea_productiva,
+    $linea_productiva1,
+    $linea_productiva2,
+    $linea_productiva3,
+    $agua,
+    $energiaElectrica,
+    $energiaAlternativas,
+    $servicioSanitario,
     $vereda,
     $idAgricultor,
     $registrador
 );
 $data = json_encode($registrar);
-session_destroy();
 echo $data;

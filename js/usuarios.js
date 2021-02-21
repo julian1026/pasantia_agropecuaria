@@ -221,7 +221,7 @@ var cadena=document.querySelector('#txt_com_rol_editar');
         e.preventDefault(); 
         
         let dato=e.target.value;
-
+            console.log(dato);
         switch (dato){
                 
             case('1'):

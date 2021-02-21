@@ -35,30 +35,24 @@
             <table id="tabla_finca" class="display responsive nowrap table-bordered " cellspacing='0' style="width:100%">
                 <thead>
                     <tr class="bg-primary">
-                        <th scope="col">consecutivo</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Activida Agropecuaria</th>
-                        <th scope="col">Linea Productiva</th>
+                        <th scope="col">#</th>
+                        <th scope="col">finca</th>
+                        <th scope="col">Linea Productiva 1</th>
                         <th scope="col">Hectareas</th>
-                        <th scope="col">latitud</th>
-                        <th scope="col">longitud</th>
                         <th scope="col">cedula</th>
-                        <th scope="col">Fecha_rgstro</th>
+                        <th scope="col">FechaRegistro</th>
                         <th>Acci&oacute;n</th>
                     </tr>
                 </thead>
 
                 <tfoot>
                     <tr class="bg-primary">
-                        <th scope="col">consecutivo</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Activida Agropecuaria</th>
-                        <th scope="col">Linea Productiva</th>
+                        <th scope="col">#</th>
+                        <th scope="col">finca</th>
+                        <th scope="col">Linea Productiva 1</th>
                         <th scope="col">Hectareas</th>
-                        <th scope="col">latitud</th>
-                        <th scope="col">longitud</th>
                         <th scope="col">cedula</th>
-                        <th scope="col">Fecha_rgstro</th>
+                        <th scope="col">FechaRegistro</th>
                         <th>Acci&oacute;n</th>
                     </tr>
                 </tfoot>
@@ -259,59 +253,125 @@
 
 <!-- modal actualizar finca -->
 <!-- Modal -->
+<!--  -->
 <div class="modal fade has-success" id="modalActualizarFinca" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLabel">Actualizar Datos de Finca</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="txt_ActualizarFinca" autocomplete="false" onsubmit="return false">
-                    <div class="form-group">
+    <form id="txt_RegistrarFinca" autocomplete="false" onsubmit="return false">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">Actualizar Finca</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
 
-                        <label for="txt_longitud" class="col-form-label">Longitud:</label>
-                        <input type="text" class="form-control" id="txt_longitud" disabled>
+                    <div class="row">
+                        <div class="group col-md-12 my-4">
 
+                            <div class="col-md-3">
+                                <label for="txt_longitud" class="col-form-label">Longitud:</label>
+                                <input type="text" class="form-control" id="txt_longitud" required="">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="txt_latitud" class="col-form-label">Latitud:</label>
+                                <input type="text" class="form-control" id="txt_latitud" required="">
+                            </div>
 
-                        <label for="txt_latitud" class="col-form-label">Latitud:</label>
-                        <input type="text" class="form-control" id="txt_latitud" disabled>
-                        <br />
-                        <a href="#" role="button" class="btn btn-primary popover-test" title="Popover title" data-content="Popover body content is set in this attribute.">Obtener Nueva Ubicacion</a>
-                        <br />
-                        <label for="txt_fincaNombre" class="col-form-label">Nombre Finca:</label>
-                        <input type="text" class="form-control" id="txt_fincaNombre" maxlength="40">
+                            <div class="col-md-3">
+                                <label for="">Ubicacion</label>
+                                <br />
+                                <button type="button" class="btn btn-primary">Refrescar</button>
+                            </div>
 
+                        </div>
 
-                        <label for="txt_hetareas" class="col-form-label">Hetareas de tierra de la Finca:</label>
-                        <input type="number" class="form-control" min="10" max="100" id="txt_hetareas">
+                        <div class="group col-md-12">
+                            <div class="col-md-3">
+                                <label for="txt_fincaNombre" class="col-form-label">Nombre Finca: </label>
+                                <input type="text" class="form-control" id="txt_fincaNombre" maxlength="40" required="">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="txt_hetareas" class="col-form-label">#Hectareas de la finca:</label>
+                                <input type="number" class="form-control" min="10" max="100" id="txt_hetareas" required="">
+                            </div>
 
-                        <label for="txt_actividadAgro" class="col-form-label">Actividad Agropecuaria:</label>
-                        <input type="text" class="form-control" maxlength="100" id="txt_actividadAgro">
+                            <div class="col-md-3">
+                                <label for="">Corregimiento</label>
+                                <select class="form-control" id="txt_corregimiento" style='width: 100%;'>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="">Vereda</label>
+                                <select class="form-control" id="txt_vereda" style='width: 100%;'>
+                                </select>
+                            </div>
+                        </div>
 
-                        <label for="txt_lineaProductiva" class="col-form-label">Linea Productiva:</label>
-                        <input type="text" class="form-control" maxlength="100" id="txt_lineaProductiva">
+                        <div class="group col-md-12 ">
+                            <div class="col-md-3">
+                                <label for="">Abastecimiento de Agua</label><br />
+                                <input type="radio" id='agua1' name="servicioAgua" value="1" checked>si
+                                <input type="radio" id="agua0" name="servicioAgua" value="0" checked>no
+                            </div>
+                            <div class="col-md-3">
+                                <label for="">Energia Electrica</label><br />
+                                <input type="radio" id="energia_electrica1" name="energia_electrica" value="1" checked>si
+                                <input type="radio" id="energia_electrica0" name="energia_electrica" value="0" checked>no
+                            </div>
+                            <div class="col-md-3">
+                                <label for="">Energias Alternativas</label><br />
+                                <input type="radio" id="energia_alternativa1" name="energia_alternativa" value="1" checked>si
+                                <input type="radio" id="energia_alternativa0" name="energia_alternativa" value="0" checked>no
+                            </div>
+                            <div class="col-md-3">
+                                <label for="">Servicio Sanitario</label><br />
+                                <input type="radio" id="servicio_sanitario1" name="servicio_sanitario" value="1" checked>si
+                                <input type="radio" id="servicio_sanitario0" name="servicio_sanitario" value="0" checked>no
+                            </div>
+                        </div>
+                        <!-- si -->
 
-                        <label for="">Vereda</label>
-                        <select class="form-control" name="rol" id="txt_vereda" style='width: 100%;'>
+                        <div class="group">
+                            <div class="column col-md-4">
+                                <label for="">Actividad Agropecuaria Primaria</label>
+                                <select class="form-control" id="txt_agro_1" style='width: 100%;'>
+                                </select>
+                                <label for="">Linea Productiva Primaria</label>
+                                <select class="form-control" id="txt_pro_1" style='width: 100%;'>
+                                </select>
+                            </div>
 
-                        </select>
+                            <div class="column col-md-4">
+                                <label for="">Actividad Agropecuaria Segundaria</label>
+                                <select class="form-control" id="txt_agro_2" style='width: 100%;'>
+                                </select>
+                                <label for="">Linea Productiva Segundaria</label>
+                                <select class="form-control" id="txt_pro_2" style='width: 100%;'>
+                                </select>
+                            </div>
 
+                            <div class="column col-md-4">
+                                <label for="">Actividad Agropecuaria Terciaria</label>
+                                <select class="form-control" id="txt_agro_3" style='width: 100%;'>
+                                </select>
+                                <label for="">Linea Productiva Terciaria</label>
+                                <select class="form-control" id="txt_pro_3" style='width: 100%;'>
+                                </select>
+                            </div>
+                        </div>
 
+                        <!-- no -->
                     </div>
-                </form>
-            </div>
-            <br />
-            <div class="modal-footer">
-                <br />
-                <button type="button" class="btn btn-success" onclick='actualizarFinca()'>Actualizar</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                </div>
 
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" onclick='actualizarFinca()'>Registrar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                </div>
             </div>
         </div>
-    </div>
+    </form>
 </div>
 <!-- cierre de modal de actualizar finca -->
 

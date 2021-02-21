@@ -1,12 +1,11 @@
 <?php
-require '../../Model/modelo_vereda.php';
+require '../../Model/modelo_finca.php';
 
+$MU = new Modelo_Finca();
 
-$MU = new Modelo_Vereda();
-
-if ($_POST['id_corregimiento']) {
-    $idCorregimiento = $_POST['id_corregimiento'];
-    $consulta = $MU->listarVeredas($idCorregimiento);
+if ($_POST['id_productiva']) {
+    $linea = $_POST['id_productiva'];
+    $consulta = $MU->listarLineasProductivas($linea);
     $data = json_encode($consulta);
     if (count($consulta) > 0) {
         echo $data;
@@ -14,7 +13,7 @@ if ($_POST['id_corregimiento']) {
         echo 0;
     }
 } else {
-    $consulta = $MU->listarVeredasPrincipal();
+    $consulta = $MU->listarLineasProductivas1();
     $data = json_encode($consulta);
     if (count($consulta) > 0) {
         echo $data;

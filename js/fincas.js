@@ -16,11 +16,8 @@ tabla = $("#tabla_finca").DataTable({
    "columns":[
        {"data":"idFinca"},
        {"data":"nombre_finca"},
-       {"data":"actividadAgropecuaria"},
-       {"data":"lineaProductiva"},
+       {"data":"linea_nombre"},
        {"data":"hectareas"},  
-       {"data":"latitud"},
-       {"data":"longitud"},
        {"data":"num_identificacion"},
        {"data":"fecha_registro"},
         {"defaultContent":
@@ -34,7 +31,181 @@ tabla = $("#tabla_finca").DataTable({
    select: true
 });
 }
-cargarVeredas();
+
+
+// declarando variables donde se cargaran los select 
+var selectCorregimientos=document.querySelector('#txt_corregimiento');
+var selectVereda=document.querySelector('#txt_vereda');
+
+
+
+/* listar veredas sin parametro,esta funcion se necesita a la hora de actualizar
+datos de la finca por ello todos los select tienen que estar cargados */
+
+function listarVeredasPrincipal(){
+    let id_corregimiento=null;
+    $.ajax({
+        url:'../Controller/veredas/controlador_listar_veredas.php',
+        type:'POST',
+        data:{id_corregimiento:id_corregimiento}   
+    }).done(function(res){
+        if(res.length>0){ 
+        dato_actividad=JSON.parse(res); 
+        console.log(dato_actividad);
+        selectVereda.innerHTML=``;
+        selectVereda.innerHTML=`<option value="0">Selecionar</option>`;
+        for(let s of dato_actividad){
+            selectVereda.innerHTML+=`
+            <option value="${s.id_vereda}">${s.nombreVereda} </option> `
+        }
+        }
+    }) 
+}
+listarVeredasPrincipal();//invocacion
+
+/* -----Abrir
+cargar actividad Agropecuarias,
+esta funccion es la encargada de poblar los select que hacen referencia a la actividad 
+agropecuaria
+--------------*/
+var selectAgro1=document.querySelector('#txt_agro_1');
+var selectAgro2=document.querySelector('#txt_agro_2');
+var selectAgro3=document.querySelector('#txt_agro_3');
+function cargarActividadesAgro(){
+    $.ajax({
+        url:'../Controller/finca/controlador_listar_ActividadesAgro.php',
+        type:'POST'
+    }).done(function(res){
+        if(res.length>0){
+            dato_actividad=JSON.parse(res); 
+            console.log(dato_actividad);
+
+            selectAgro1.innerHTML=`<option value="0">Selecionar</option>`;
+            selectAgro2.innerHTML=`<option value="0">Selecionar</option>`;
+            selectAgro3.innerHTML=`<option value="0">Selecionar</option>`;
+            // lineas productivas 
+            selectPro1.innerHTML=`<option value="0">Selecionar</option>`;
+            selectPro2.innerHTML=`<option value="0">Selecionar</option>`;
+            selectPro3.innerHTML=`<option value="0">Selecionar</option>`;
+            for(let s of dato_actividad){
+                selectAgro1.innerHTML+=`
+                <option value="${s.id_actividad_agro}">${s.actividadAgro_nombre} </option>
+                `
+                }
+            for(let s of dato_actividad){
+                selectAgro2.innerHTML+=`
+                <option value="${s.id_actividad_agro}">${s.actividadAgro_nombre} </option>
+                `
+                }
+
+            for(let s of dato_actividad){
+                selectAgro3.innerHTML+=`
+                <option value="${s.id_actividad_agro}">${s.actividadAgro_nombre} </option>
+                `
+                }
+        }
+    }) 
+}
+cargarActividadesAgro();
+// -------cerrar------------------//
+
+
+/* ---cargar linea productiva referentes a la actividad agropecuaria
+ esta funcion recibe dos parametros, el primer parametro recibe el id de la actividad agropecuaria
+ cuyo objetivo es listar todas las lineas productivas referentes a ese id,
+ el otro parametro se encarga de identificar en cual select se pintaran los datos consultados 'cambio'-------*/
+ var selectPro1=document.querySelector('#txt_pro_1');
+ var selectPro2=document.querySelector('#txt_pro_2');
+ var selectPro3=document.querySelector('#txt_pro_3');
+ function cargarLineasProductivas(id_productiva,txt_cambio_id){
+     $.ajax({
+         url:'../Controller/finca/controlador_listar_lineas_pro.php',
+         type:'POST',
+         data:{id_productiva:id_productiva}
+     }).done(function(res){
+         if(res.length>0){
+             if(txt_cambio_id=='txt_agro_1'){
+                 dato_actividad=JSON.parse(res); 
+                 // console.log(dato_actividad);
+                 selectPro1.innerHTML='';
+                 selectPro1.innerHTML=`<option value="0">Selecionar</option>`;
+                 for(let s of dato_actividad){
+                     selectPro1.innerHTML+=`
+                     <option value="${s.id_linea_pro}">${s.linea_nombre} </option>
+                   `
+                 }
+             }
+             if(txt_cambio_id=='txt_agro_2'){
+                 dato_actividad=JSON.parse(res); 
+                 // console.log(dato_actividad);
+                 selectPro2.innerHTML='';
+                 selectPro2.innerHTML=`<option value="0">Selecionar</option>`;
+                 for(let s of dato_actividad){
+                     selectPro2.innerHTML+=`
+                     <option value="${s.id_linea_pro}">${s.linea_nombre} </option>
+                   `
+                 }
+             }
+ 
+             if(txt_cambio_id=='txt_agro_3'){
+                 dato_actividad=JSON.parse(res); 
+                 // console.log(dato_actividad);
+                 selectPro3.innerHTML='';
+                 selectPro3.innerHTML=`<option value="0">Selecionar</option>`;
+                 for(let s of dato_actividad){
+                     selectPro3.innerHTML+=`
+                     <option value="${s.id_linea_pro}">${s.linea_nombre} </option>
+                   `
+                 }
+             }
+         }
+     }) 
+ }
+ //-----cerrar-------//
+ 
+ 
+ 
+ //------------------abierto--------------------//
+ /* esta funcion es la encargada de capturar 2 valores que seran enviados a la 
+ function cargarLineasProductivas, el primer parametro es el de tomar el valor de la actividad agropecuaria seleccionada 
+ atravez de evento change y 
+ el segundo parametro es el de tomar id de ese mismo select */
+ function obcionesLineasPro(){
+     if(selectAgro1){
+         selectAgro1.addEventListener('change',(e)=>{
+             e.preventDefault(); 
+             let dato=e.target.value;
+             let identificador1=e.target.id;
+             console.log(identificador1);
+             cargarLineasProductivas(dato,identificador1);
+     })
+  }
+     if(selectAgro2){
+         selectAgro2.addEventListener('change',(e)=>{
+             e.preventDefault(); 
+             let dato=e.target.value;
+             let identificador2=e.target.id;
+             console.log(identificador2);
+             cargarLineasProductivas(dato,identificador2);
+     })
+  }
+ 
+     if(selectAgro3){
+         selectAgro3.addEventListener('change',(e)=>{
+             e.preventDefault(); 
+             let dato=e.target.value;
+             let identificador3=e.target.id;
+             console.log(identificador3);
+             cargarLineasProductivas(dato,identificador3);
+     })
+  }
+ 
+ }
+ 
+ // ------cerrado---------//
+
+
+
 $('#tabla_finca').on('click','.editar',function(){
     var data=tabla.row($(this).parents('tr')).data();
     // console.log(data);
@@ -53,75 +224,233 @@ $('#tabla_finca').on('click','.editar',function(){
     $("#txt_latitud").val(data.latitud);
     $("#txt_fincaNombre").val(data.nombre_finca);
     $("#txt_hetareas").val(data.hectareas);
-    $("#txt_actividadAgro").val(data.actividadAgropecuaria);
-    $("#txt_lineaProductiva").val(data.lineaProductiva);
-    $("#txt_vereda").val(data.id_Vereda);
+    
+    console.log(data.ab_agua);
+    if(data.ab_agua==1){
+        document.getElementById('agua1').checked = true;
+    }else{
+        document.getElementById('agua0').checked = true;
+    }
+    
+    if(data.e_electrica==1){
+        document.getElementById('energia_electrica1').checked = true;
+    }else{
+        document.getElementById('energia_electrica0').checked = true;
+    }
+
+
+    if(data.e_alternativas==1){
+        document.getElementById("energia_alternativa1").checked = true;
+    }else{
+        document.getElementById("energia_alternativa0").checked = true;
+    }
+    if(data.s_sanitario==1){
+        document.getElementById("servicio_sanitario1").checked = true;
+    }else{
+        document.getElementById("servicio_sanitario0").checked = true;
+    }
+    // select de linea productiva
+    $('#txt_pro_1').val(data.id_linea_pro1);
+    $('#txt_pro_2').val(data.id_linea_pro2);
+    $('#txt_pro_3').val(data.id_linea_pro3);
+    
+    $("#txt_vereda").val(data.id_vereda);
+    $("#txt_corregimiento").val(data.idCorregimiento);
+    // select de activida agropecuaria
+    $('#txt_agro_1').val(data.idAgro1);
+    $('#txt_agro_2').val(data.idAgro2);
+    $('#txt_agro_3').val(data.idAgro3);
+    idFinca=data.idFinca;
+   console.log(data);
+    
     fincaId=data.idFinca;
+    // listarVeredasPrincipal();
+    // cargarCorregimientos();
+    capturarIdentificadorCorregimiento();
+    obcionesLineasPro();
+
 })
 
 
 
 
-//---------------------cargar veredas---------------------//
-contenedorVereda=document.querySelector('#txt_vereda');
-function cargarVeredas(){
-    let url='../Controller/veredas/controlador_listar_veredas.php';
-    const xhttp=new XMLHttpRequest();
-    xhttp.open('POST',url,true);
-    xhttp.send();
+//---------------------cargar corregimientos---------------------//
 
-    xhttp.onreadystatechange=function(){
-        if(this.status==200 && this.readyState==4){
-            let datos=JSON.parse(this.responseText);
-            if(datos.length>0){
-                if(contenedorVereda){
-                contenedorVereda.innerHTML='';
-                contenedorVereda.innerHTML=`
-                <option value="0">Selecionar Vereda</option>
-                `;
-                if(contenedorVereda){
-                for(let s of datos){
-                    contenedorVereda.innerHTML+=`
-                    <option value="${s.id_vereda}">${s.nombreVereda} </option>
-                    `
-                    }
-                } 
-            }
-            }else{
-                contenedorSelect.innerHTML=`<option value="">valores no encontrados</option>`;
+// var selectVereda=document.querySelector('#txt_vereda');
+function cargarCorregimientos(){
+    $.ajax({
+        url:'../Controller/finca/controlador_listar_corregimientos.php',
+        type:'POST'
+    }).done(function(res){
+        if(res.length>0){
+            dato=JSON.parse(res); 
+            console.log(dato);
+
+            selectCorregimientos.innerHTML=`<option value="0">Selecionar</option>`;
+            
+            for(let s of dato){
+                selectCorregimientos.innerHTML+=`
+                <option value="${s.idCorregimiento}">${s.nombre_corregimiento} </option>
+                `
             }
         }
-        
-    }
+    }) 
 }
+cargarCorregimientos();
+// -----cerrar-------------//
+
+
+// ----------cargar veredas---------//
+function capturarIdentificadorCorregimiento(){
+    if(selectCorregimientos){
+        selectCorregimientos.addEventListener('change',(e)=>{
+            e.preventDefault(); 
+            let dato=e.target.value;
+            let identificador1=e.target.id;
+            console.log(identificador1);
+            cargarVeredas(dato,identificador1);
+    })
+ }
+}
+//-------cierre-----------------//
+
+
+
+//---------------------cargar veredas---------------------//
+
+function cargarVeredas(id_corregimiento,txt_cambio_id){
+    // let url='../Controller/veredas/controlador_listar_veredas.php';
+    $.ajax({
+        url:'../Controller/veredas/controlador_listar_veredas.php',
+        type:'POST',
+        data:{id_corregimiento:id_corregimiento}
+    }).done(function(res){
+        if(res.length>0){
+            if(txt_cambio_id=='txt_corregimiento'){
+                dato_actividad=JSON.parse(res); 
+                console.log(dato_actividad);
+                selectVereda.innerHTML=``;
+                selectVereda.innerHTML=`<option value="0">Selecionar</option>`;
+                for(let s of dato_actividad){
+                    selectVereda.innerHTML+=`
+                    <option value="${s.id_vereda}">${s.nombreVereda} </option>
+                  `
+                }
+            }
+
+        }
+    })     
+}
+// esta funcion espara que se carguen por defecto todas las lineas productivas
+function cargarLineasProductivas1(){
+    let id_productiva=null;
+    $.ajax({
+        url:'../Controller/finca/controlador_listar_lineas_pro.php',
+        type:'POST',
+        data:{id_productiva:id_productiva}
+    }).done(function(res){
+        if(res.length>0){
+            
+                dato_actividad=JSON.parse(res); 
+                // console.log(dato_actividad);
+                selectPro1.innerHTML='';
+                selectPro1.innerHTML=`<option value="0">Selecionar</option>`;
+                for(let s of dato_actividad){
+                    selectPro1.innerHTML+=`
+                    <option value="${s.id_linea_pro}">${s.linea_nombre} </option>
+                  `
+                } 
+                // console.log(dato_actividad);
+                selectPro2.innerHTML='';
+                selectPro2.innerHTML=`<option value="0">Selecionar</option>`;
+                for(let s of dato_actividad){
+                    selectPro2.innerHTML+=`
+                    <option value="${s.id_linea_pro}">${s.linea_nombre} </option>
+                  `
+                }
+                // console.log(dato_actividad);
+                selectPro3.innerHTML='';
+                selectPro3.innerHTML=`<option value="0">Selecionar</option>`;
+                for(let s of dato_actividad){
+                    selectPro3.innerHTML+=`
+                    <option value="${s.id_linea_pro}">${s.linea_nombre} </option>
+                  `
+                }
+        }
+    }) 
+}
+cargarLineasProductivas1();
+//-----cerrar-------//
+
+
 
 //
-var actualizarFinca=()=>{
-    console.log('eres campeon');
+
+
+function actualizarFinca(){
+    
     longitud=$('#txt_longitud').val();
     latitud=$('#txt_latitud').val();
     nombre_finca=$('#txt_fincaNombre').val();
     hetereas=$('#txt_hetareas').val();
-    actividad_Agropecuaria=$('#txt_actividadAgro').val();
-    linea_productiva=$('#txt_lineaProductiva').val();
+    servicio_agua=$('input[name=servicioAgua]:checked').val();
+    energiaElectrica=$('input[name=energia_electrica]:checked').val();
+    energiasAlternativas=$('input[name=energia_alternativa]:checked').val();
+    servicioSanitario=$('input[name=servicio_sanitario]:checked').val();
+    linea_pro1=$('#txt_pro_1').val();
+    linea_pro2=$('#txt_pro_2').val();
+    linea_pro3=$('#txt_pro_3').val();
     vereda=$('#txt_vereda').val();
-    idFinca=fincaId;
-    console.log(hetereas,linea_productiva,actividad_Agropecuaria,vereda);
+    console.log(vereda);
+
+    // console.log(hetereas,linea_productiva,actividad_Agropecuaria,idAgricultor,vereda);
     if(longitud.length==0 || latitud.length==0 || nombre_finca.length==0 || hetereas.length==0
-        || actividad_Agropecuaria.length==0 ||linea_productiva.length==0){
+        ){
             return Swal.fire("Mensaje De Error","Por favor verificar que los campos se encuentren diligenciados ","warning");
         }
+    if(vereda==0){
+        return Swal.fire("Mensaje De Error","Por favor seleccionar Vereda ","warning");
+    }
+    if(linea_pro1==0){
+        return Swal.fire("Mensaje De Error","Por favor seleccionar la linea Productiva Primaria ","warning");
+    }
 
+    if(linea_pro1==linea_pro2 || linea_pro1==linea_pro3){
+        return Swal.fire("Mensaje De Error","Las lineas productivas no pueden ser iguales ","warning");
+    }
+    if(linea_pro2!=0 || linea_pro3!=0){
+        if(linea_pro2!=46 || linea_pro3!=46){
+            if(linea_pro2==linea_pro3){
+                return Swal.fire("Mensaje De Error","Las lineas productivas no pueden ser iguales ","warning");
+            }
+        }
+       
+    }
+
+   if(linea_pro2==0){
+       linea_pro2=46;
+   }
+   if(linea_pro3==0){
+       linea_pro3=46;
+   }
+    
         var r_finca = new FormData();
 
         r_finca.append('longitud',longitud);
         r_finca.append('latitud',latitud);
         r_finca.append('nombre_finca',nombre_finca);
         r_finca.append('hetareas',hetereas);
-        r_finca.append('actividad_Agropecuaria',actividad_Agropecuaria);
-        r_finca.append('linea_productiva',linea_productiva);
-        r_finca.append('vereda',vereda);
+        r_finca.append('Vereda',vereda);
+        r_finca.append('agua',servicio_agua);
+        r_finca.append('energiaElectrica',energiaElectrica);
+        r_finca.append('energiaAlternativas',energiasAlternativas);
+        r_finca.append('servicioSanitario',servicioSanitario);
+        r_finca.append('linea_productiva1',linea_pro1);
+        r_finca.append('linea_productiva2',linea_pro2);
+        r_finca.append('linea_productiva3',linea_pro3);
         r_finca.append('idFinca',idFinca);
+       
+
         let url='../Controller/finca/controlador_actualizar_finca.php';
         const xhttp=new XMLHttpRequest();
         xhttp.open('POST',url,true);
@@ -133,15 +462,18 @@ var actualizarFinca=()=>{
                 let datos=JSON.parse(this.responseText);
                 if(datos>0){
                     $("#modalActualizarFinca").modal('hide');
-                     Swal.fire("Mensaje De Confirmacion","Actualizacion Exitosa ","success");
-                    tabla.ajax.reload();
+                     Swal.fire("Mensaje De Confirmacion","Registro Exitoso ","success");
+                     tabla.ajax.reload();
+                    
                 }else{
-                    Swal.fire("Mensaje De Error","La actualizacion no se pudo llevar acabo... ","warning");
+                    return Swal.fire("Mensaje De Error","El Registro no se pudo llevar acabo... ","warning");
                 }
             }
             
         }
+    
 }
+
 
 
 //----------- abrir gestion de  registro de vegetales-----------------------//
