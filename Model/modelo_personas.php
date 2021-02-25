@@ -68,10 +68,28 @@ class Modelo_Persona
 
     function  listarPersona()
     {
-        $listar = $this->pdo->conectar()->prepare("SELECT idPersona, CONCAT(primer_nombre,' ',segundo_nombre,' ',primer_apellido,' ',segundo_apellido) nombreCompleto,
-        primer_nombre, segundo_nombre,primer_apellido,segundo_apellido,
-        etnia,discapacidad,tipo_identificacion,num_identificacion,sexo,fecha_ncm,nivel_escolaridad,telefono,correo,u.idUsuario, r.idRol
-         FROM persona p join usuario u on (p.idUsuario=u.idUsuario) join rol r on (u.idRol=r.idRol) ORDER BY idPersona DESC");
+        $listar = $this->pdo->conectar()->prepare("SELECT idPersona, CONCAT(primer_nombre,' ',segundo_nombre,' ',primer_apellido,' ',segundo_apellido) nombreCompleto, primer_nombre, segundo_nombre,primer_apellido,
+        segundo_apellido, etnia,discapacidad,tipo_identificacion,num_identificacion,
+        sexo,fecha_ncm,nivel_escolaridad,telefono,correo,u.idUsuario, r.idRol FROM persona p
+         join usuario u on (p.idUsuario=u.idUsuario) join rol r on (u.idRol=r.idRol)
+        where r.idRol=3 ORDER BY idPersona DESC");
+        $listar->execute();
+        $arreglo = array();
+        $valores = $listar->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($valores as $elementos) {
+            $arreglo["data"][] = $elementos;
+        }
+        return $arreglo;
+        $this->pdo->cerrar();
+    }
+
+    function  listarPersonaADM()
+    {
+        $listar = $this->pdo->conectar()->prepare("SELECT idPersona, CONCAT(primer_nombre,' ',segundo_nombre,' ',primer_apellido,' ',segundo_apellido) nombreCompleto, primer_nombre, segundo_nombre,primer_apellido,
+        segundo_apellido, etnia,discapacidad,tipo_identificacion,num_identificacion,
+        sexo,fecha_ncm,nivel_escolaridad,telefono,correo,u.idUsuario, r.idRol FROM persona p
+         join usuario u on (p.idUsuario=u.idUsuario) join rol r on (u.idRol=r.idRol)
+        where r.idRol!=3 ORDER BY idPersona DESC");
         $listar->execute();
         $arreglo = array();
         $valores = $listar->fetchAll(PDO::FETCH_ASSOC);
@@ -124,5 +142,26 @@ class Modelo_Persona
         }
         $this->pdo->cerrar();
         return 0;
+    }
+
+    function mostrarDatosAdm($id)
+    {
+        $listar = $this->pdo->conectar()->prepare("SELECT * FROM rol r join usuario u on (r.idRol=u.idRol)
+         join persona p on (u.idUsuario=p.idUsuario) join tecnicos t on (p.idPersona=t.idPersona)
+        WHERE p.idPersona =:id");
+        $listar->bindparam(':id', $id);
+        $listar->execute();
+        return $listar->fetchAll(PDO::FETCH_ASSOC);
+        $this->pdo->cerrar();
+    }
+    function mostrarDatosAgri($id)
+    {
+        $listar = $this->pdo->conectar()->prepare("SELECT * FROM rol r join usuario u on (r.idRol=u.idRol)
+        join persona p on (u.idUsuario=p.idUsuario) join agricultor a on (p.idPersona=a.idPersona)
+       WHERE p.idPersona =:id");
+        $listar->bindparam(':id', $id);
+        $listar->execute();
+        return $listar->fetchAll(PDO::FETCH_ASSOC);
+        $this->pdo->cerrar();
     }
 }

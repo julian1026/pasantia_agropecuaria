@@ -100,7 +100,7 @@ var actualizarAnimales=()=>{
 
 // funcion para listar animales, vista agricultor-----//
 
-function listarAnimales2(){
+/*function listarAnimales2(){
     $.ajax({
         url:'../Controller/animales/controlador_animales_listar.php',
         type:'POST',
@@ -130,3 +130,4 @@ function listarAnimales2(){
                 }
     })
 }
+*/

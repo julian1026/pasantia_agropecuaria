@@ -1,7 +1,7 @@
 <script type="text/javascript" src="../js/fincas.js?rev=<?php echo time(); ?>"></script>
 <script type="text/javascript" src="../js/vegetales.js?rev=<?php echo time(); ?>"></script>
 <script type="text/javascript" src="../js/animales.js?rev=<?php echo time(); ?>"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxMel9pc3S55ie4XRxZodQ7Fd9yyuxFaQ&callback=showGoogleMaps"></script>
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxMel9pc3S55ie4XRxZodQ7Fd9yyuxFaQ&callback=showGoogleMaps"></script> -->
 <style>
     .map-container-3 {
         overflow: hidden;
@@ -18,11 +18,17 @@
         position: absolute;
     }
 </style>
-<div class="col-md-12">
+<div class="col-md-12" id="contenedor">
 
     <div class="box box-primary box-solid">
         <div class="box-header with-border">
             <h3 class="box-title">Caracterizacion Del Pequeno Productor</h3>
+
+            <div class="box-tools pull-left">
+                <button type="button" onclick="imprimirDatos()" class="btn btn-box-tool" data-widget="collapse"><i class="fa  fa-arrow-left"></i>
+                    imprimir
+                </button>
+            </div>
 
             <div class="box-tools pull-right">
                 <button type="button" onclick="cargar_contenido('contenido_principal','fincas/vista_finca.php')" class="btn btn-box-tool" data-widget="collapse"><i class="fa  fa-arrow-left"></i>
@@ -48,7 +54,7 @@
                 </div>
 
 
-                <div class="form-group col-md-3">
+                <div class="column col-md-2">
 
                     <label for="">Nombre Del Agricultor:</label>
                     <div id='_nombreCompleto'>
@@ -85,18 +91,50 @@
                 </div>
 
 
-                <div class="form-group col-md-3">
+                <div class="column col-md-2">
 
                     <label for="">Nombre Finca:</label>
                     <div id="_nombreFinca"></div>
 
 
-                    <label for="">Actividad Agropecuaria:</label>
-                    <div id="_actividadAgropecuaria"></div>
+                    <label for="">Actividad Agropecuaria Primaria:</label>
+                    <div id="_actividadAgropecuaria1"></div>
 
 
-                    <label for="">Linea Productiva:</label>
-                    <div id="_lineaProductiva"></div>
+                    <label for="">Linea Productiva Primaria:</label>
+                    <div id="_lineaProductiva1"></div>
+
+                    <label for="">Actividad Agropecuaria Segundaria:</label>
+                    <div id="_actividadAgropecuaria2"></div>
+
+
+                    <label for="">Linea Productiva Segundaria:</label>
+                    <div id="_lineaProductiva2"></div>
+
+                    <label for="">Actividad Agropecuaria Terciaria:</label>
+                    <div id="_actividadAgropecuaria3"></div>
+
+
+                    <label for="">Linea Productiva Terciaria:</label>
+                    <div id="_lineaProductiva3"></div>
+
+
+                </div>
+
+                <div class="col-md-2">
+                    <label for="">Servicio de Agua:</label>
+                    <div id="_ab_agua"></div>
+
+
+                    <label for="">Energia Electrica:</label>
+                    <div id="_energiaElectrica"></div>
+
+                    <label for="">Energia Alternativas:</label>
+                    <div id="_energiaAlternativas"></div>
+
+                    <label for="">Servicio Sanitario:</label>
+                    <div id="_servicioSanitario"></div>
+
 
                     <label for="">Latitud:</label>
                     <div id="_latitud"></div>
@@ -123,19 +161,16 @@
                     <div id="_departamento"></div>
 
 
-
-
-
                 </div>
 
-                <div class="col-md-2" id='imagenes'>
+                <div class="column col-md-2" id='imagenes'>
 
 
                 </div>
 
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <div class="col-md-6" id="tablaVegetalesVisualizacion">
                     <h3>Vegetales</h3>
                     <table class="table">
@@ -175,7 +210,7 @@
                 </div>
 
 
-            </div>
+            </div> -->
 
             <!-- /.box-body -->
         </div>
@@ -185,9 +220,11 @@
 
 </div>
 
+<div id="t"></div>
+
 <script>
     showGoogleMaps();
     mostrar();
-    listarVegetales2();
-    listarAnimales2();
+    // listarVegetales2();
+    // listarAnimales2();
 </script>

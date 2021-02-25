@@ -4,7 +4,7 @@
 <div class="col-md-12">
   <div class="box box-primary box-solid">
     <div class="box-header with-border">
-      <h3 class="box-title">Administracion de Usuarios Principales</h3>
+      <h3 class="box-title">Datos Referetes Del Agricultor</h3>
 
 
       <!-- /.box-tools -->

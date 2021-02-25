@@ -128,9 +128,12 @@ class Modelo_Finca
 
     function mostrarGeneral($idFinca)
     {
-        $listar = $this->pdo->conectar()->prepare("SELECT concat(p.primer_nombre,' ',p.segundo_nombre,' ',p.primer_apellido,' ',p.segundo_apellido) nombreCompleto, p.tipo_identificacion,p.num_identificacion, p.fecha_ncm,p.sexo,p.etnia,p.nivel_escolaridad,a.PersonasAcargo,f.nombre_finca, f.hectareas,f.actividadAgropecuaria,f.lineaProductiva,f.latitud, f.longitud, v.nombreVereda, c.nombre_corregimiento, m.nombre_mncp, d.nombre_department
-         from persona p join agricultor a on (p.idPersona=a.idPersona) join finca f on (a.idAgricultor=f.idAgricultor) join vereda v on (f.id_Vereda=v.id_vereda) join corregimiento c on (v.corregimiento_id=c.idCorregimiento)
-          join municipio m on (c.idMunicipio=m.idMunicipio) join departamento d on (m.id_departamento=d.id_departamento) where f.idFinca=:idFinca");
+        $listar = $this->pdo->conectar()->prepare("SELECT  concat(p.primer_nombre,' ',p.segundo_nombre,' ',p.primer_apellido,' ',p.segundo_apellido) nombreCompleto,p.num_identificacion,p.tipo_identificacion,a.PersonasAcargo,p.fecha_ncm,p.sexo,p.etnia,p.nivel_escolaridad,f.idFinca,f.nombre_finca,f.hectareas,f.ab_agua,f.e_electrica,f.e_alternativas,        f.s_sanitario,f.id_linea_pro1,f.id_linea_pro3,f.latitud,f.longitud,f.fecha_registro,f.registrador,v.nombreVereda,v.id_vereda,l1.linea_nombre l1nombre,c.idCorregimiento,agro1.id_actividad_agro idAgro1,agro2.id_actividad_agro idAgro2,agro3.id_actividad_agro idAgro3,l2.linea_nombre l2nombre,l3.linea_nombre l3nombre,agro1.actividadAgro_nombre agroNombre1, agro2.actividadAgro_nombre agroNombre2, agro3.actividadAgro_nombre agroNombre3,c.nombre_corregimiento,m.nombre_mncp,de.nombre_department from persona p join agricultor a on (p.idPersona=a.idPersona)
+        join finca f on (a.idAgricultor=f.idAgricultor) join vereda v on (f.id_Vereda=v.id_vereda) join linea_productiva l1 on 
+       (f.id_linea_pro1=l1.id_linea_pro) JOIN corregimiento c on (c.idCorregimiento=v.corregimiento_id) join municipio m on(c.idMunicipio=m.idMunicipio) join departamento de on (m.id_departamento=de.id_departamento)
+       JOIN clase_productiva cp1 on (l1.id_clase_pro=cp1.id_clase_pro) join Actividad_agro agro1 on (cp1.id_actividad_agro=agro1.id_actividad_agro) join linea_productiva l2 on (f.id_linea_pro2=l2.id_linea_pro) JOIN clase_productiva cp2 on (l2.id_clase_pro=cp2.id_clase_pro) join Actividad_agro agro2 on (cp2.id_actividad_agro=agro2.id_actividad_agro) JOIN linea_productiva l3 on (f.id_linea_pro3=l3.id_linea_pro)
+        JOIN clase_productiva cp3 on (l3.id_clase_pro=cp3.id_clase_pro) JOIN Actividad_agro agro3
+        on (cp3.id_actividad_agro=agro3.id_actividad_agro) where f.idFinca=:idFinca");
         $listar->bindparam(':idFinca', $idFinca);
         if ($listar->execute()) {
             $valores = $listar->fetchAll(PDO::FETCH_ASSOC);

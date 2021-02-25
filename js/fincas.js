@@ -51,13 +51,15 @@ function listarVeredasPrincipal(){
     }).done(function(res){
         if(res.length>0){ 
         dato_actividad=JSON.parse(res); 
-        console.log(dato_actividad);
-        selectVereda.innerHTML=``;
-        selectVereda.innerHTML=`<option value="0">Selecionar</option>`;
-        for(let s of dato_actividad){
-            selectVereda.innerHTML+=`
-            <option value="${s.id_vereda}">${s.nombreVereda} </option> `
+        if(selectVereda){
+            selectVereda.innerHTML=``;
+            selectVereda.innerHTML=`<option value="0">Selecionar</option>`;
+            for(let s of dato_actividad){
+                selectVereda.innerHTML+=`
+                <option value="${s.id_vereda}">${s.nombreVereda} </option> `
+            }
         }
+        
         }
     }) 
 }
@@ -71,6 +73,10 @@ agropecuaria
 var selectAgro1=document.querySelector('#txt_agro_1');
 var selectAgro2=document.querySelector('#txt_agro_2');
 var selectAgro3=document.querySelector('#txt_agro_3');
+
+var selectPro1=document.querySelector('#txt_pro_1');
+var selectPro2=document.querySelector('#txt_pro_2');
+var selectPro3=document.querySelector('#txt_pro_3');
 function cargarActividadesAgro(){
     $.ajax({
         url:'../Controller/finca/controlador_listar_ActividadesAgro.php',
@@ -78,7 +84,7 @@ function cargarActividadesAgro(){
     }).done(function(res){
         if(res.length>0){
             dato_actividad=JSON.parse(res); 
-            console.log(dato_actividad);
+            
 
             selectAgro1.innerHTML=`<option value="0">Selecionar</option>`;
             selectAgro2.innerHTML=`<option value="0">Selecionar</option>`;
@@ -106,7 +112,7 @@ function cargarActividadesAgro(){
         }
     }) 
 }
-cargarActividadesAgro();
+// cargarActividadesAgro();
 // -------cerrar------------------//
 
 
@@ -114,9 +120,7 @@ cargarActividadesAgro();
  esta funcion recibe dos parametros, el primer parametro recibe el id de la actividad agropecuaria
  cuyo objetivo es listar todas las lineas productivas referentes a ese id,
  el otro parametro se encarga de identificar en cual select se pintaran los datos consultados 'cambio'-------*/
- var selectPro1=document.querySelector('#txt_pro_1');
- var selectPro2=document.querySelector('#txt_pro_2');
- var selectPro3=document.querySelector('#txt_pro_3');
+
  function cargarLineasProductivas(id_productiva,txt_cambio_id){
      $.ajax({
          url:'../Controller/finca/controlador_listar_lineas_pro.php',
@@ -266,6 +270,9 @@ $('#tabla_finca').on('click','.editar',function(){
     fincaId=data.idFinca;
     // listarVeredasPrincipal();
     // cargarCorregimientos();
+    cargarCorregimientos();
+    cargarActividadesAgro();
+    cargarLineasProductivas1();
     capturarIdentificadorCorregimiento();
     obcionesLineasPro();
 
@@ -284,8 +291,6 @@ function cargarCorregimientos(){
     }).done(function(res){
         if(res.length>0){
             dato=JSON.parse(res); 
-            console.log(dato);
-
             selectCorregimientos.innerHTML=`<option value="0">Selecionar</option>`;
             
             for(let s of dato){
@@ -296,7 +301,7 @@ function cargarCorregimientos(){
         }
     }) 
 }
-cargarCorregimientos();
+// cargarCorregimientos();
 // -----cerrar-------------//
 
 
@@ -353,7 +358,7 @@ function cargarLineasProductivas1(){
             
                 dato_actividad=JSON.parse(res); 
                 // console.log(dato_actividad);
-                selectPro1.innerHTML='';
+                
                 selectPro1.innerHTML=`<option value="0">Selecionar</option>`;
                 for(let s of dato_actividad){
                     selectPro1.innerHTML+=`
@@ -361,7 +366,7 @@ function cargarLineasProductivas1(){
                   `
                 } 
                 // console.log(dato_actividad);
-                selectPro2.innerHTML='';
+                
                 selectPro2.innerHTML=`<option value="0">Selecionar</option>`;
                 for(let s of dato_actividad){
                     selectPro2.innerHTML+=`
@@ -369,7 +374,7 @@ function cargarLineasProductivas1(){
                   `
                 }
                 // console.log(dato_actividad);
-                selectPro3.innerHTML='';
+                
                 selectPro3.innerHTML=`<option value="0">Selecionar</option>`;
                 for(let s of dato_actividad){
                     selectPro3.innerHTML+=`
@@ -379,7 +384,7 @@ function cargarLineasProductivas1(){
         }
     }) 
 }
-cargarLineasProductivas1();
+// cargarLineasProductivas1();
 //-----cerrar-------//
 
 
@@ -433,6 +438,7 @@ function actualizarFinca(){
    if(linea_pro3==0){
        linea_pro3=46;
    }
+
     
         var r_finca = new FormData();
 
@@ -682,7 +688,9 @@ function mostrar(){
             let datos=JSON.parse(this.responseText);
             
             if(datos.length>0){
+                console.log(datos);
                 dato=datos[0];
+                console.log(dato);
                 document.querySelector('#_nombreCompleto').innerHTML=`<p>${dato.nombreCompleto}</p>`;
                 document.querySelector('#_tipoIdentificacion').innerHTML=`<p>${dato.tipo_identificacion}</p>`;
                 document.querySelector('#_numeroIdentificacion').innerHTML=`<p>${dato.num_identificacion}</p>`;
@@ -708,8 +716,13 @@ function mostrar(){
                 document.querySelector('#_personasAcargo').innerHTML=`<p>${dato.PersonasAcargo}</p>`;
                 document.querySelector('#_nombreFinca').innerHTML=`<p>${dato.nombre_finca}</p>`;
                 
-                document.querySelector('#_actividadAgropecuaria').innerHTML=`<p>${dato.actividadAgropecuaria}</p>`;
-                document.querySelector('#_lineaProductiva').innerHTML=`<p>${dato.lineaProductiva}</p>`;
+                document.querySelector('#_actividadAgropecuaria1').innerHTML=`<p>${dato.agroNombre1}</p>`;
+                document.querySelector('#_lineaProductiva1').innerHTML=`<p>${dato.l1nombre}</p>`;
+                document.querySelector('#_actividadAgropecuaria2').innerHTML=`<p>${dato.agroNombre2}</p>`;
+                document.querySelector('#_lineaProductiva2').innerHTML=`<p>${dato.l2nombre}</p>`;
+                document.querySelector('#_actividadAgropecuaria3').innerHTML=`<p>${dato.agroNombre3}</p>`;
+                document.querySelector('#_lineaProductiva3').innerHTML=`<p>${dato.l3nombre}</p>`;
+
                 document.querySelector('#_vereda').innerHTML=`<p>${dato.nombreVereda}</p>`;
                 document.querySelector('#_corregimiento').innerHTML=`<p>${dato.nombre_corregimiento}</p>`;
                 document.querySelector('#_municipio').innerHTML=`<p>${dato.nombre_mncp}</p>`;
@@ -717,6 +730,37 @@ function mostrar(){
                 document.querySelector('#_latitud').innerHTML=`<p>${dato.latitud}</p>`;
                 document.querySelector('#_longitud').innerHTML=`<p>${dato.longitud}</p>`;   
                 document.querySelector('#_departamento').innerHTML=`<p>${dato.nombre_department}</p>`;
+                if(dato.ab_agua=='0'){
+                    document.querySelector('#_ab_agua').innerHTML=`<p>No</p>`;
+                }else{
+                    document.querySelector('#_ab_agua').innerHTML=`<p>Si</p>`;
+                }
+
+                if(dato.e_electrica=='0'){
+                    document.querySelector('#_energiaElectrica').innerHTML=`<p>No</p>`;
+                
+                }else{
+                    document.querySelector('#_energiaElectrica').innerHTML=`<p>Si</p>`;
+                }
+
+                if(dato.s_sanitario=='0'){
+                    document.querySelector('#_servicioSanitario').innerHTML=`<p>No</p>`;
+                
+                }else{
+                    document.querySelector('#_servicioSanitario').innerHTML=`<p>Si</p>`;
+                }
+
+                if(dato.e_alternativas=='0'){
+                    document.querySelector('#_energiaAlternativas').innerHTML=`<p>No</p>`;
+                
+                }else{
+                    document.querySelector('#_energiaAlternativas').innerHTML=`<p>Si</p>`;
+                
+                }
+                
+                
+
+                
                 
             }else{
                 Swal.fire("Mensaje De Error","No se pueden visualizar los datos... ","warning");
@@ -754,3 +798,20 @@ function showGoogleMaps() {
         title: "Nombre empresa - Calle Balmes 192, Barcelona"
     });
 }
+
+
+function imprimirDatos() {
+    
+
+    var divToPrint=document.getElementById('contenedor');
+
+    var newWin=window.open('','Print-Window');
+  
+    newWin.document.open();
+  
+    newWin.document.write('<html><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>');
+  
+    newWin.document.close();
+  
+    setTimeout(function(){newWin.close();},10);
+  }

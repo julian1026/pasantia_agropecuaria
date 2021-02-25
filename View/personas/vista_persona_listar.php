@@ -5,7 +5,7 @@
 <div class="col-md-12">
   <div class="box box-primary box-solid">
     <div class="box-header with-border">
-      <h3 class="box-title">Gestion De Datos Personales</h3>
+      <h3 class="box-title">Gestion de Datos Personales de los Agricultores </h3>
 
 
       <!-- /.box-tools -->
@@ -36,15 +36,10 @@
         <thead>
           <tr class="bg-primary">
             <th scope="col">#</th>
-            <th scope="col">nombre Completo</th>
-            <th scope="col">Tipo Identificacion</th>
-            <th scope="col">NUmero Identificacion</th>
-
-            <th scope="col">Fecha NCM</th>
-            <th scope="col">Nivel Estudio</th>
+            <th scope="col">Nombre Completo</th>
+            <th scope="col">cedula</th>
             <th scope="col">Telefono</th>
             <th scope="col">Correo</th>
-
             <th>Acci&oacute;n</th>
           </tr>
         </thead>
@@ -53,14 +48,9 @@
           <tr class="bg-primary">
             <th scope="col">#</th>
             <th scope="col">nombre Completo</th>
-            <th scope="col">Tipo Identificacion</th>
-            <th scope="col">NUmero Identificacion</th>
-
-            <th scope="col">Fecha NCM</th>
-            <th scope="col">Nivel Estudio</th>
+            <th scope="col">cedula</th>
             <th scope="col">Telefono</th>
             <th scope="col">Correo</th>
-
             <th>Acci&oacute;n</th>
           </tr>
         </tfoot>

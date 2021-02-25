@@ -366,7 +366,8 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" onclick='actualizarFinca()'>Registrar</button>
+
+                    <button type="button" class="btn btn-success" onclick='actualizarFinca()'>Actualizar</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                 </div>
             </div>

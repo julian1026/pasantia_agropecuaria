@@ -36,6 +36,10 @@ if (!isset($_SESSION['S_iduser'])) {
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="../plantilla/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
+  <!-- bootstrap 4 cdn -->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+  <!-- chart js graficos -->
+  <link rel="stylessheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css">
 
   <!--ruta del dataTable css -->
   <link rel="stylesheet" href="../plantilla/plugins/DataTables/datatables.min.css">
@@ -353,42 +357,63 @@ if (!isset($_SESSION['S_iduser'])) {
         <ul class="sidebar-menu" data-widget="tree">
 
           <li class="header"><b>Menu</b></li>
-          <li class="active treeview">
-            <a onclick="cargar_contenido('contenido_principal','usuarios/vista_usuario_listar.php')">
-              <i class="fa fa-users"></i> <span>Usuarios</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
 
-          <li class="active treeview">
-            <a onclick="cargar_contenido('contenido_principal','personas/vista_persona_listar.php')">
-              <i class="fa fa-user"></i> <span>Datos Personales</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
+          <?php
+          if ($_SESSION['S_rol'] == 1) {
+          ?>
+            <li class="active treeview">
+              <a onclick="cargar_contenido('contenido_principal','usuarios/vista_usuario_listar.php')">
+                <i class="fa fa-users"></i> <span>Usuarios</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
 
 
-          <li class="active treeview">
-            <a onclick="cargar_contenido('contenido_principal','fincas/vista_finca.php')">
-              <i class="fa fa-leaf"></i> <span>Fincas</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
+            <li class="treeview" style="height: auto;">
+              <a href="#">
+                <i class="fa fa-user"></i>
+                <span>Datos Personales</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu" style="display: none;">
+                <li><a onclick="cargar_contenido('contenido_principal','personas/vista_personas_administrativos.php')"><i class="fa fa-circle-o"></i> Administrativos</a></li>
+                <li><a onclick="cargar_contenido('contenido_principal','personas/vista_persona_listar.php')"><i class="fa fa-circle-o"></i> Agricultores</a></li>
+              </ul>
+            </li>
+
+          <?php
+          } else {
+          ?>
+            <li class="active treeview">
+              <a onclick="cargar_contenido('contenido_principal','personas/vista_persona_listar.php')">
+                <i class="fa fa-user"></i> <span>Datos De Agricultores</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+            <?php
+          }
+            ?>
+
+            <li class="active treeview">
+              <a onclick="cargar_contenido('contenido_principal','fincas/vista_finca.php')">
+                <i class="fa fa-leaf"></i> <span>Fincas</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
 
 
-          <li class="active treeview">
-            <a onclick="cargar_contenido('contenido_principal','fincas/vista_visitar_finca.php')">
-              <i class="fa  fa-edit"></i> <span>Visitar Fincas</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-
-
-
+            <li class="active treeview">
+              <a onclick="cargar_contenido('contenido_principal','fincas/vista_visitar_finca.php')">
+                <i class="fa  fa-edit"></i> <span>Visitar Fincas</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
 
 
         </ul>
@@ -408,7 +433,7 @@ if (!isset($_SESSION['S_iduser'])) {
           <div class="col-md-12">
             <div class="box box-primary box-solid">
               <div class="box-header with-border">
-                <h3 class="box-title">bienvenido al contenido principal</h3>
+                <h3 class="box-title"></h3>
 
                 <div class="box-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -418,7 +443,7 @@ if (!isset($_SESSION['S_iduser'])) {
               </div>
               <!-- /.box-header -->
               <div class="box-body">
-                never give up!
+
               </div>
               <!-- /.box-body -->
             </div>
@@ -674,7 +699,12 @@ if (!isset($_SESSION['S_iduser'])) {
       $("#" + contenedor).load(contenido);
     }
     $.widget.bridge('uibutton', $.ui.button);
+
+
+    cargar_contenido("contenido_principal", "graficas/vista_graficas.php");
   </script>
+
+
 
   <!-- Bootstrap 3.3.7 -->
   <script src="../plantilla/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -708,7 +738,12 @@ if (!isset($_SESSION['S_iduser'])) {
   <!-- google maps -->
   <!-- <script src="https://maps.google.com/maps/api/js"></script> -->
 
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCKiIqCdZGrVxx06LSbe7uG3zXOq1Cz5k&callback=initMap" async defer></script>
 
+  <!-- chart js graficos-->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 
 
   <!--ruta del dataTable js -->
@@ -717,7 +752,7 @@ if (!isset($_SESSION['S_iduser'])) {
 
   <!--ruta del select2 js -->
   <script src="../plantilla/plugins/select2/select2.min.js"></script>
-
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script> -->
   <!--ruta del sweetalert2 -->
   <script src="../plantilla/plugins/sweetalert2/sweetalert2.js"></script>
 

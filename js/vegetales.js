@@ -101,7 +101,7 @@ var actualizarVegetales=()=>{
 
 //---funcion para listar Vegetales en tabla normal----------
 
-function listarVegetales2(){
+/*function listarVegetales2(){
     $.ajax({
         url:'../Controller/vegetales/controlador_vegetales_listar.php',
         type:'POST',
@@ -129,4 +129,4 @@ function listarVegetales2(){
             document.getElementById('tablaVegetalesVisualizacion').innerHTML='';
         }
     })
-}
+}*/

@@ -17,7 +17,6 @@ tabla = $("#tabla_persona").DataTable({
    "columns":[
        {"data":"idPersona"},
        {"data":"nombreCompleto"},
-       {"data":"tipo_identificacion"},
        {"data":"num_identificacion"},
     //    {"data":"sexo",
     //    render: function (data, type, row ) {
@@ -27,16 +26,15 @@ tabla = $("#tabla_persona").DataTable({
     //         return "Femenino";                 
     //        }
     //      }
-    //    },  
-       {"data":"fecha_ncm"},
-       {"data":"nivel_escolaridad"},
+    // 
        {"data":"telefono"},
        {"data":"correo"},
        {"data":"idRol",
        render: function (data,type,row){
             if(data=='3'){
                return "<button style='font-size:10px;' type='button' class='editar btn btn-warning'><i class='fa fa-edit'></i> </button>&nbsp;"
-                +"<button style='font-size:10px;' type='button'  class='reg_finca btn btn-success'><i class='fa fa-newspaper-o'></i> </button>"
+                +"<button style='font-size:10px;' type='button'  class='reg_finca btn btn-success'><i class='fa fa-newspaper-o'></i> </button>&nbsp;"
+                +"<button style='font-size:10px;' type='button'  class='datosAgri btn btn-white'><i class='fa  fa-eye'></i> </button>"
                 }else{
                    return "<button style='font-size:10px;' type='button' class='editar btn btn-warning'><i class='fa fa-edit'></i> </button>&nbsp;"
                 }
@@ -93,6 +91,56 @@ $('#tabla_persona').on('click','.editar',function(){
     $("#txt_correo_editar").val(data.correo);
     $("#txt_telefono_editar").val(data.telefono);
 })
+
+// ------------mostrar datos de un solo agricultor---------------//
+
+$('#tabla_persona').on('click','.datosAgri',function(){
+    var data=tabla.row($(this).parents('tr')).data();
+    // console.log(data);
+    if(tabla.row(this).child.isShown()){
+        var data=tabla.row(this).data();
+    }
+
+    cargar_contenido('contenido_principal','personas/vista_visualizacionAgri.php');
+    idPersona=data.idPersona;
+
+    cargar(idPersona);
+  
+})
+
+function cargar(idPersona){
+    $.ajax({
+        url:'../Controller/persona/controlador_mostrarDatosAgri.php',
+        type:'POST',
+        data:{idPersona:idPersona}  
+    }).done(function(res){
+        if(res.length>0){ 
+        datoX=JSON.parse(res); 
+        datoP=datoX[0];
+        // console.log(datoP);
+
+           
+            $("#txt_nombre").val(datoP.primer_nombre);
+            $("#txt_nombre2").val(datoP.segundo_nombre);
+            $("#txt_ape").val(datoP.primer_apellido);
+            $("#txt_ape2").val(datoP.segundo_apellido);
+            $("#txt_sexo").val(datoP.sexo);
+            $("#txt_educacion").val(datoP.nivel_escolaridad);
+            $("#txt_tipoIdentificacion").val(datoP.tipo_identificacion);
+            $("#txt_num_ide").val(datoP.num_identificacion);
+            $("#txt_etnia").val(datoP.etnia);
+    
+            $("#txt_fecha_nacimiento").val(datoP.fecha_ncm);
+            $("#txt_correo").val(datoP.correo);
+            $("#txt_telefono").val(datoP.telefono);
+            $("#txt_acargo").val(datoP.PersonasAcargo);
+            // console.log(datoP.descripcion_estudio);
+        }
+    }) 
+}
+
+
+//-----------cerrar---------------------//
 
 function actualizarDatosPersonas(){
     idPersona=$('#txt_idUsuario_editar').val();
@@ -159,7 +207,7 @@ function actualizarDatosPersonas(){
         })
 }
 
-// funcion abrir modal encuesta
+// funcion abrir modal registro de finca
 
 
 $('#tabla_persona').on('click','.reg_finca',function(){
