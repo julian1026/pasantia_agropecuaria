@@ -221,11 +221,6 @@
                                     <input type="text" class='form-control' placeholder='Ingresar # telefonico' id='txt_telefono'>
                                 </div>
 
-                                <div class="col-md-3">
-                                    <label for="txt_foto">foto</label><br />
-                                    <input type="file" class='form-control-file' id='txt_foto'><br />
-
-                                </div>
 
                             </div>
 

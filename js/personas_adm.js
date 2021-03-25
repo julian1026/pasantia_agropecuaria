@@ -195,8 +195,8 @@ function imprimirDatos() {
     // newWin.document.close();
   
     // setTimeout(function(){newWin.close();},10);
-    window.print();
-    
+    // window.print();
+    $.print('#registrarFormulario');
   }
 
   function pruebaDivAPdf() {

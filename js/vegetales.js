@@ -80,7 +80,6 @@ var actualizarVegetales=()=>{
         const xhttp=new XMLHttpRequest();
         xhttp.open('POST',url,true);
         xhttp.send(updt_vegetales);
-    
         xhttp.onreadystatechange=function(){
             if(this.status==200 && this.readyState==4){
                 let datos=JSON.parse(this.responseText);

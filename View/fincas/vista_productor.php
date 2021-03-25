@@ -1,21 +1,21 @@
 <script type="text/javascript" src="../js/fincas.js?rev=<?php echo time(); ?>"></script>
 <script type="text/javascript" src="../js/vegetales.js?rev=<?php echo time(); ?>"></script>
 <script type="text/javascript" src="../js/animales.js?rev=<?php echo time(); ?>"></script>
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxMel9pc3S55ie4XRxZodQ7Fd9yyuxFaQ&callback=showGoogleMaps"></script> -->
+
 <style>
-    .map-container-3 {
-        overflow: hidden;
-        padding-bottom: 56.25%;
+    .google-maps {
         position: relative;
+        padding-bottom: 75%;
         height: 0;
+        overflow: hidden;
     }
 
-    .map-container-3 iframe {
-        left: 0;
-        top: 0;
-        height: 100%;
-        width: 100%;
+    .google-maps iframe {
         position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
     }
 </style>
 <div class="col-md-12" id="contenedor">
@@ -36,22 +36,19 @@
             </div>
             <!-- /.box-tools -->
         </div>
-        <!-- /.box-header -->
-        <!-- ////////////////////////////////////////////// style="width: 360px; height: 400px;"-->
+
         <div class="box-body">
-            <div class="form-group">
-                <!--Grid column-->
-                <div class="form-group col-md-4" id='dibujo_ubicacion'>
+            <div class="form-group ">
+                <div class="column col-md-6 " id='dibujo_ubicacion'>
 
                     <h3>Ubicacion "Finca"</h3>
-
-                    <!-- <div id="showMap" class="form-control"> </div> -->
-
-                    <div id="map-container-google-3" class="z-depth-1-half map-container-3">
+                    <div class="google-maps">
+                        <iframe src="https://maps.google.com/?q=2.622435,-76.569198&z=14&t=m&output=embed" width="300" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 
                     </div>
 
                 </div>
+
 
 
                 <div class="column col-md-2">
@@ -167,63 +164,23 @@
 
 
                 </div>
-
             </div>
 
-            <!-- <div class="form-group">
-                <div class="col-md-6" id="tablaVegetalesVisualizacion">
-                    <h3>Vegetales</h3>
-                    <table class="table">
-
-                        <thead>
-                            <tr>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Tipo</th>
-                                <th scope="col">cantidad</th>
-                                <th scope="col">informacion</th>
-
-                            </tr>
-                        </thead>
-                        <tbody id='pintarVegetales'>
-
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="col-md-6" id="tablaAnimalesVisualizacion">
-                    <h3>animales</h3>
-                    <table class="table">
-
-                        <thead>
-                            <tr>
-                                <th scope="col">Tipo</th>
-                                <th scope="col">Raza</th>
-                                <th scope="col"> #_animales</th>
-                                <th scope="col">Vacuna</th>
-                                <th scope="col">informacion</th>
-                            </tr>
-                        </thead>
-                        <tbody id='pintarAnimales'>
-
-                        </tbody>
-                    </table>
-                </div>
 
 
-            </div> -->
-
-            <!-- /.box-body -->
         </div>
-        <!-- /.box -->
+
     </div>
-    <!-- opcional -->
+    <!-- /.box -->
+</div>
+<!-- opcional -->
 
 </div>
 
 <div id="t"></div>
 
 <script>
-    showGoogleMaps();
+    // showGoogleMaps();
     mostrar();
     // listarVegetales2();
     // listarAnimales2();

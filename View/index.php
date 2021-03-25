@@ -41,20 +41,36 @@ if (!isset($_SESSION['S_iduser'])) {
   <!-- chart js graficos -->
   <link rel="stylessheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css">
 
-  <!--ruta del dataTable css -->
-  <link rel="stylesheet" href="../plantilla/plugins/DataTables/datatables.min.css">
-  <link href="../plantilla/plugins/DataTables/Responsive-2.2.6/css/responsive.dataTables.min.css">
+  <link rel="stylessheet" href="../plantilla/plugins/DataTables/datatables.min.css">
+
+
+  <!-- <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"> -->
+
+
+  <link rel="stylesheet" type="text/css" href="../plantilla/plugins/DataTables/datatables.min.css" />
+  <link rel="stylesheet" type="text/css" href="../plantilla/plugins/DataTables/Responsive-2.2.7/css/responsive.dataTables.min.css" />
+
+
+  <!--font awesome con CDN-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
 
   <!--ruta del select2 css -->
   <link rel="stylesheet" href="../plantilla/plugins/select2/select2.min.css">
 
+  <!-- chart js -->
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css">
+
+
+
+  <!-- stilos para imprimir -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/PrintArea.min.css">
+
+
+
+
+
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -690,7 +706,21 @@ if (!isset($_SESSION['S_iduser'])) {
       "oAria": {
         "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+      },
+      "buttons": {
+        "copyTitle": 'Informacion copiada',
+        "copyKeys": 'Use your keyboard or menu to select the copy command',
+        "copySuccess": {
+          "_": '%d filas copiadas al portapapeles',
+          "1": '1 fila copiada al portapapeles'
+        },
+
+        "pageLength": {
+          "_": "Mostrar %d filas",
+          "-1": "Mostrar Todo"
+        }
       }
+
     }
 
 
@@ -704,7 +734,10 @@ if (!isset($_SESSION['S_iduser'])) {
     cargar_contenido("contenido_principal", "graficas/vista_graficas.php");
   </script>
 
+  <!-- datatable -->
 
+
+  <!--  -->
 
   <!-- Bootstrap 3.3.7 -->
   <script src="../plantilla/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -738,24 +771,36 @@ if (!isset($_SESSION['S_iduser'])) {
   <!-- google maps -->
   <!-- <script src="https://maps.google.com/maps/api/js"></script> -->
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCKiIqCdZGrVxx06LSbe7uG3zXOq1Cz5k&callback=initMap" async defer></script>
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBCKiIqCdZGrVxx06LSbe7uG3zXOq1Cz5k&callback=initMap" async defer></script> -->
 
   <!-- chart js graficos-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.min.js"></script>
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 
 
   <!--ruta del dataTable js -->
+
+
   <script src="../plantilla/plugins/DataTables/datatables.min.js"></script>
-  <script src="../plantilla/plugins/DataTables/Responsive-2.2.6/js/dataTables.responsive.min.js"> </script>
+  <script src="../plantilla/plugins/DataTables/Responsive-2.2.7/js/dataTables.responsive.min.js"> </script>
+  <script src="../plantilla/plugins/DataTables/Buttons-1.6.5/js/dataTables.buttons.min.js"></script>
+  <script src="../plantilla/plugins/DataTables/Buttons-1.7.0/js/dataTables.buttons.min.js"></script>
+
+  <!--  -->
+
+  <!-- plugin para imprimir y generar pdf -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/jquery.PrintArea.min.js" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js" />
 
   <!--ruta del select2 js -->
   <script src="../plantilla/plugins/select2/select2.min.js"></script>
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script> -->
   <!--ruta del sweetalert2 -->
   <script src="../plantilla/plugins/sweetalert2/sweetalert2.js"></script>
-
 
 </body>
 

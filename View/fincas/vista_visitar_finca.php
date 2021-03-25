@@ -37,7 +37,7 @@
                     <tr class="bg-primary">
                         <th scope="col">Consecutivo</th>
                         <th scope="col">Finca</th>
-                        <th scope="col">Activida Agropecuaria</th>
+                        <th scope="col">Linea Primaria</th>
                         <th scope="col">Cedula</th>
                         <th scope="col">Registrador</th>
                         <th scope="col">Vereda</th>
@@ -49,7 +49,7 @@
                     <tr class="bg-primary">
                         <th scope="col">Consecutivo</th>
                         <th scope="col">Finca</th>
-                        <th scope="col">Activida Agropecuaria</th>
+                        <th scope="col">Linea Primaria</th>
                         <th scope="col">Cedula</th>
                         <th scope="col">Registrador</th>
                         <th scope="col">Vereda</th>

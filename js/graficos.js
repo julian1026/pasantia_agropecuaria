@@ -14,8 +14,12 @@ function lineasProductivaPrimaria(){
         // data:{idPersona:idPersona}
 
     }).done(function(res){
+  
+      document.getElementById("identificador-grafica").value=1;
+         
       let nombre=[];
       let cantidad=[];
+      let colores=[];
       let numero=0;
       var dato=JSON.parse(res);
       var datos=dato.data;
@@ -25,16 +29,18 @@ function lineasProductivaPrimaria(){
               numero+=parseInt(d.cantidadLinea);
               nombre.push(d.linea_nombre);
               cantidad.push(d.cantidadLinea);
+              colores.push(colorRGB());
         }
         
         var mensaje='Grafica en Barras,Linea Productiva Primaria, total fincas='+numero;
-        graficarLineasProductivas(nombre,cantidad,mensaje,'bar');
+        graficarLineasProductivas(nombre,cantidad,colores,mensaje,'bar');
       }
     })
 }
 
 
 function lineasProductivaSegundaria(){
+    document.getElementById("identificador-grafica").value=2;
     $.ajax({
         url:'../Controller/graficos/controlador_graficos_lineas_productivas2.php',
         type:'POST'
@@ -43,6 +49,7 @@ function lineasProductivaSegundaria(){
     }).done(function(res){
         let nombre=[];
         let cantidad=[];
+        let colores=[];
         let numero=0;
         var dato=JSON.parse(res);
         var datos=dato.data;
@@ -52,16 +59,18 @@ function lineasProductivaSegundaria(){
                 numero+=parseInt(d.cantidadLinea);
                 nombre.push(d.linea_nombre);
                 cantidad.push(d.cantidadLinea);
+                colores.push(colorRGB());
           }
          
           var mensaje='Grafica en Barras,Linea Productiva Segundaria, total fincas='+numero;
-          graficarLineasProductivas(nombre,cantidad,mensaje,'bar');
+          graficarLineasProductivas(nombre,cantidad,colores,mensaje,'bar');
         }
      
     })
 }
 
 function lineasProductivaTres(){
+    document.getElementById("identificador-grafica").value=3;
     $.ajax({
         url:'../Controller/graficos/controlador_graficos_lineas_productivas3.php',
         type:'POST'
@@ -70,6 +79,7 @@ function lineasProductivaTres(){
     }).done(function(res){
         let nombre=[];
         let cantidad=[];
+        let colores=[];
         let numero=0;
         var dato=JSON.parse(res);
         var datos=dato.data;
@@ -79,18 +89,20 @@ function lineasProductivaTres(){
                 numero+=parseInt(d.cantidadLinea);
                 nombre.push(d.linea_nombre);
                 cantidad.push(d.cantidadLinea);
+                colores.push(colorRGB());
           }
           
           var mensaje='Grafica en Barras,Linea Productiva Terciaria, total fincas='+numero;
-          graficarLineasProductivas(nombre,cantidad,mensaje,'bar');
+          graficarLineasProductivas(nombre,cantidad,colores,mensaje,'bar');
         }
     })
 }
 
 
 
-function graficarLineasProductivas(nombre,cantidad,tituloTabla,tipo){
-
+function graficarLineasProductivas(nombre,cantidad,colores,tituloTabla,tipo){
+    // contenedor.innerHTML+=`<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css">
+    // `;
     contenedor.innerHTML=`<canvas id="myChart" width="200" height="200"></canvas>`;
     var canvas = document.getElementById('myChart');
     var ctx = canvas.getContext('2d');
@@ -101,22 +113,8 @@ function graficarLineasProductivas(nombre,cantidad,tituloTabla,tipo){
             datasets: [{
                 label: tituloTabla,
                 data:cantidad,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
+                backgroundColor: colores,
+                borderColor: colores,
                 borderWidth: 1
             }]
         },
@@ -143,6 +141,7 @@ function serviciosFinca(){
       let nombres=['agua_si','agua_no','energiaEletrica_si','energiaEletrica_no',
     'energiasAlternativas_si','energiasAlternativas_no','servicioSanitario_si','servicioSanitario_no'];
       let cantidad=[];
+      let colores=[];
       var dato=JSON.parse(res);
       var datos=dato.data;
       let numero;
@@ -157,18 +156,21 @@ function serviciosFinca(){
             cantidad.push(s.sanitarioSi);
             cantidad.push(s.sanitarioNo);
             numero=s.cantidaFincas;
+             
+          }
+          for(let i=1 ; i<=numero; i++  ){
+            colores.push(colorRGB());
           }
 
         var tituloTabla='Grafica en Barras, Servicios Publicos, total fincas ='+numero;
-        graficarServicios(nombres,cantidad,tituloTabla,'bar');
+        graficarServicios(nombres,cantidad,colores,tituloTabla,'line');
       }
     })
 }
 
 
 
-function graficarServicios(nombre,cantidad,tituloTabla,tipo){
-
+function graficarServicios(nombre,cantidad,colores,tituloTabla,tipo){
     contenedor2.innerHTML=`<canvas id="myChart2" width="200" height="200"></canvas>`;
     var canvas = document.getElementById('myChart2');
     var ctx = canvas.getContext('2d');
@@ -179,22 +181,8 @@ function graficarServicios(nombre,cantidad,tituloTabla,tipo){
             datasets: [{
                 label: tituloTabla,
                 data:cantidad,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
+                backgroundColor:colores,
+                borderColor: colores,
                 borderWidth: 1
             }]
         },
@@ -210,8 +198,26 @@ function graficarServicios(nombre,cantidad,tituloTabla,tipo){
     });
 }
 
+// genera colores aleatoriamente
+function generarNumero(numero){
+	return (Math.random()*numero).toFixed(0);
+    }
+
+    function colorRGB(){
+        var coolor = "("+generarNumero(255)+"," + generarNumero(255) + "," + generarNumero(255) +")";
+        return "rgb" + coolor;
+    }
 
 
+    function imprimirDatos() {
+        var valor=document.getElementById("identificador-grafica").value;
+        console.log(valor);
+            // var ficha=document.getElementById('contenedor');
+            // $("#contenedor").printArea();
+        //   window.print();
+      }
+
+    //   dompdf
 
 
 

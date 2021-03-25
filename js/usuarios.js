@@ -21,7 +21,7 @@ function verificarUsuario(){
 
     xhttp.onreadystatechange=function(){
         if(this.status==200 && this.readyState==4){
-            let datos=JSON.parse(this.responseText);
+            var datos=JSON.parse(this.responseText);
             if(datos==0){
                 Swal.fire("Mensaje De Error","el usuario y/o contrase\u00f1a incorrecta","warning");
             }else{
@@ -32,8 +32,10 @@ function verificarUsuario(){
         }
     }
 }
+var rol_id
 
 function controlarSessiones(R_usuario){
+    rol_id=R_usuario.idRol;
     console.log(R_usuario);
     cedula_registrador=R_usuario.num_identificacion;
     console.log(cedula_registrador);
@@ -45,8 +47,6 @@ function controlarSessiones(R_usuario){
         nuevo1.append('user', R_usuario.user_name);
         nuevo1.append('rol', R_usuario.idRol);
         nuevo1.append('numero_registro', R_usuario.num_identificacion);
-
-
         let url='../Controller/usuario/controlador_crear_sessiones.php';
         const xhttp= new XMLHttpRequest();
         xhttp.open('POST',url,true);
@@ -98,7 +98,7 @@ function redirigiendo(usuario){
 //funcion de prueba
 // function prueba(){
 
-//     let url='../Controller/usuario/controlador_registrar_usuario.php';
+//     let url='../Controller/usuario/controlador_usuario_listar.php';
 //     const xhttp=new XMLHttpRequest();
 //     xhttp.open('POST',url,true);
 //     xhttp.send();
@@ -111,7 +111,7 @@ function redirigiendo(usuario){
 //         }
 //     }
 // }
-
+// prueba();
 
 
 
@@ -138,9 +138,9 @@ table = $("#tabla_usuario").DataTable({
        {"data":"estado",
        render: function (data, type, row ) {
            if(data=='ACTIVO'){
-               return "<span class='label label-success'>"+data+"</span>";                   
+               return "<span style='font-size:10px;' class='label label-success'>"+data+"</span>";                   
            }else{
-             return "<span class='label label-danger'>"+data+"</span>";                 
+             return "<span style='font-size:10px;' class='label label-danger'>"+data+"</span>";                 
            }
          }
        },  
@@ -180,7 +180,7 @@ var cadena=document.querySelector('#txt_com_rol_editar');
 
     xhttp.onreadystatechange=function(){
         if(this.status==200 && this.readyState==4){
-            let datos=JSON.parse(this.responseText);
+            var datos=JSON.parse(this.responseText);
             if(datos.length>0){
                 $("#opciones").val('0');
                 if(contenedorSelect){
@@ -202,8 +202,10 @@ var cadena=document.querySelector('#txt_com_rol_editar');
                     <option value="${d.idRol}">${d.nombre_rol} </option>
                     `}
                 }
-
-                opcionesRolSelect();
+                if(rol_id!=3){
+                    opcionesRolSelect();
+                }
+                
                  
             }else{
                 contenedorSelect.innerHTML=`<option value="">valores no encontrados</option>`;
@@ -221,7 +223,6 @@ var cadena=document.querySelector('#txt_com_rol_editar');
         e.preventDefault(); 
         
         let dato=e.target.value;
-            console.log(dato);
         switch (dato){
                 
             case('1'):
@@ -520,3 +521,4 @@ function modificarUsuario(){
         })
     
 }
+

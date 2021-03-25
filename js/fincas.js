@@ -8,11 +8,18 @@ tabla = $("#tabla_finca").DataTable({
    "pageLength": 10,
    "destroy":true,
    "async": false ,
-   "processing": true,
+   "processing": true,  
    "ajax":{
        "url":"../Controller/finca/controlador_finca_listar.php",
        type:'POST'
    },
+//    dom: 'Bfrtip',
+//    buttons: [
+//        'copyHtml5',
+//        'excelHtml5',
+//        'csvHtml5',
+//        'pdfHtml5'
+//    ],
    "columns":[
        {"data":"idFinca"},
        {"data":"nombre_finca"},
@@ -22,7 +29,7 @@ tabla = $("#tabla_finca").DataTable({
        {"data":"fecha_registro"},
         {"defaultContent":
        "<button style='font-size:10px;' type='button' class='editar btn btn-warning'><i class='fa fa-edit'></i> </button>&nbsp;"+
-       "<button style='font-size:10px;' type='button' class='plantas btn btn-secondary'><i class='fa fa-pagelines'></i>"
+       "<button style='font-size:10px;' type='button' class='plantas btn btn-secondary'><i class='fa fa-leaf'></i>"
         + "</button>&nbsp; <button style='font-size:10px;' type='button' class='animales btn btn-secondary'><i class='fa fa-paw'></i></button>"
         + "</button>&nbsp; <button style='font-size:10px;' type='button' class='vista_datos btn btn-secondary'><i class='fa  fa-eye'></i></button>"}
    ],
@@ -31,6 +38,7 @@ tabla = $("#tabla_finca").DataTable({
    select: true
 });
 }
+
 
 
 // declarando variables donde se cargaran los select 
@@ -490,24 +498,13 @@ $('#tabla_finca').on('click','.plantas',function(){
     if(tabla.row(this).child.isShown()){
         var data=tabla.row(this).data();
     }
-    // idPer=data.idPersona;
-    // console.log(idPer);
-    // obtenerIdAgricultor(idPer);
-    // const geolocalizacion=navigator.geolocation;
-    //  geolocalizacion.getCurrentPosition(getPosition,error,options)//geolocalizador  
+
     $("#modalDecisionVegetal").modal({backdrop:'static', keyboard:false});
     $("#modalDecisionVegetal").modal('show');
     idFinca=data.idFinca;
-    
-    // $("#txt_longitud").val(data.longitud);
-    // $("#txt_latitud").val(data.latitud);
-    // $("#txt_fincaNombre").val(data.nombre_finca);
-    // $("#txt_hetareas").val(data.hectareas);
-    // $("#txt_actividadAgro").val(data.actividadAgropecuaria);
-    // $("#txt_lineaProductiva").val(data.lineaProductiva);
-    // $("#txt_vereda").val(data.id_Vereda);
-    // fincaId=data.idFinca;
 })
+
+
 function abrirModalRegistroVegetales(){
     $("#modalRegistrarVegetales").modal({backdrop:'static', keyboard:false});
     $("#modalRegistrarVegetales").modal('show');
@@ -575,22 +572,12 @@ $('#tabla_finca').on('click','.animales',function(){
     if(tabla.row(this).child.isShown()){
         var data=tabla.row(this).data();
     }
-    // idPer=data.idPersona;
-    // console.log(idPer);
-    // obtenerIdAgricultor(idPer);
-    // const geolocalizacion=navigator.geolocation;
-    //  geolocalizacion.getCurrentPosition(getPosition,error,options)//geolocalizador  
+  
     $("#modalDecisionAnimal").modal({backdrop:'static', keyboard:false});
     $("#modalDecisionAnimal").modal('show');
     idFinca=data.idFinca;
     nombreFinca=data.nombre_finca;
-    // console.log(data);
-    // $("#txt_fincaNombre").val(data.nombre_finca);
-    // $("#txt_hetareas").val(data.hectareas);
-    // $("#txt_actividadAgro").val(data.actividadAgropecuaria);
-    // $("#txt_lineaProductiva").val(data.lineaProductiva);
-    // $("#txt_vereda").val(data.id_Vereda);
-    // fincaId=data.idFinca;
+
 })
 
 function abrirModalRegistroAnimales(){
@@ -688,9 +675,9 @@ function mostrar(){
             let datos=JSON.parse(this.responseText);
             
             if(datos.length>0){
-                console.log(datos);
+                // console.log(datos);
                 dato=datos[0];
-                console.log(dato);
+                // console.log(dato);
                 document.querySelector('#_nombreCompleto').innerHTML=`<p>${dato.nombreCompleto}</p>`;
                 document.querySelector('#_tipoIdentificacion').innerHTML=`<p>${dato.tipo_identificacion}</p>`;
                 document.querySelector('#_numeroIdentificacion').innerHTML=`<p>${dato.num_identificacion}</p>`;
@@ -815,3 +802,6 @@ function imprimirDatos() {
   
     setTimeout(function(){newWin.close();},10);
   }
+
+
+ 

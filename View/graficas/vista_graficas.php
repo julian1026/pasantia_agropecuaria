@@ -28,16 +28,14 @@
                                         <button type="button" class="btn btn-success" onclick="lineasProductivaSegundaria()">Linea 2</button>
                                         <button type="button" class="btn btn-secundary" onclick="lineasProductivaTres()">Linea 3</button>
                                         <button type="button" class="btn btn-danger" onclick=""><i class="fa fa-download"><b>&nbsp;Pdf</b></i></button>
-                                        <button type="button" class="btn btn-secundary" onclick=""><i class="fa  fa-print"><b>&nbsp;Imprimir</b></i></button>
+                                        <button type="button" class="btn btn-secundary" onclick="imprimirDatos()"><i class="fa  fa-print"><b>&nbsp;Imprimir</b></i></button>
                                     </div>
 
                                     <div id="contenedor" class="my-3 mt-5">
                                     </div>
 
                                 </div>
-                                <h5 class="card-title">Special title treatment</h5>
 
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
                             </div>
                         </div>
                     </div>
@@ -60,9 +58,7 @@
                                     </div>
 
                                 </div>
-                                <h5 class="card-title">Special title treatment</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+
                             </div>
                         </div>
 
@@ -84,8 +80,10 @@
     </div>
     <!-- /.box -->
 </div>
-
-
+<!-- no borrar, imprimir graficas -->
+<div>
+    <input type="hidden" readonly value="" id="identificador-grafica" />
+</div>
 
 <!-- cierre de modal de actualizar de plantas -->
 
