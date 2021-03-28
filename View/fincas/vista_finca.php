@@ -26,7 +26,7 @@
 
                 </div>
             </div>
-
+            <br>
             <br>
 
 
@@ -262,48 +262,44 @@
                 <div class="modal-body">
 
                     <div class="row">
-                        <div class="group col-md-12 my-4">
+                        <div class="group">
 
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <label for="txt_longitud" class="col-form-label">Longitud:</label>
                                 <input type="text" class="form-control" id="txt_longitud" required="">
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <label for="txt_latitud" class="col-form-label">Latitud:</label>
                                 <input type="text" class="form-control" id="txt_latitud" required="">
                             </div>
 
-                            <div class="col-md-3">
-                                <label for="">Ubicacion</label>
-                                <br />
-                                <button type="button" class="btn btn-primary">Refrescar</button>
+                            <div class="col-md-4">
+                                <label for="txt_fincaNombre" class="col-form-label">Nombre Finca: </label>
+                                <input type="text" class="form-control" id="txt_fincaNombre" maxlength="40" required="">
                             </div>
 
                         </div>
 
-                        <div class="group col-md-12">
-                            <div class="col-md-3">
-                                <label for="txt_fincaNombre" class="col-form-label">Nombre Finca: </label>
-                                <input type="text" class="form-control" id="txt_fincaNombre" maxlength="40" required="">
-                            </div>
-                            <div class="col-md-3">
+                        <div class="group">
+
+                            <div class="col-md-4">
                                 <label for="txt_hetareas" class="col-form-label">#Hectareas de la finca:</label>
                                 <input type="number" class="form-control" min="10" max="100" id="txt_hetareas" required="">
                             </div>
 
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <label for="">Corregimiento</label>
                                 <select class="form-control" id="txt_corregimiento" style='width: 100%;'>
                                 </select>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <label for="">Vereda</label>
                                 <select class="form-control" id="txt_vereda" style='width: 100%;'>
                                 </select>
                             </div>
                         </div>
 
-                        <div class="group col-md-12 ">
+                        <div class="group">
                             <div class="col-md-3">
                                 <label for="">Abastecimiento de Agua</label><br />
                                 <input type="radio" id='agua1' name="servicioAgua" value="1" checked>si
@@ -326,30 +322,42 @@
                             </div>
                         </div>
                         <!-- si -->
-
                         <div class="group">
-                            <div class="column col-md-4">
+                            <div class="col-md-4">
                                 <label for="">Actividad Agropecuaria Primaria</label>
                                 <select class="form-control" id="txt_agro_1" style='width: 100%;'>
                                 </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="">Actividad Agropecuaria Segundaria</label>
+                                <select class="form-control" id="txt_agro_2" style='width: 100%;'>
+                                </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="">Actividad Agropecuaria Terciaria</label>
+                                <select class="form-control" id="txt_agro_3" style='width: 100%;'>
+                                </select>
+                            </div>
+
+                        </div>
+
+
+                        <div class="group ">
+                            <div class="column col-md-4">
                                 <label for="">Linea Productiva Primaria</label>
                                 <select class="form-control" id="txt_pro_1" style='width: 100%;'>
                                 </select>
                             </div>
 
                             <div class="column col-md-4">
-                                <label for="">Actividad Agropecuaria Segundaria</label>
-                                <select class="form-control" id="txt_agro_2" style='width: 100%;'>
-                                </select>
                                 <label for="">Linea Productiva Segundaria</label>
                                 <select class="form-control" id="txt_pro_2" style='width: 100%;'>
                                 </select>
                             </div>
 
                             <div class="column col-md-4">
-                                <label for="">Actividad Agropecuaria Terciaria</label>
-                                <select class="form-control" id="txt_agro_3" style='width: 100%;'>
-                                </select>
                                 <label for="">Linea Productiva Terciaria</label>
                                 <select class="form-control" id="txt_pro_3" style='width: 100%;'>
                                 </select>
@@ -357,14 +365,17 @@
                         </div>
 
                         <!-- no -->
+                        <div class="col-md-12">
+
+                        </div>
                     </div>
+
                 </div>
-
                 <div class="modal-footer">
-
                     <button type="button" class="btn btn-success" onclick='actualizarFinca()'>Actualizar</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                 </div>
+
             </div>
         </div>
     </form>

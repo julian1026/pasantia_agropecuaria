@@ -4,8 +4,8 @@ tabla = $("#tabla_finca").DataTable({
    "ordering":false,
    "paging": true,
    "searching": { "regex": true },
-   "lengthMenu": [ [10, 25, 50, 100, -1], [10, 25, 50, 100, "All"] ],
-   "pageLength": 10,
+   "lengthMenu": [ [6, 12, 24, 48, -1], [6, 12, 24, 48, "All"] ],
+   "pageLength": 6,
    "destroy":true,
    "async": false ,
    "processing": true,  
@@ -804,4 +804,17 @@ function imprimirDatos() {
   }
 
 
- 
+// let datos=[{age:12, name:'julian', lastName:'calambas'},
+//         {age:14, name:'camila', lastName:'ortiz'}
+// ]
+// let nuevo=[];
+// if(datos){
+//     datos.map(({age,name,lastName})=>{
+//         nuevo.push({age,name,lastName});
+//     })
+// }
+
+// console.log(nuevo);
+
+
+

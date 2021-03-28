@@ -23,16 +23,16 @@
                             <div class="row">
                                 <div class="col-md-4 mt-2">
                                     <label>Objectivo de la Visita</label>
-                                    <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                                    <textarea class="form-control" id="txt_objetivo" rows="3" placeholder="Enter ..."></textarea>
                                 </div>
                                 <div class="col-md-4 mt-2">
                                     <label>Sistema de Produccion</label>
-                                    <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                                    <textarea class="form-control" rows="3" maxlength="50" id="txt_produccion" maxlength="" placeholder="Enter ..."></textarea>
                                 </div>
 
                                 <div class="col-md-4 mt-2">
                                     <label>Situacion Encontrada</label>
-                                    <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                                    <textarea class="form-control" rows="3" maxlength="300" id="txt_situacion" placeholder="Enter ..."></textarea>
                                 </div>
 
                             </div>
@@ -40,15 +40,15 @@
                             <div class="row">
                                 <div class="col-md-5 mt-2">
                                     <label>Acividades Realizadas/Recomendaciones/Compromisos</label>
-                                    <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                                    <textarea class="form-control" id="txt_actividad1" rows="3" maxlength="500" placeholder="Enter ..."></textarea>
                                 </div>
                                 <div class="col-md-5 mt-2">
                                     <label>Actividad Realizada/Recomendacion Ambiental</label>
-                                    <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                                    <textarea class="form-control" id="txt_actividad2" rows="3" maxlength="500" placeholder="Enter ..."></textarea>
                                 </div>
-                                <div class="col-md-2 ">
+                                <div class="pull-right col-md-2 ">
                                     <br><br>
-                                    <button class="btn btn-success btn-lg" type="button">Registrar</button>
+                                    <button class="btn btn-success btn-lg" type="button" onclick="registrarVisita()">Registrar</button>
                                 </div>
                             </div>
                         </form>

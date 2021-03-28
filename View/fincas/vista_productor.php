@@ -24,11 +24,7 @@
         <div class="box-header with-border">
             <h3 class="box-title">Caracterizacion Del Pequeno Productor</h3>
 
-            <div class="box-tools pull-left">
-                <button type="button" onclick="imprimirDatos()" class="btn btn-box-tool" data-widget="collapse"><i class="fa  fa-arrow-left"></i>
-                    imprimir
-                </button>
-            </div>
+
 
             <div class="box-tools pull-right">
                 <button type="button" onclick="cargar_contenido('contenido_principal','fincas/vista_finca.php')" class="btn btn-box-tool" data-widget="collapse"><i class="fa  fa-arrow-left"></i>
@@ -41,11 +37,13 @@
             <div class="form-group ">
                 <div class="column col-md-6 " id='dibujo_ubicacion'>
 
-                    <h3>Ubicacion "Finca"</h3>
-                    <div class="google-maps">
-                        <iframe src="https://maps.google.com/?q=2.622435,-76.569198&z=14&t=m&output=embed" width="300" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-
+                    <h4>Ubicacion "Finca"</h4>
+                    <div id="pintar">
+                        <div class="google-maps">
+                            <iframe src="https://maps.google.com/?q=2.622435,-76.569198&z=14&t=m&output=embed" width="300" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
                     </div>
+
 
                 </div>
 

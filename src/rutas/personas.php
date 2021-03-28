@@ -3,6 +3,13 @@
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
+// $f = null;
+
+// var_dump($_SESSION['S_rol']);
+// var_dump(isset($_SESSION['S_rol']));
+
+
+// if (!isset($_SESSION['S_rol'])) {
 $app->group('/api', function () use ($app) {
     // Versionado de la API
     $app->group('/v1', function () use ($app) {
@@ -13,6 +20,8 @@ $app->group('/api', function () use ($app) {
         $app->delete('/personas/{id}', 'eliminarPersona');
     });
 });
+// }
+
 
 function obtenerPersonas(Request $request, Response $response)
 {

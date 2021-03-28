@@ -163,7 +163,7 @@ function serviciosFinca(){
           }
 
         var tituloTabla='Grafica en Barras, Servicios Publicos, total fincas ='+numero;
-        graficarServicios(nombres,cantidad,colores,tituloTabla,'line');
+        graficarServicios(nombres,cantidad,colores,tituloTabla,'bar');
       }
     })
 }

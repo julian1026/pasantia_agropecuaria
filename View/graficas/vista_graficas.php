@@ -17,8 +17,9 @@
 
             <div class="col-md-12">
 
-                <div class="group">
-                    <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6 ">
                         <div class="card">
                             <h5 class="card-header">Datos Registro (Lineas Productivas) </h5>
                             <div class="card-body">
@@ -39,11 +40,12 @@
                             </div>
                         </div>
                     </div>
-                    <!-- separador -->
-                    <div class="col-md-2"></div>
-                    <!-- cierre -->
 
-                    <div class="col-md-5">
+                </div>
+                <!--  -->
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
                         <div class="card">
                             <h5 class="card-header">Featured</h5>
                             <div class="card-body">
@@ -63,9 +65,6 @@
                         </div>
 
                     </div>
-                </div>
-
-                <div class="group">
                 </div>
 
             </div>
