@@ -46,9 +46,12 @@
                                     <label>Actividad Realizada/Recomendacion Ambiental</label>
                                     <textarea class="form-control" id="txt_actividad2" rows="3" maxlength="500" placeholder="Enter ..."></textarea>
                                 </div>
-                                <div class="pull-right col-md-2 ">
+                                <div class="col-md-2 ">
                                     <br><br>
-                                    <button class="btn btn-success btn-lg" type="button" onclick="registrarVisita()">Registrar</button>
+                                    <div class="pull-right">
+                                        <button class="btn btn-success btn-lg" type="button" onclick="registrarVisita()">Registrar</button>
+                                    </div>
+
                                 </div>
                             </div>
                         </form>
@@ -75,31 +78,41 @@
                     <div class="row">
                         <div class="col-md-2">
                             <label>Beneficiario</label>
-                            <p id="txt-beneficiario">julian andres calambas</p>
+                            <div id="txt-beneficiario">
+                            </div>
+
                         </div>
                         <div class="col-md-2">
                             <label>CC</label>
-                            <p id="txt-cc">cedula</p>
+                            <div id="txt-cc">
+
+                            </div>
                         </div>
+
                         <div class="col-md-2">
                             <label>Finca</label>
-                            <p id="txt-finca">las margaritas</p>
+                            <div id="txt-finca">
+                            </div>
                         </div>
+
                         <div class="col-md-2">
                             <label>Corregimiento</label>
-                            <p id="txt-finca">las tayas</p>
+                            <div id="txt-corregimiento">
+                            </div>
                         </div>
+
                         <div class="col-md-2">
                             <label>Vereda</label>
-                            <p id="txt-finca">rio adentro</p>
+                            <div id="txt-veredad">
+                            </div>
                         </div>
 
                         <div class="col-md-2">
-                            <!-- <label for="">Descargar</label><br> -->
-                            <button class="btn btn-secondary">
-                                <li class='fa fa-download'></li>
-                            </button>
-
+                            <div class="pull-left">
+                                <button class="btn btn-secondary">
+                                    <li class='fa fa-download'></li>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -109,7 +122,8 @@
                     <div class="col-md-12 ">
                         <div class="card text-white bg-success">
                             <div class="card-header">
-                                visita #<b>1</b> <button class="btn btn-warning btn-sm offset-md-8">
+                                visita #<b>1</b>
+                                <button class="btn btn-warning btn-sm offset-md-8">
                                     <li class="fa fa-edit"></li>
                                 </button>
                             </div>
@@ -170,6 +184,6 @@
                 responsive: true
             })
             listar_fincas();
-
+            listar();
         });
     </script>
