@@ -61,7 +61,7 @@ class Modelo_VisitarFinca
 
     function listar($idFinca)
     {
-        $listar = $this->pdo->conectar()->prepare("SELECT concat(p.primer_nombre,' ',p.segundo_nombre,' ',p.primer_apellido,' ',p.segundo_apellido) nombreCompleto, p.num_identificacion,f.nombre_finca,c.nombre_corregimiento,v.nombreVereda FROM persona p JOIN agricultor a on (p.idPersona=a.idPersona) join finca f on (a.idAgricultor=f.idAgricultor) JOIN vereda v on (f.id_Vereda=v.id_vereda) JOIN corregimiento c on (v.corregimiento_id=c.idCorregimiento) WHERE f.idFinca=:idFinca");
+        $listar = $this->pdo->conectar()->prepare("SELECT concat(p.primer_nombre,' ',p.segundo_nombre,' ',p.primer_apellido,' ',p.segundo_apellido) nombreCompleto, p.num_identificacion,f.nombre_finca,c.nombre_corregimiento,v.nombreVereda FROM persona p JOIN agricultor a on (p.idPersona=a.idPersona) join finca f on (a.idAgricultor=f.idAgricultor) JOIN vereda v on (f.id_Vereda=v.id_vereda) JOIN corregimiento c on (v.corregimiento_id=c.idCorregimiento) WHERE f.idFinca=:idFinca ");
         $listar->bindparam(':idFinca', $idFinca);
         $listar->execute();
         $valores = $listar->fetchAll(PDO::FETCH_ASSOC);
@@ -71,12 +71,33 @@ class Modelo_VisitarFinca
 
     function listarAll($idFinca)
     {
-        $listar = $this->pdo->conectar()->prepare("SELECT * from persona");
+        $listar = $this->pdo->conectar()->prepare("SELECT concat(p.primer_nombre,' ',p.segundo_nombre,' ',p.primer_apellido,' ',p.segundo_apellido) nombreRegistrador, vf.registrador_cedula, vf.idvisitas,vf.fecha,vf.objetivoVisita,vf.sistemasProduccion,vf.situacionEncontrada,vf.actividadRealizada,vf.actividadPendientes FROM finca f JOIN visitas_fincas vf on (f.idFinca=vf.idFinca) join persona p on (p.num_identificacion=vf.registrador_cedula) where f.idFinca=:idFinca ORDER by vf.idvisitas DESC");
         $listar->bindparam(':idFinca', $idFinca);
         $listar->execute();
-        $valores = $listar->fetchAll(PDO::FETCH_ASSOC);
+        $valores = $listar->fetchAll(PDO::FETCH_OBJ);
         $this->pdo->cerrar();
         return $valores;
+    }
+
+
+
+
+    function listarAll2($idFinca)
+    {
+        $listar = $this->pdo->conectar()->prepare("SELECT concat(p.primer_nombre,' ',p.segundo_nombre,' ',p.primer_apellido,' ',p.segundo_apellido) nombreRegistrador, vf.registrador_cedula, vf.idvisitas,vf.fecha,vf.objetivoVisita,vf.sistemasProduccion,vf.situacionEncontrada,vf.actividadRealizada,vf.actividadPendientes FROM finca f JOIN visitas_fincas vf on (f.idFinca=vf.idFinca) join persona p on (p.num_identificacion=vf.registrador_cedula) where f.idFinca=:idFinca ORDER by vf.idvisitas DESC");
+        $listar->bindparam(':idFinca', $idFinca);
+        $listar->execute();
+
+        $arreglo = array();
+        $valores = $listar->fetchAll(PDO::FETCH_ASSOC);
+        $aux = count($valores);
+        foreach ($valores as $elementos1) {
+            $elementos1['numero'] = '' . $aux . '';
+            $arreglo["data"][] = $elementos1;
+            $aux--;
+        }
+        return $arreglo;
+        $this->pdo->cerrar();
     }
 
 

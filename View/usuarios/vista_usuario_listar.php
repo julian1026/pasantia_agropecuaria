@@ -4,7 +4,7 @@
 <div class="col-md-12">
   <div class="box box-primary box-solid">
     <div class="box-header with-border">
-      <h3 class="box-title">Datos Referetes Del Agricultor</h3>
+      <h3 class="box-title">Gestion de Usuarios</h3>
 
 
       <!-- /.box-tools -->
@@ -34,7 +34,7 @@
       <table id="tabla_usuario" class="display responsive nowrap table-bordered " cellspacing='0' style="width:100%">
         <thead>
           <tr class="bg-primary">
-            <th scope="col">codigo</th>
+            <th scope="col">#</th>
             <th scope="col">Usuario</th>
             <th scope="col">Rol</th>
             <th scope="col">Estado</th>
@@ -44,7 +44,7 @@
 
         <tfoot>
           <tr class="bg-primary">
-            <th>codigo</th>
+            <th>#</th>
             <th>Usuario</th>
             <th>Rol</th>
             <th>Estado</th>

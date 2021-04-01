@@ -64,9 +64,13 @@ class Modelo_Finca
          on (cp3.id_actividad_agro=agro3.id_actividad_agro)  ORDER BY idFinca DESC");
         $listar->execute();
         $arreglo = array();
+
         $valores = $listar->fetchAll(PDO::FETCH_ASSOC);
+        $aux = count($valores);
         foreach ($valores as $elementos) {
+            $elementos["numero"] = $aux;
             $arreglo["data"][] = $elementos;
+            $aux--;
         }
         return $arreglo;
         $this->pdo->cerrar();

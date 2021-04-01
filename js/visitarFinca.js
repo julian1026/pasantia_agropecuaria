@@ -1,5 +1,8 @@
+
 var tabla;
+var paint;
 function listar_fincas(){
+
 tabla = $("#tabla_visitar_finca").DataTable({
    "ordering":false,
    "paging": true,
@@ -14,16 +17,16 @@ tabla = $("#tabla_visitar_finca").DataTable({
        type:'POST'
    },
    "columns":[
-       {"data":"idFinca"},
+       {"data":"numero"},
        {"data":"nombre_finca"},
        {"data":"linea_nombre"},
        {"data":"num_identificacion"},
        {"data":"registrador"},
        {"data":"nombreVereda"},
         {"defaultContent":
-       "<button style='font-size:10px;' type='button' class='reporte btn btn-primary'><i class='fa fa-edit'></i> </button>&nbsp;"}
+       "<button style='font-size:10px;' type='button' class='reporte btn btn-primary'><i class='fa fa-edit'>&nbsp; Reportes</i> </button>&nbsp;"}
    ],
-
+   
    "language":idioma_espanol,
    select: true
 });
@@ -45,8 +48,9 @@ $('#tabla_visitar_finca').on('click','.reporte',function(){
 function listar(){
   const nuevo4 = new FormData();
   nuevo4.append('idFinca',idFinca);
+  nuevo4.append('cod',1);
   $.ajax({
-    url:'../Controller/visitaFinca/controlador_listar_datosCabecera.php',
+    url:'../Controller/visitaFinca/controlador_visitarFinca.php',
     type:'POST',
     data:nuevo4,
     processData: false,  // tell jQuery not to process the data
@@ -54,15 +58,81 @@ function listar(){
 }).done(function(res){
     // console.log(res);
     valor=JSON.parse(res);
-    console.log(valor);
     datos=valor[0];
     cargarValoresCabecera(datos);
 })
 }
 
-function listarAll(valores2){
-  console.log(valores2)
+function listarAll(){
+    const nuevo5 = new FormData();
+    nuevo5.append('idFinca',idFinca);
+    nuevo5.append('cod',2);
+    $.ajax({
+      url:'../Controller/visitaFinca/controlador_visitarFinca.php',
+      type:'POST',
+      data:nuevo5,
+      processData: false,  // tell jQuery not to process the data
+      contentType: false   // tell jQuery not to set contentType
+  }).done(function(res){
+     var valor=JSON.parse(res);
+     console.log(valor);
+    mostrar(valor);
+  })
 }
+
+
+
+function mostrar(arreglo){
+    
+    var paint=document.querySelector('#listaVisitasUX');
+    paint.innerHTML='';
+        numero=arreglo.length;
+        if(arreglo){
+            arreglo.map(valor=>{
+                paint.innerHTML+=`
+                <div class="col-md-12 bg-success">
+                        <div class="card text-white ">
+                        <div class="card-header">
+                            visita #<b>${numero}</b>
+                            <div class="pull-right">
+                                <b>Registrador :</b> ${valor.nombreRegistrador}  <b>CC:</b>${valor.registrador_cedula}
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Objectivo de la Visita</label>
+                                    <p>${valor.objetivoVisita}</p>
+        
+                                    <br>
+                                    <label>Sistema de Produccion</label>
+                                    <p>${valor.sistemasProduccion}</p>
+                                    <br>
+                                    <label>Situacion Encontrada</label>
+                                    <p>${valor.situacionEncontrada}</p>
+                                    <br>
+                                    <label>Acividades Realizadas/Recomendaciones/Compromisos</label>
+                                    <p>${valor.actividadRealizada}</p>
+                                    <br>
+                                    <label>Actividad Realizada/Recomendacion Ambiental</label>
+                                    <p>${valor.actividadPendientes}</p>
+                                    <br>
+        
+                                </div>
+        
+                            </div>
+        
+                        </div>
+                    </div>
+                </div>
+                
+                `;
+                numero--;
+            })
+        }
+
+}
+
 
 
 function cargarValoresCabecera(datos){
@@ -130,10 +200,46 @@ function limpiarFormularioR(){
 
 
 
+var tabla1;
 
+function listar_fincasActualizar(){
+  
+    const nuevo6 = new FormData();
+    nuevo6.append('cod',3);
+    tabla1 = $("#tabla_fincaActualizar").DataTable({
+        "ordering":false,
+        "paging": true,
+        "searching": { "regex": true },
+        "lengthMenu": [ [6, 12, 24, 48, -1], [6, 12, 24, 48, "All"] ],
+        "pageLength": 6,
+        "destroy":true,
+        "async": false ,
+        "processing":true,
+        "ajax":{
+            "url":"../Controller/visitaFinca/controlador_visitarFinca.php",
+            type:'POST',
+            data:{'cod':3,'idFinca':idFinca}
+        },
+        "columns":[
+            {"data":"numero"},
+            {"data":"objetivoVisita"},
+            // {"data":"sistemasProduccion"},
+            // {"data":"situacionEncontrada"},
+            // {"data":"actividadRealizada"},
+            // {"data":"actividadPendientes"},
+            {"data":"registrador_cedula"},
+             {"defaultContent":
+            "<button style='font-size:10px;' type='button' class='reporte btn btn-primary'><i class='fa fa-edit'></i> </button>&nbsp;"}
+        ],
+     
+        "language":idioma_espanol,
+        select: true
+     });
+}
 
-
-
+function UXactualizarFinca(){
+    cargar_contenido('contenido_principal','fincas/vista_visitarFincaActualizar.php');
+}
 
 
 

@@ -95,7 +95,7 @@ function redirigiendo(usuario){
 
 
 
-//funcion de prueba
+// funcion de prueba
 // function prueba(){
 
 //     let url='../Controller/usuario/controlador_usuario_listar.php';
@@ -132,7 +132,7 @@ table = $("#tabla_usuario").DataTable({
        type:'POST'
    },
    "columns":[
-       {"data":"idUsuario"},
+       {"data":"numero"},
        {"data":"user_name"},
        {"data":"nombre_rol"},
        {"data":"estado",
@@ -145,8 +145,8 @@ table = $("#tabla_usuario").DataTable({
          }
        },  
        {"defaultContent":
-       "<button style='font-size:10px;' type='button' class='editar btn btn-warning'><i class='fa fa-edit'></i></button>&nbsp;"+
-       "<button style='font-size:10px;' type='button' class='desactivar btn btn-danger'><i class='fa fa-trash'></i></button>&nbsp;"
+       "<button style='font-size:10px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i></button>&nbsp;"+
+       "<button style='font-size:10px;' type='button' class='desactivar btn btn-secondary'><i class='fa fa-trash'></i></button>&nbsp;"
         + "</button>&nbsp; <button style='font-size:10px;' type='button' class='activar btn btn-success'><i class='fa fa-check'></i></button>"}
    ],
 

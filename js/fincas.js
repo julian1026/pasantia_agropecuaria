@@ -21,7 +21,7 @@ tabla = $("#tabla_finca").DataTable({
 //        'pdfHtml5'
 //    ],
    "columns":[
-       {"data":"idFinca"},
+       {"data":"numero"},
        {"data":"nombre_finca"},
        {"data":"linea_nombre"},
        {"data":"hectareas"},  

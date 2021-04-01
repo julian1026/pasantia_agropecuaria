@@ -14,7 +14,7 @@ tabla = $("#tabla_personaADM").DataTable({
        type:'POST'
    },
    "columns":[
-       {"data":"idPersona"},
+       {"data":"numero"},
        {"data":"nombreCompleto"},
        {"data":"num_identificacion"},
     //    {"data":"sexo",
@@ -31,7 +31,7 @@ tabla = $("#tabla_personaADM").DataTable({
        {"data":"idRol",
        render: function (data,type,row){
             
-               return "<button style='font-size:10px;' type='button' class='editar btn btn-warning'><i class='fa fa-edit'></i> </button>&nbsp;"
+               return "<button style='font-size:10px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i> </button>&nbsp;"
                 +"<button style='font-size:10px;' type='button'   class='datos btn btn-white'><i class='fa  fa-eye'></i> </button>";
            }
        }

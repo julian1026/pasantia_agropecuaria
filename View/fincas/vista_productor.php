@@ -36,12 +36,18 @@
         <div class="box-body">
             <div class="form-group ">
                 <div class="column col-md-6 " id='dibujo_ubicacion'>
-
-                    <h4>Ubicacion "Finca"</h4>
-                    <div id="pintar">
-                        <div class="google-maps">
-                            <iframe src="https://maps.google.com/?q=2.622435,-76.569198&z=14&t=m&output=embed" width="300" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <div class="row">
+                        <div class="card text-center bg-primary">
+                            <div class="card-header ">
+                                <h4> Ubicacion "Finca"</h4>
+                            </div>
+                            <div class="card-body bg-success">
+                                <div class="google-maps">
+                                    <iframe src="https://maps.google.com/?q=2.622435,-76.569198&z=14&t=m&output=embed" width="300" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
 
 

@@ -48,7 +48,10 @@ if (!isset($_SESSION['S_iduser'])) {
 
 
   <link rel="stylesheet" type="text/css" href="../plantilla/plugins/DataTables/datatables.min.css" />
-  <link rel="stylesheet" type="text/css" href="../plantilla/plugins/DataTables/Responsive-2.2.7/css/responsive.dataTables.min.css" />
+  <link rel="stylesheet" type="text/css" href="../plantilla/plugins/DataTables/Responsive-2.2.7/css/responsive.bootstrap.min.css" />
+  <!-- <link rel="stylesheet" href="DataTables/datatables.min.css"> -->
+
+  <link rel="stylesheet" href="../plantilla/plugins/DataTables/DataTables-1.10.22/css/dataTables.bootstrap4.min.css">
 
 
   <!--font awesome con CDN-->
@@ -599,6 +602,16 @@ if (!isset($_SESSION['S_iduser'])) {
   <script src="../plantilla/plugins/DataTables/Buttons-1.7.0/js/dataTables.buttons.min.js"></script>
 
   <!--  -->
+
+  <!-- data1 -->
+  <!-- <script type="text/javascript" src="../plantilla/plugins/DataTables/datatables.min.js"></script>
+  <script src="../plantilla/plugins/DataTables/Responsive-2.2.6/js/dataTables.responsive.min.js"> </script>
+  <script src="../plantilla/plugins/DataTables/Buttons-1.6.4/js/dataTables.buttons.min.js"></script>
+  <script src="../plantilla/plugins/DataTables/JSZip-2.5.0/jszip.min.js"></script>
+  <script src="../plantilla/plugins/DataTables/pdfmake-0.1.36/pdfmake.min.js"></script>
+  <script src="../plantilla/plugins/DataTables/pdfmake-0.1.36/vfs_fonts.js"></script>
+  <script src="../plantilla/plugins/DataTables/Buttons-1.6.4/js/buttons.html5.js"></script> -->
+  <!-- cierre -->
 
   <!-- plugin para imprimir y generar pdf -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PrintArea/2.4.1/jquery.PrintArea.min.js" />

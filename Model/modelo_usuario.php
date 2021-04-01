@@ -29,8 +29,11 @@ class Modelo_Usuario
       $listar->execute();
       $arreglo = array();
       $valores = $listar->fetchAll(PDO::FETCH_ASSOC);
+      $aux = count($valores);
       foreach ($valores as $elementos) {
+         $elementos["numero"] = $aux;
          $arreglo["data"][] = $elementos;
+         $aux--;
       }
       return $arreglo;
       $this->pdo->cerrar();
