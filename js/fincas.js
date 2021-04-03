@@ -13,13 +13,26 @@ tabla = $("#tabla_finca").DataTable({
        "url":"../Controller/finca/controlador_finca_listar.php",
        type:'POST'
    },
-//    dom: 'Bfrtip',
-//    buttons: [
-//        'copyHtml5',
-//        'excelHtml5',
-//        'csvHtml5',
-//        'pdfHtml5'
-//    ],
+   dom: 'Bfrtilp',
+   buttons: [{
+           extend: 'excelHtml5',
+           text: '<i class="fas fa-file-excel"></i> ',
+           titleAttr: 'Exportar a Excel',
+           className: 'btn btn-success'
+       },
+       {
+           extend: 'pdfHtml5',
+           text: '<i class="fas fa-file-pdf"></i> ',
+           titleAttr: 'Exportar a PDF',
+           className: 'btn btn-danger'
+       },
+       {
+           extend: 'print',
+           text: '<i class="fa fa-print"></i> ',
+           titleAttr: 'Imprimir',
+           className: 'bg bg-success'
+       },
+   ],
    "columns":[
        {"data":"numero"},
        {"data":"nombre_finca"},
@@ -28,7 +41,7 @@ tabla = $("#tabla_finca").DataTable({
        {"data":"num_identificacion"},
        {"data":"fecha_registro"},
         {"defaultContent":
-       "<button style='font-size:10px;' type='button' class='editar btn btn-warning'><i class='fa fa-edit'></i> </button>&nbsp;"+
+       "<button style='font-size:10px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i> </button>&nbsp;"+
        "<button style='font-size:10px;' type='button' class='plantas btn btn-secondary'><i class='fa fa-leaf'></i>"
         + "</button>&nbsp; <button style='font-size:10px;' type='button' class='animales btn btn-secondary'><i class='fa fa-paw'></i></button>"
         + "</button>&nbsp; <button style='font-size:10px;' type='button' class='vista_datos btn btn-secondary'><i class='fa  fa-eye'></i></button>"}
