@@ -41,10 +41,10 @@
                             <div class="card-header ">
                                 <h4> Ubicacion "Finca"</h4>
                             </div>
-                            <div class="card-body bg-success">
-                                <div class="google-maps">
+                            <div class="card-body bg-success" id="mapa">
+                                <!-- <div class="google-maps">
                                     <iframe src="https://maps.google.com/?q=2.622435,-76.569198&z=14&t=m&output=embed" width="300" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
 

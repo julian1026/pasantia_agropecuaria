@@ -674,7 +674,6 @@ $('#tabla_finca').on('click','.vista_datos',function(){
 })
 // ------carga todos los datos referentes al dueno de la finca--------------
 function mostrar(){
-    
     var general = new FormData();
     general.append('idFinca',idFinca);
     let url='../Controller/finca/controlador_datos_generales.php';
@@ -691,6 +690,12 @@ function mostrar(){
                 // console.log(datos);
                 dato=datos[0];
                 // console.log(dato);
+                console.log(dato);
+                document.querySelector('#mapa').innerHTML=`
+                <div class="google-maps">
+                    <iframe src="https://maps.google.com/?q=${dato.latitud},${dato.longitud}&z=14&t=m&output=embed" width="300" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                `
                 document.querySelector('#_nombreCompleto').innerHTML=`<p>${dato.nombreCompleto}</p>`;
                 document.querySelector('#_tipoIdentificacion').innerHTML=`<p>${dato.tipo_identificacion}</p>`;
                 document.querySelector('#_numeroIdentificacion').innerHTML=`<p>${dato.num_identificacion}</p>`;

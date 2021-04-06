@@ -26,7 +26,7 @@
                             <div class="row">
                                 <div class="col-md-4 mt-2">
                                     <label>Objectivo de la Visita</label>
-                                    <textarea class="form-control" id="txt_objetivo" rows="3" placeholder="Enter ..."></textarea>
+                                    <textarea class="form-control" id="txt_objetivo" maxlength="40" rows="3" placeholder="Enter ..."></textarea>
                                 </div>
                                 <div class="col-md-4 mt-2">
                                     <label>Sistema de Produccion</label>
@@ -43,11 +43,11 @@
                             <div class="row">
                                 <div class="col-md-6 mt-2">
                                     <label>Acividades Realizadas/Recomendaciones/Compromisos</label>
-                                    <textarea class="form-control" id="txt_actividad1" rows="3" maxlength="500" placeholder="Enter ..."></textarea>
+                                    <textarea class="form-control" id="txt_actividad1" rows="3" maxlength="400" placeholder="Enter ..."></textarea>
                                 </div>
                                 <div class="col-md-6 mt-2">
                                     <label>Actividad Realizada/Recomendacion Ambiental</label>
-                                    <textarea class="form-control" id="txt_actividad2" rows="3" maxlength="500" placeholder="Enter ..."></textarea>
+                                    <textarea class="form-control" id="txt_actividad2" rows="3" maxlength="400" placeholder="Enter ..."></textarea>
                                 </div>
                                 <div class="col-md-12">
                                     <br>

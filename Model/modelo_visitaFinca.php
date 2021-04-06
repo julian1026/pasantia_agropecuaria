@@ -103,71 +103,29 @@ class Modelo_VisitarFinca
 
 
 
-
-
-    function listarFincas()
-    {
-        $listar = $this->pdo->conectar()->prepare("SELECT p.num_identificacion,f.idFinca,f.nombre_finca,f.hectareas,f.ab_agua,f.e_electrica,f.e_alternativas,        f.s_sanitario,f.id_linea_pro1,f.id_linea_pro2,f.id_linea_pro3,f.latitud,f.longitud,f.fecha_registro,f.registrador,v.nombreVereda,v.id_vereda,l1.linea_nombre,c.idCorregimiento,agro1.id_actividad_agro idAgro1,agro2.id_actividad_agro idAgro2,agro3.id_actividad_agro idAgro3 from persona p join agricultor a on (p.idPersona=a.idPersona)
-         join finca f on (a.idAgricultor=f.idAgricultor) join vereda v on (f.id_Vereda=v.id_vereda) join linea_productiva l1 on 
-        (f.id_linea_pro1=l1.id_linea_pro) JOIN corregimiento c on (c.idCorregimiento=v.corregimiento_id) JOIN clase_productiva cp1 on (l1.id_clase_pro=cp1.id_clase_pro) join Actividad_agro agro1 on (cp1.id_actividad_agro=agro1.id_actividad_agro) join linea_productiva l2 on (f.id_linea_pro2=l2.id_linea_pro) JOIN clase_productiva cp2 on (l2.id_clase_pro=cp2.id_clase_pro) join Actividad_agro agro2 on (cp2.id_actividad_agro=agro2.id_actividad_agro) JOIN linea_productiva l3 on (f.id_linea_pro3=l3.id_linea_pro)
-         JOIN clase_productiva cp3 on (l3.id_clase_pro=cp3.id_clase_pro) JOIN Actividad_agro agro3
-         on (cp3.id_actividad_agro=agro3.id_actividad_agro)  ORDER BY idFinca DESC");
-        $listar->execute();
-        $arreglo = array();
-        $valores = $listar->fetchAll(PDO::FETCH_ASSOC);
-        foreach ($valores as $elementos) {
-            $arreglo["data"][] = $elementos;
-        }
-        return $arreglo;
-        $this->pdo->cerrar();
-    }
-
-
-    function actualizarFinca(
-        $longitud,
-        $latitud,
-        $nombre_finca,
-        $hectareas,
-        $linea_productiva1,
-        $linea_productiva2,
-        $linea_productiva3,
-        $agua,
-        $energiaElectrica,
-        $energiaAlternativas,
-        $servicioSanitario,
-        $vereda,
-        $idFinca
+    function actualizarVisitaFinca(
+        $objetivoVisita,
+        $sistemasProduccion,
+        $situacionEncontrada,
+        $actividadRealizada,
+        $actividadPendientes,
+        $idvisitas
     ) {
-        $actualizar = $this->pdo->conectar()->prepare('UPDATE finca
-         SET nombre_finca=:nombre,
-            hectareas=:hectareas,
-            latitud=:latitud,
-            longitud=:longitud,
-            ab_agua=:agua,
-            e_electrica=:electrica,
-            e_alternativas=:alternativa,
-            s_sanitario=:sanitario,
-            id_linea_pro1=:pro1,
-            id_linea_pro2=:pro2,
-            id_linea_pro3=:pro3,
-            id_Vereda=:idVereda
-        WHERE idFinca =:idFinca');
+        $actualizar = $this->pdo->conectar()->prepare('UPDATE visitas_fincas
+         SET objetivoVisita=:objetivoVisita,
+         sistemasProduccion=:sistemasProduccion,
+         situacionEncontrada=:situacionEncontrada,
+         actividadRealizada=:actividadRealizada,
+         actividadPendientes=:actividadPendientes
+        WHERE idvisitas =:idvisitas');
 
-        $actualizar->bindparam(':nombre', $nombre_finca);
-        $actualizar->bindparam(':hectareas', $hectareas);
-        $actualizar->bindparam(':latitud', $latitud);
-        $actualizar->bindparam(':longitud', $longitud);
+        $actualizar->bindparam(':objetivoVisita', $objetivoVisita);
+        $actualizar->bindparam(':sistemasProduccion',  $sistemasProduccion);
+        $actualizar->bindparam(':situacionEncontrada', $situacionEncontrada);
+        $actualizar->bindparam(':actividadRealizada', $actividadRealizada);
 
-        $actualizar->bindparam(':pro1', $linea_productiva1, PDO::PARAM_INT);
-        $actualizar->bindparam(':pro2', $linea_productiva2, PDO::PARAM_INT);
-        $actualizar->bindparam(':pro3', $linea_productiva3, PDO::PARAM_INT);
-        $actualizar->bindparam(':agua', $agua, PDO::PARAM_INT);
-        $actualizar->bindparam(':electrica', $energiaElectrica, PDO::PARAM_INT);
-        $actualizar->bindparam(':alternativa', $energiaAlternativas, PDO::PARAM_INT);
-        $actualizar->bindparam(':sanitario', $servicioSanitario, PDO::PARAM_INT);
-
-        $actualizar->bindparam(':idFinca', $idFinca, PDO::PARAM_INT);
-        $actualizar->bindparam(':idVereda', $vereda, PDO::PARAM_INT);
+        $actualizar->bindparam(':actividadPendientes', $actividadPendientes);
+        $actualizar->bindparam(':idvisitas', $idvisitas, PDO::PARAM_INT);
         if ($actualizar->execute()) {
             $this->pdo->cerrar();
             return 1;

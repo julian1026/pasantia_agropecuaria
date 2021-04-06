@@ -179,9 +179,10 @@ function registrarVisita(){
         // console.log(valor);
         if(valor>0){
             if(valor==1){
-                // $("#modal_actualizar_personales").modal('hide');
+                $("#modal_actualizar_personales").modal('hide');
                 Swal.fire("Mensaje De Confirmacion "," Registro exitoso ","success");
-                limpiarFormularioR();           
+                limpiarFormularioR(); 
+                listarAll();         
             }
         }else{
             return Swal.fire("Mensaje De Error","Actualizacion Fallida ","warning");
@@ -196,7 +197,6 @@ function limpiarFormularioR(){
   document.getElementById('txt_actividad1').value='';
   document.getElementById('txt_actividad2').value='';
 }
-
 
 
 
@@ -223,10 +223,6 @@ function listar_fincasActualizar(){
         "columns":[
             {"data":"numero"},
             {"data":"objetivoVisita"},
-            // {"data":"sistemasProduccion"},
-            // {"data":"situacionEncontrada"},
-            // {"data":"actividadRealizada"},
-            // {"data":"actividadPendientes"},
             {"data":"registrador_cedula"},
              {"defaultContent":
             "<button style='font-size:10px;' type='button' class='reporte btn btn-primary'><i class='fa fa-edit'></i> </button>&nbsp;"}
@@ -242,6 +238,66 @@ function UXactualizarFinca(){
 }
 
 
+$('#tabla_fincaActualizar').on('click','.reporte',function(){
+    var data=tabla1.row($(this).parents('tr')).data();
+    // console.log(data);
+    if(tabla1.row(this).child.isShown()){
+        var data=tabla1.row(this).data();
+    }
+    $("#modal_actualizarRegistroFinca").modal({backdrop:'static', keyboard:false});
+    $("#modal_actualizarRegistroFinca").modal('show');
+    console.log(data);
+    idVisitas=data.idvisitas;
+    $("#txt_objetivo").val(data.objetivoVisita);
+    $("#txt_produccion").val(data.sistemasProduccion);
+    $("#txt_situacion").val(data.situacionEncontrada);
+    $("#txt_actividad1").val(data.actividadRealizada);
+    $("#txt_actividad2").val(data.actividadPendientes);
+    // document.querySelector('#')
+
+})
+
+function ActualizarVisita(){
+
+    let visita=document.getElementById('txt_objetivo').value;
+    let sistema=document.getElementById('txt_produccion').value;
+    let situacion=document.getElementById('txt_situacion').value;
+    let actividad1=document.getElementById('txt_actividad1').value;
+    let actividad2=document.getElementById('txt_actividad2').value;
+    const nuevo7 = new FormData();
+    if(!visita || !sistema || !situacion || !actividad1 || !actividad2){
+      return Swal.fire("Mensaje De Error","Por favor verificar que los campos se encuentren diligenciados ","warning");
+    }
+    nuevo7.append('objetivoVisita',visita);
+    nuevo7.append('sistemasProduccion',sistema);
+    nuevo7.append('situacionEncontrada',situacion);
+    nuevo7.append('actividadRealizada',actividad1);
+    nuevo7.append('actividadPendientes',actividad2);
+    nuevo7.append('idVisitas',idVisitas);
+    nuevo7.append('cod',4);
+    nuevo7.append('idFinca',null);
+    $.ajax({
+        url:'../Controller/visitaFinca/controlador_visitarFinca.php',
+        type:'POST',
+        data:nuevo7,
+        processData: false,  // tell jQuery not to process the data
+        contentType: false   // tell jQuery not to set contentType
+    }).done(function(res){
+        // console.log(res);
+        valor=JSON.parse(res);
+        // console.log(valor);
+        if(valor>0){
+            if(valor==1){
+                $("#modal_actualizarRegistroFinca").modal('hide');
+                Swal.fire("Mensaje De Confirmacion "," Actualizacion Exitosa","success");
+                     tabla1.ajax.reload();
+                limpiarFormularioR();           
+            }
+        }else{
+            return Swal.fire("Mensaje De Error","Actualizacion Fallida ","warning");
+        }   
+    })
+}
 
 
 /*

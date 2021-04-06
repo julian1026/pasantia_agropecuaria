@@ -38,6 +38,31 @@ if ($cod == 3) {
     }
 }
 
+if ($cod == 4) {
+    $objetivoVisita = $_POST['objetivoVisita'];
+    $sistemasProduccion = $_POST['sistemasProduccion'];
+    $situacionEncontrada = $_POST['situacionEncontrada'];
+    $actividadRealizada = $_POST['actividadRealizada'];
+    $actividadPendientes = $_POST['actividadPendientes'];
+    $idVisitas = $_POST['idVisitas'];
+
+    $consulta = $MU->actualizarVisitaFinca(
+        $objetivoVisita,
+        $sistemasProduccion,
+        $situacionEncontrada,
+        $actividadRealizada,
+        $actividadPendientes,
+        $idVisitas
+    );
+    if ($consulta) {
+        echo json_encode($consulta);
+    } else {
+        echo 0;
+    }
+}
+
+
+
 
 // }
 // if($consulta){

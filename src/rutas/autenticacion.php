@@ -29,7 +29,6 @@ function autenticarse(Request $request, Response $response)
         $resultado->execute();
         $data = $resultado->fetchAll(PDO::FETCH_ASSOC);
         if (count($data) > 0) {
-
             foreach ($data as $value) {
                 // var_dump($value["estado"]);
                 if ($value['estado'] == "ACTIVO") {
