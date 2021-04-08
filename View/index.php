@@ -139,7 +139,7 @@ if (!isset($_SESSION['S_iduser'])) {
                 <!-- Menu Footer-->
                 <li class="user-footer">
                   <div class="pull-left">
-                    <!-- <a href="#" class="btn btn-default btn-flat">Profile</a> -->
+                    <a href="#" class="btn btn-default btn-flat" onclick="cargar_contenido('mostrar','usuarios/vista_cambiar_contrasena.php')">Cambiar Contrasena</a>
                   </div>
                   <div class="pull-right">
                     <a href="../Controller/usuario/controlador_cerrar_session.php" class="btn btn-default btn-flat">Salir</a>
@@ -251,11 +251,14 @@ if (!isset($_SESSION['S_iduser'])) {
       <!-- /.sidebar -->
     </aside>
 
+    <div id="mostrar">
+    </div>
+
+
+
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
-
-
       <!-- Main content  en esta parte es la contenedor principal-->
       <section class="content">
         <div class="row" id="contenido_principal">
@@ -635,6 +638,9 @@ if (!isset($_SESSION['S_iduser'])) {
   <!--ruta del select2 js -->
   <script src="../plantilla/plugins/select2/select2.min.js"></script>
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script> -->
+
+  <!-- <script src="../js/contrasena.js"></script> -->
+
   <!--ruta del sweetalert2 -->
   <script src="../plantilla/plugins/sweetalert2/sweetalert2.js"></script>
 

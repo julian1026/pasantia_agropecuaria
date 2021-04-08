@@ -9,7 +9,7 @@ $MU = new Modelo_Usuario();
 
 $usuario = htmlspecialchars($_POST['user'], ENT_QUOTES, 'utf-8');
 $rol = htmlspecialchars($_POST['rol'], ENT_QUOTES, 'utf-8');
-$contra = md5($_POST['pass']);
+$contra = password_hash($_POST['pass'], PASSWORD_DEFAULT);
 $estado = 'activo';
 /* datos Personales */
 $nombre1 = htmlspecialchars($_POST['nombre1'], ENT_QUOTES, 'utf-8');

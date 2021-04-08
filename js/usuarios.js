@@ -60,6 +60,7 @@ function controlarSessiones(R_usuario){
 }
 
 
+
 //funcion decarga que le da la bienvenida al usuario 
 function redirigiendo(usuario){
     // console.log(usuario);

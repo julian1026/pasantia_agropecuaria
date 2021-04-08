@@ -12,15 +12,47 @@ class Modelo_Usuario
    function VerificarUsuario($usuario, $contra)
    {
       //$result=array();
-      $con = md5($contra);
+      // $con = md5($contra);
       $listar = $this->pdo->conectar()->prepare("SELECT * FROM (SELECT u.idUsuario, u.user_name,u.contrasena,u.estado,u.idRol,r.nombre_rol,p.num_identificacion
-      from persona p JOIN usuario u on (p.idUsuario=u.idUsuario) JOIN rol r on (u.idRol=r.idRol) where user_name= BINARY :user)R  where contrasena= BINARY :pass");
+      from persona p JOIN usuario u on (p.idUsuario=u.idUsuario) JOIN rol r on (u.idRol=r.idRol) where user_name= BINARY :user)R");
       $listar->bindparam(':user', $usuario);
-      $listar->bindparam(':pass', $con);
+      $array = array();
       $listar->execute();
-      return $listar->fetchAll(PDO::FETCH_OBJ);
+      $resultado = $listar->fetchAll(PDO::FETCH_ASSOC);
+      foreach ($resultado as $valor) {
+         if (password_verify($contra, $valor['contrasena'])) {
+            return $resultado;
+         }
+      }
+      return $array;
       $listar = null;
    }
+
+   function actualizarContrasena($idUsuario, $pass, $passwordOld)
+   {
+      $consultar = $this->pdo->conectar()->prepare('SELECT * from usuario  WHERE idUsuario =:idUsuario');
+      $consultar->bindparam(':idUsuario', $idUsuario);
+      $consultar->execute();
+      $respuesta = $consultar->fetchAll(PDO::FETCH_ASSOC);
+
+
+      if (password_verify($passwordOld, $respuesta[0]['contrasena'])) {
+         $password = password_hash($pass, PASSWORD_DEFAULT);
+         $verificar = $this->pdo->conectar()->prepare('UPDATE usuario SET contrasena=:password WHERE idUsuario =:idUsuario');
+         $verificar->bindparam(':password', $password);
+         $verificar->bindparam(':idUsuario', $idUsuario);
+         if ($verificar->execute()) {
+            $this->pdo->cerrar();
+            return 1;
+         }
+         $this->pdo->cerrar();
+         return 0;
+      } else {
+         $this->pdo->cerrar();
+         return 2;
+      }
+   }
+
 
    function  listarUsuario()
    {

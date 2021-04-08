@@ -530,12 +530,13 @@
 </div>
 
 <!-- cerrar modal de encuesta -->
+
+
 <script>
   $(document).ready(function() {
     $('#tabla_persona').DataTable({
       responsive: true
     })
     listar_persona();
-
   });
 </script>
