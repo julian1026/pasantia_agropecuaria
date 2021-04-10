@@ -13,7 +13,7 @@
         <!-- ////////////////////////////////////////////// -->
         <div class="box-body">
 
-            <div class="form-group">
+            <!-- <div class="form-group">
 
                 <div class="col-lg-2">
                     <button class="btn btn-success" onclick='AbrirModalRegistro()' style="width:100%">
@@ -25,17 +25,17 @@
                 <div class="col-lg-10">
 
                 </div>
-            </div>
+            </div> -->
 
             <br>
-            <br>
+
 
 
 
             <table id="tabla_visitar_finca" class="display responsive nowrap table-bordered " cellspacing='0' style="width:100%">
                 <thead>
                     <tr class="bg-primary">
-                        <th scope="col">Consecutivo</th>
+                        <th scope="col">#</th>
                         <th scope="col">Finca</th>
                         <th scope="col">Linea Primaria</th>
                         <th scope="col">Cedula</th>
@@ -47,7 +47,7 @@
 
                 <tfoot>
                     <tr class="bg-primary">
-                        <th scope="col">Consecutivo</th>
+                        <th scope="col">#</th>
                         <th scope="col">Finca</th>
                         <th scope="col">Linea Primaria</th>
                         <th scope="col">Cedula</th>

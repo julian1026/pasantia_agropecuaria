@@ -12,34 +12,39 @@ tabla = $("#tabla_finca").DataTable({
    "ajax":{
        "url":"../Controller/finca/controlador_finca_listar.php",
        type:'POST'
-   },
-   dom: 'Bfrtilp',
-   buttons: [{
-           extend: 'excelHtml5',
-           text: '<i class="fas fa-file-excel"></i> ',
-           titleAttr: 'Exportar a Excel',
-           className: 'btn btn-success'
-       },
-       {
-           extend: 'pdfHtml5',
-           text: '<i class="fas fa-file-pdf"></i> ',
-           titleAttr: 'Exportar a PDF',
-           className: 'btn btn-danger'
-       },
-       {
-           extend: 'print',
-           text: '<i class="fa fa-print"></i> ',
-           titleAttr: 'Imprimir',
-           className: 'bg bg-success'
-       },
-   ],
+   }
+//    ,
+//    dom: 'Bfrtilp',
+//    buttons: [{
+//            extend: 'excelHtml5',
+//            text: '<i class="fas fa-file-excel"></i> ',
+//            titleAttr: 'Exportar a Excel',
+//            className: 'btn btn-success'
+//        },
+//        {
+//            extend: 'pdfHtml5',
+//            text: '<i class="fas fa-file-pdf"></i> ',
+//            titleAttr: 'Exportar a PDF',
+//            className: 'btn btn-danger'
+//        },
+//        {
+//            extend: 'print',
+//            text: '<i class="fa fa-print"></i> ',
+//            titleAttr: 'Imprimir',
+//            className: 'bg bg-success'
+//        },
+//    ]
+   ,
    "columns":[
        {"data":"numero"},
        {"data":"nombre_finca"},
        {"data":"linea_nombre"},
        {"data":"hectareas"},  
        {"data":"num_identificacion"},
-       {"data":"fecha_registro"},
+       {"data":"fecha_registro",render: function (data, type, row ) {
+       return data.substr(0,10);
+      }
+    },
         {"defaultContent":
        "<button style='font-size:10px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i> </button>&nbsp;"+
        "<button style='font-size:10px;' type='button' class='plantas btn btn-secondary'><i class='fa fa-leaf'></i>"
@@ -250,7 +255,7 @@ $('#tabla_finca').on('click','.editar',function(){
     $("#txt_fincaNombre").val(data.nombre_finca);
     $("#txt_hetareas").val(data.hectareas);
     
-    console.log(data.ab_agua);
+    // console.log(data.ab_agua);
     if(data.ab_agua==1){
         document.getElementById('agua1').checked = true;
     }else{
@@ -286,7 +291,7 @@ $('#tabla_finca').on('click','.editar',function(){
     $('#txt_agro_2').val(data.idAgro2);
     $('#txt_agro_3').val(data.idAgro3);
     idFinca=data.idFinca;
-   console.log(data);
+//    console.log(data);
     
     fincaId=data.idFinca;
     // listarVeredasPrincipal();
@@ -690,7 +695,7 @@ function mostrar(){
                 // console.log(datos);
                 dato=datos[0];
                 // console.log(dato);
-                console.log(dato);
+                // console.log(dato);
                 document.querySelector('#mapa').innerHTML=`
                 <div class="google-maps">
                     <iframe src="https://maps.google.com/?q=${dato.latitud},${dato.longitud}&z=14&t=m&output=embed" width="300" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
@@ -820,6 +825,7 @@ function imprimirDatos() {
   
     setTimeout(function(){newWin.close();},10);
   }
+
 
 
 // let datos=[{age:12, name:'julian', lastName:'calambas'},

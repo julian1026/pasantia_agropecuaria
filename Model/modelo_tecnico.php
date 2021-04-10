@@ -34,4 +34,11 @@ class Modelo_Tecnico
         }
         return $show;
     }
+    function listarTecnicos()
+    {
+        $listar = $this->pdo->conectar()->prepare("SELECT * from persona p JOIN tecnicos t on (p.idPersona=t.idPersona)");
+        $listar->execute();
+        return $listar->fetchAll(PDO::FETCH_ASSOC);
+        $this->pdo->cerrar();
+    }
 }

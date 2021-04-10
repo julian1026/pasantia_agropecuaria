@@ -18,7 +18,7 @@ function cambiarContrasena(){
     }
     if(password1!=password2){
 
-        return Swal.fire('Mensaje De Error','verificar que la nueva contrasena coincide con su verificacion. ','warning');
+        return Swal.fire('Mensaje De Error',' La nueva contrasena no coincide con su verificacion. ','warning');
     }
     const nuevo6 = new FormData();
     nuevo6.append('password',password2);

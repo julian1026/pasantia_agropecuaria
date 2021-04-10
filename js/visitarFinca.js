@@ -24,7 +24,7 @@ tabla = $("#tabla_visitar_finca").DataTable({
        {"data":"registrador"},
        {"data":"nombreVereda"},
         {"defaultContent":
-       "<button style='font-size:10px;' type='button' class='reporte btn btn-primary'><i class='fa fa-edit'>&nbsp; Reportes</i> </button>&nbsp;"}
+       "<button style='font-size:10px;' type='button' class='reporte btn btn-primary'><i class='fa fa-edit'>&nbsp; Visitar</i> </button>&nbsp;"}
    ],
    
    "language":idioma_espanol,
@@ -75,7 +75,7 @@ function listarAll(){
       contentType: false   // tell jQuery not to set contentType
   }).done(function(res){
      var valor=JSON.parse(res);
-     console.log(valor);
+    //  console.log(valor);
     mostrar(valor);
   })
 }

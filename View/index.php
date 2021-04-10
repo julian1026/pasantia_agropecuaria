@@ -186,7 +186,7 @@ if (!isset($_SESSION['S_iduser'])) {
           <li class="header"><b>Menu</b></li>
 
           <?php
-          echo var_dump($_SESSION['S_rol']);
+          // echo var_dump($_SESSION['S_rol']);
 
           if ($_SESSION['S_rol'] == 1) {
           ?>
@@ -239,6 +239,22 @@ if (!isset($_SESSION['S_iduser'])) {
             <li class="active treeview">
               <a onclick="cargar_contenido('contenido_principal','fincas/vista_visitar_finca.php')">
                 <i class="fa  fa-edit"></i> <span>Visitar Fincas</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+
+            <li class="active treeview">
+              <a onclick="cargar_contenido('contenido_principal','fincas/vista_reporteDos.php')">
+                <i class="fa  fa-file-text"></i> <span>Generar Reportes</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+
+            <li class="active treeview">
+              <a onclick="cargar_contenido('contenido_principal','graficas/vista_graficas.php')">
+                <i class="fa  fa-bar-chart"></i> <span>Graficas</span>
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>

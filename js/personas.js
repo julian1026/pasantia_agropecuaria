@@ -217,7 +217,7 @@ $('#tabla_persona').on('click','.reg_finca',function(){
         var data=tabla.row(this).data();
     }
     idPer=data.idPersona;
-    console.log(idPer);
+    // console.log(idPer);
     obtenerIdAgricultor(idPer);
     const geolocalizacion=navigator.geolocation;
      geolocalizacion.getCurrentPosition(getPosition,error,options)//geolocalizador
@@ -293,7 +293,7 @@ function cargarCorregimientos(){
     }).done(function(res){
         if(res.length>0){
             dato=JSON.parse(res); 
-            console.log(dato);
+            // console.log(dato);
 
             selectCorregimientos.innerHTML=`<option value="0">Selecionar</option>`;
             selectVereda.innerHTML=`<option value="0">Selecionar</option>`;
@@ -465,7 +465,7 @@ function cargarActividadesAgro(){
     }).done(function(res){
         if(res.length>0){
             dato_actividad=JSON.parse(res); 
-            console.log(dato_actividad);
+            // console.log(dato_actividad);
 
             selectAgro1.innerHTML=`<option value="0">Selecionar</option>`;
             selectAgro2.innerHTML=`<option value="0">Selecionar</option>`;

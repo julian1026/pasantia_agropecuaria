@@ -53,7 +53,7 @@ $('#tabla_personaADM').on('click','.editar',function(){
     
     $("#modal_actualizar_personales").modal({backdrop:'static', keyboard:false});
     $("#modal_actualizar_personales").modal('show');
-    // console.log(data);
+    console.log(data);
     $("#txt_idUsuario_editar").val(data.idPersona);
     $("#txt_nombre_editar").val(data.primer_nombre);
     $("#txt_nombre2_editar").val(data.segundo_nombre);
@@ -79,12 +79,12 @@ $('#tabla_personaADM').on('click','.datos',function(){
     // console.log(data);
     cargar_contenido('contenido_principal','personas/vista_visualizacionDatos.php');
     idPersona=data.idPersona;
-
-    llenarDatos();
+    console.log(idPersona);
+    llenarDatos(idPersona);
     
 })
 
-function llenarDatos(){
+function llenarDatos(idPersona){
     $.ajax({
         url:'../Controller/persona/controlador_mostrarDatosADM.php',
         type:'POST',
@@ -92,8 +92,9 @@ function llenarDatos(){
     }).done(function(res){
         if(res.length>0){ 
         datoX=JSON.parse(res); 
+        console.log(datoX);
         datoP=datoX[0];
-        // console.log(datoP);
+        console.log(datoP);
 
            
             $("#txt_nombre").val(datoP.primer_nombre);

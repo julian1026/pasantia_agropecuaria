@@ -13,7 +13,7 @@
         <!-- ////////////////////////////////////////////// -->
         <div class="box-body">
 
-            <div class="form-group">
+            <!-- <div class="form-group">
 
                 <div class="col-lg-2">
                     <button class="btn btn-success" onclick='AbrirModalRegistro()' style="width:100%">
@@ -25,8 +25,8 @@
                 <div class="col-lg-10">
 
                 </div>
-            </div>
-            <br>
+            </div> -->
+
             <br>
 
 
@@ -254,7 +254,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLabel">Actualizar Finca</h4>
+                    <h4 class="modal-title" id="exampleModalLabel">Actualizar Registro de Finca</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

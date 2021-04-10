@@ -183,4 +183,35 @@ class Modelo_Finca
         return $listar->fetchAll(PDO::FETCH_ASSOC);
         $this->pdo->cerrar();
     }
+
+    function reporte2($cedula, $fechaI, $fechaF)
+    {
+        $listar = $this->pdo->conectar()->prepare("SELECT p.num_identificacion,f.idFinca,f.nombre_finca,f.hectareas,f.ab_agua,f.e_electrica,f.e_alternativas,        f.s_sanitario,f.id_linea_pro1,f.id_linea_pro2,f.id_linea_pro3,f.latitud,f.longitud,f.fecha_registro,f.registrador,v.nombreVereda,v.id_vereda,l1.linea_nombre,c.idCorregimiento,agro1.id_actividad_agro idAgro1,agro2.id_actividad_agro idAgro2,agro3.id_actividad_agro idAgro3 from persona p join agricultor a on (p.idPersona=a.idPersona)
+        join finca f on (a.idAgricultor=f.idAgricultor) join vereda v on (f.id_Vereda=v.id_vereda) join linea_productiva l1 on 
+       (f.id_linea_pro1=l1.id_linea_pro) JOIN corregimiento c on (c.idCorregimiento=v.corregimiento_id) JOIN clase_productiva cp1 on (l1.id_clase_pro=cp1.id_clase_pro) join Actividad_agro agro1 on (cp1.id_actividad_agro=agro1.id_actividad_agro) join linea_productiva l2 on (f.id_linea_pro2=l2.id_linea_pro) JOIN clase_productiva cp2 on (l2.id_clase_pro=cp2.id_clase_pro) join Actividad_agro agro2 on (cp2.id_actividad_agro=agro2.id_actividad_agro) JOIN linea_productiva l3 on (f.id_linea_pro3=l3.id_linea_pro)
+        JOIN clase_productiva cp3 on (l3.id_clase_pro=cp3.id_clase_pro) JOIN Actividad_agro agro3
+        on (cp3.id_actividad_agro=agro3.id_actividad_agro) where f.fecha_registro BETWEEN :fechaI and :fechaF  and f.registrador=:cedula ORDER BY idFinca DESC");
+
+        $listar->bindParam(':cedula', $cedula);
+        $listar->bindParam(':fechaI', $fechaI);
+        $listar->bindParam(':fechaF', $fechaF);
+
+        $listar->execute();
+        $arreglo = array();
+
+        $valores = $listar->fetchAll(PDO::FETCH_ASSOC);
+        $aux = count($valores);
+
+        if ($valores) {
+            foreach ($valores as $elementos) {
+                $elementos["numero"] = $aux;
+                $arreglo[] = $elementos;
+                $aux--;
+            }
+            return $arreglo;
+            $this->pdo->cerrar();
+        };
+        return $valores;
+        $this->pdo->cerrar();
+    }
 }
