@@ -1,4 +1,6 @@
-<!-- datatable -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.1/html2pdf.bundle.min.js"></script>
+
+
 <script type="text/javascript" src="../js/graficos.js?rev=<?php echo time(); ?>"></script>
 <div class="col-md-12">
     <div class="box box-primary box-solid">
@@ -18,17 +20,19 @@
             <div class="col-md-12">
 
                 <div class="row">
+
                     <div class="col-md-3">
+                        <br><br><br>
                         <div class="btn-group-vertical">
                             <button type="button" class="btn btn-secundary" onclick="lineasProductivaPrimaria()">Linea 1</button>
                             <button type="button" class="btn btn-secundary" onclick="lineasProductivaSegundaria()">Linea 2</button>
                             <button type="button" class="btn btn-secundary" onclick="lineasProductivaTres()">Linea 3</button>
-                            <button type="button" class="btn btn-success" onclick=""><i class="fa fa-download"><b>&nbsp;Pdf</b></i></button>
+                            <button type="button" class="btn btn-success" onclick="pdfGraficaUno()"><i class="fa fa-download"><b>&nbsp;Pdf</b></i></button>
                             <button type="button" class="btn btn-secundary" onclick="imprimirDatos()"><i class="fa  fa-print"><b>&nbsp;Imprimir</b></i></button>
                         </div>
                     </div>
                     <div class="col-md-5 ">
-                        <div class="card">
+                        <div class="card" id="graficaUno">
                             <h5 class="card-header">Datos Registro (Lineas Productivas) </h5>
                             <div class="card-body">
                                 <div class="row">
@@ -46,18 +50,17 @@
                     <div class="col-md-3">
                         <div class="btn-group-vertical">
 
-                            <button type="button" class="btn btn-success" onclick=""><i class="fa fa-download"><b>&nbsp;Pdf</b></i></button>
-                            <button type="button" class="btn btn-secundary" onclick=""><i class="fa  fa-print"><b>&nbsp;Imprimir</b></i></button>
+                            <button type="button" class="btn btn-success" onclick="pdfGraficaDos()"><i class="fa fa-download"><b>&nbsp;Pdf</b></i></button>
+
                         </div>
                     </div>
                     <div class="col-md-5">
-                        <div class="card">
-                            <h5 class="card-header">Featured</h5>
+                        <div class="card" id="graficaDos">
+                            <h5 class="card-header">Servicios Publicos</h5>
                             <div class="card-body">
                                 <div class="row">
                                     <div id="contenedor2" class="my-3 mt-5">
                                     </div>
-
                                 </div>
 
                             </div>

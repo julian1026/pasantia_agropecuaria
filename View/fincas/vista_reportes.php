@@ -64,79 +64,82 @@
 
                 <!-- abrir mostrador -->
                 <br>
-                <div>
-                    <div class="col-md-12 bg-primary">
-                        <div class="row">
+                <div id="pdf">
+                    <div>
+                        <div class="col-md-12 bg-primary">
+                            <div class="row">
 
-                            <div class='col-md-3 offset-md-3'>
-                                <label>
-                                    <b>
-                                        <h4>Historial de visitas</h4>
-                                    </b>
-                                </label>
+                                <div class='col-md-3 offset-md-3'>
+                                    <label>
+                                        <b>
+                                            <h4>Historial de visitas</h4>
+                                        </b>
+                                    </label>
+                                </div>
+
                             </div>
+
+
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label>Beneficiario</label>
+                                    <div id="txt-beneficiario">
+                                    </div>
+
+                                </div>
+                                <div class="col-md-2">
+                                    <label>CC</label>
+                                    <div id="txt-cc">
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <label>Finca</label>
+                                    <div id="txt-finca">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <label>Corregimiento</label>
+                                    <div id="txt-corregimiento">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <label>Vereda</label>
+                                    <div id="txt-veredad">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <div class="pull-left">
+                                        <button class="btn btn-success" onclick="GeneratePdf()">
+                                            <li class='fa fa-download'></li>&nbsp;Pdf
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-primary" onclick="UXactualizarFinca()">
+                                            <li class="fa fa-edit"></li>&nbsp;Editar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                    </div>
+                    <!-- cerrar registrar visita -->
+
+                    <!-- listar -->
+                    <div class="row ">
+                        <div class="col-md-12 " id="listaVisitasUX">
 
                         </div>
 
-
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label>Beneficiario</label>
-                                <div id="txt-beneficiario">
-                                </div>
-
-                            </div>
-                            <div class="col-md-2">
-                                <label>CC</label>
-                                <div id="txt-cc">
-
-                                </div>
-                            </div>
-
-                            <div class="col-md-2">
-                                <label>Finca</label>
-                                <div id="txt-finca">
-                                </div>
-                            </div>
-
-                            <div class="col-md-2">
-                                <label>Corregimiento</label>
-                                <div id="txt-corregimiento">
-                                </div>
-                            </div>
-
-                            <div class="col-md-2">
-                                <label>Vereda</label>
-                                <div id="txt-veredad">
-                                </div>
-                            </div>
-
-                            <div class="col-md-2">
-                                <div class="pull-left">
-                                    <button class="btn btn-success">
-                                        <li class='fa fa-download'></li>&nbsp;Pdf
-                                    </button>
-                                </div>
-                                <div>
-                                    <button class="btn btn-primary" onclick="UXactualizarFinca()">
-                                        <li class="fa fa-edit"></li>&nbsp;Editar
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                    <br>
-                    <br>
                 </div>
-                <!-- cerrar registrar visita -->
 
-                <!-- listar -->
-                <div class="row ">
-                    <div class="col-md-12 " id="listaVisitasUX">
-
-                    </div>
-
-                </div>
 
 
 

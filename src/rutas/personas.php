@@ -153,6 +153,7 @@ function actualizarPersona(Request $request, Response $response)
                 idUsuario=:idUsuario
                 WHERE idPersona=:idPersona
                 ";
+
             try {
                 $db = new Conexion();
                 $db = $db->conectar();

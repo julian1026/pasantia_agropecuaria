@@ -212,13 +212,66 @@ function generarNumero(numero){
     function imprimirDatos() {
         var valor=document.getElementById("identificador-grafica").value;
         console.log(valor);
-            // var ficha=document.getElementById('contenedor');
-            // $("#contenedor").printArea();
-        //   window.print();
+            var ficha=document.getElementById('contenedor');
+            $("#contenedor").printArea();
+          window.print();
       }
 
-    //   dompdf
 
 
+    //   function generarPdf(){
+    //     const $elementoParaConvertir =document.querySelector("#num"); // <-- Aquí puedes elegir cualquier elemento del DOM
+    //     html2pdf()
+    //         .set({
+    //             margin: 1,
+    //             filename: 'documento.pdf',
+    //             image: {
+    //                 type: 'jpeg',
+    //                 quality: 0.98
+    //             },
+    //             html2canvas: {
+    //                 scale: 3, // A mayor escala, mejores gráficos, pero más peso
+    //                 letterRendering: true,
+    //             },
+    //             jsPDF: {
+    //                 unit: "in",
+    //                 format: "a3",
+    //                 orientation: 'portrait' // landscape o portrait
+    //             }
+    //         })
+    //         .from($elementoParaConvertir)
+    //         .save()
+    //         .catch(err => console.log(err));
+    //   }
+
+    
+
+    function pdfGraficaUno(){
+        let element = document.getElementById('graficaUno');
+        let fileName='graficas-lineas.pdf';
+        GeneratePdf(element,fileName)  
+    }
+
+    function pdfGraficaDos(){
+        let element = document.getElementById('graficaDos');
+        let fileName='graficas-servicios.pdf';
+        GeneratePdf(element,fileName)  
+    }
+
+
+
+      function GeneratePdf(element,fileName) {
+        var opt = {
+            margin:       0.5,
+            filename:     fileName,
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2 },
+            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+          };
+          html2pdf(element, opt);
+
+    }
+
+    
 
 

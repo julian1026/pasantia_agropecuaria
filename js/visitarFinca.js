@@ -300,6 +300,21 @@ function ActualizarVisita(){
 }
 
 
+
+function GeneratePdf() {
+    let element=document.querySelector('#pdf');
+    var opt = {
+        margin:       0.5,
+        filename:     'historialVisitas.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2 },
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+      };
+      html2pdf(element, opt);
+
+}
+
+
 /*
 function prueba(){
 

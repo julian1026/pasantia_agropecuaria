@@ -12,6 +12,7 @@ if (!isset($_SESSION['S_iduser'])) {
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Gestion Agricola del Patia</title>
+
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -657,8 +658,28 @@ if (!isset($_SESSION['S_iduser'])) {
 
   <!-- <script src="../js/contrasena.js"></script> -->
 
+  <!--  -->
+
+
+
+
+
+
   <!--ruta del sweetalert2 -->
   <script src="../plantilla/plugins/sweetalert2/sweetalert2.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+
+
+
+
+
+
+
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.33/vfs_fonts.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.min.js"></script> -->
 
 </body>
 
