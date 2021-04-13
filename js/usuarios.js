@@ -1,5 +1,6 @@
 
 
+
 function verificarUsuario(){
 
     var name=$('#txt_usu').val();
@@ -25,20 +26,20 @@ function verificarUsuario(){
             if(datos==0){
                 Swal.fire("Mensaje De Error","el usuario y/o contrase\u00f1a incorrecta","warning");
             }else{
-                let R_usuario=datos[0];
-                
+                 R_usuario=datos[0];
                 controlarSessiones(R_usuario)
+                
             }
         }
     }
 }
-var rol_id
+
+var rol_id //variable importante
 
 function controlarSessiones(R_usuario){
-    rol_id=R_usuario.idRol;
-    console.log(R_usuario);
-    cedula_registrador=R_usuario.num_identificacion;
-    console.log(cedula_registrador);
+
+  
+
     if(R_usuario.estado==='INACTIVO'){
         Swal.fire("Mensaje De Advertencia","Lo sentimos el usuario <b> "+R_usuario.user_name+ " </b> se encuentra suspendido, comuniquese con el administrador  ","warning");
     }else{
@@ -54,6 +55,7 @@ function controlarSessiones(R_usuario){
         xhttp.onreadystatechange=function(){
             if(this.status==200 && this.readyState==4 ){
                redirigiendo(R_usuario.user_name);
+               
             }
         }
     }
@@ -63,7 +65,7 @@ function controlarSessiones(R_usuario){
 
 //funcion decarga que le da la bienvenida al usuario 
 function redirigiendo(usuario){
-    // console.log(usuario);
+
     let timerInterval
     Swal.fire({
     title: 'Bienvenido',
@@ -165,6 +167,7 @@ function AbrirModalRegistro(){
     $("#modal_registro").modal({backdrop:'static', keyboard:false});
     $("#modal_registro").modal('show');
     cargarRoles();
+    
 }
 
 
@@ -173,7 +176,9 @@ function AbrirModalRegistro(){
 var contenedorSelect=document.querySelector('#txt_com_rol');
 var contenedorCambio=document.querySelector('#contenedorCambio');
 var cadena=document.querySelector('#txt_com_rol_editar');
+
  function cargarRoles(){
+    
     let url='../Controller/usuario/controlador_listar_roles.php';
     const xhttp=new XMLHttpRequest();
     xhttp.open('POST',url,true);
@@ -476,7 +481,7 @@ function modificarEstado(idUsuario,estado){
     })
 }
 
-cargarRoles();
+// cargarRoles();
 
 //actualizarDatos
 $('#tabla_usuario').on('click','.editar',function(){

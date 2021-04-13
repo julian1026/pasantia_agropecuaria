@@ -71,12 +71,22 @@ class Modelo_Usuario
       $this->pdo->cerrar();
    }
 
-   function  listarRoles()
+   function  listarRoles($idRol)
    {
-      $listar = $this->pdo->conectar()->prepare("SELECT * from rol");
-      $listar->execute();
-      return $listar->fetchAll(PDO::FETCH_ASSOC);
-      $this->pdo->cerrar();
+      $clave = 3;
+      if ($idRol == 1) {
+         $listar = $this->pdo->conectar()->prepare("SELECT * from rol");
+         $listar->execute();
+         return $listar->fetchAll(PDO::FETCH_ASSOC);
+         $this->pdo->cerrar();
+      }
+      if ($idRol == 2) {
+         $listar = $this->pdo->conectar()->prepare("SELECT * from rol where idRol=:idRol");
+         $listar->bindParam(':idRol', $clave);
+         $listar->execute();
+         return $listar->fetchAll(PDO::FETCH_ASSOC);
+         $this->pdo->cerrar();
+      }
    }
 
 

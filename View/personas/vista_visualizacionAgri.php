@@ -1,3 +1,6 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.1/html2pdf.bundle.min.js"></script>
+
+
 <script type="text/javascript" src="../js/personas_adm.js?rev=<?php echo time(); ?>"></script>
 
 
@@ -27,11 +30,11 @@
 
                     <!-- fromulario -->
                     <div class="group col-md-12">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-success" onclick="pruebaDivAPdf()"><i class="fa fa-download"><b>&nbsp;Pdf</b></i></button>
-                            <button type="button" class="btn btn-primary" onclick='imprimirDatos()'><i class="fa  fa-file"><b>&nbsp;Imprimir</b></i></button>
+                        <!-- <div class="btn-group">
+                            <button type="button" class="btn btn-success" onclick="GeneratePdf()"><i class="fa fa-download"><b>&nbsp;Pdf</b></i></button>
+                            <button type="button" class="btn btn-primary" onclick='printDiv()'><i class="fa  fa-file"><b>&nbsp;Imprimir</b></i></button>
 
-                        </div>
+                        </div> -->
                     </div>
                     <form id="registrarFormulario" autocomplete="false" onsubmit="return false">
 
@@ -43,7 +46,7 @@
                             <!-- nombre y apellidos -->
                             <div class="group">
                                 <div class="col-md-12">
-                                    <h4 class='h4'>Datos Personales</h4>
+                                    <h4 class='h4'>Informacion Detallada del Agricultor</h4>
                                 </div>
                             </div>
                             <!--  -->
@@ -144,8 +147,12 @@
 
                     </form>
 
+
+
                     <!-- cerrar -->
                 </div>
+
+
             </div>
 
             <!-- cerrar card -->

@@ -696,6 +696,7 @@ function mostrar(){
                 dato=datos[0];
                 // console.log(dato);
                 // console.log(dato);
+                cedula3=dato.num_identificacion;
                 document.querySelector('#mapa').innerHTML=`
                 <div class="google-maps">
                     <iframe src="https://maps.google.com/?q=${dato.latitud},${dato.longitud}&z=14&t=m&output=embed" width="300" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
@@ -810,22 +811,31 @@ function showGoogleMaps() {
 }
 
 
-function imprimirDatos() {
-    
+function printDiv(divName) {
+    var printContents = document.getElementById(divName).innerHTML;
+    var originalContents = document.body.innerHTML;
 
-    var divToPrint=document.getElementById('contenedor');
+    document.body.innerHTML = printContents;
 
-    var newWin=window.open('','Print-Window');
-  
-    newWin.document.open();
-  
-    newWin.document.write('<html><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>');
-  
-    newWin.document.close();
-  
-    setTimeout(function(){newWin.close();},10);
-  }
+    window.print();
 
+    document.body.innerHTML = originalContents;
+}
+
+
+  function GeneratePdf() {
+    let element=document.querySelector('#contenedor');
+    let fileName=`caracterizacionProductor_${cedula3}.pdf`;
+    var opt = {
+        margin:       0.5,
+        filename:     fileName,
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2 },
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+      };
+      html2pdf(element, opt);
+
+}
 
 
 // let datos=[{age:12, name:'julian', lastName:'calambas'},

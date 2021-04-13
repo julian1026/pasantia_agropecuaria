@@ -22,7 +22,7 @@
 
     <div class="box box-primary box-solid">
         <div class="box-header with-border">
-            <h3 class="box-title">Caracterizacion Del Pequeno Productor</h3>
+            <h3 class="box-title">Caracterizacion del Pequeño Productor</h3>
 
 
 
@@ -49,9 +49,14 @@
                         </div>
 
                     </div>
-
-
+                    <br>
+                    <div class="pull-right">
+                        <button onclick="GeneratePdf()" class="btn btn-danger">PDF </button>
+                    </div>
                 </div>
+
+
+
 
 
 

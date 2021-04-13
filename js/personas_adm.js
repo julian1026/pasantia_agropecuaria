@@ -184,48 +184,38 @@ function actualizarDatosPersonas(){
 }
 
 function imprimirDatos() {
-    // var ficha = document.getElementById('');
-    // var divToPrint=document.getElementById('registrarFormulario');
+        var objeto=document.getElementById('registrarFormulario'); 
+    
+        //obtenemos el objeto a imprimir
+            var ventana=window.open('','_blank');  //abrimos una ventana vacía nueva
+            ventana.document.write(objeto.innerHTML);  //imprimimos el HTML del objeto en la nueva ventana
+            ventana.document.close();  //cerramos el documento
+            ventana.print();  //imprimimos la ventana
+            ventana.close();  //cerramos la ventana
+        // $.print('#registrarFormulario');
+    }
 
-    // var newWin=window.open('','Print-Window');
-  
-    // newWin.document.open();
-  
-    // newWin.document.write('<html><body onload="window.print()">'+divToPrint.innerHTML+'</body></html>');
-  
-    // newWin.document.close();
-  
-    // setTimeout(function(){newWin.close();},10);
-    // window.print();
-    $.print('#registrarFormulario');
-  }
+    function GeneratePdf() {
+        let element=document.querySelector('#registrarFormulario');
+        var opt = {
+            margin:       0.5,
+            filename:     'DatosPersonales.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2 },
+            jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+        html2pdf(element, opt);
 
-  function pruebaDivAPdf() {
-    var pdf = new jsPDF('p', 'pt', 'letter');
-    source = $('#registrarFormulario')[0];
+    }
 
-    specialElementHandlers = {
-        '#bypassme': function (element, renderer) {
-            return true
-        }
-    };
-    margins = {
-        top: 80,
-        bottom: 60,
-        left: 40,
-        width: 522
-    };
-
-    pdf.fromHTML(
-        source, 
-        margins.left, // x coord
-        margins.top, { // y coord
-            'width': margins.width, 
-            'elementHandlers': specialElementHandlers
-        },
-
-        function (dispose) {
-            pdf.save('datosPersonales.pdf');
-        }, margins
-    );
-}
+    function printDiv() {
+        var printContents = document.getElementById('registrarFormulario').innerHTML;
+        var originalContents = document.body.innerHTML;
+    
+        document.body.innerHTML = printContents;
+    
+        window.print();
+    
+        document.body.innerHTML = originalContents;
+    }
+    

@@ -34,13 +34,16 @@
                 </div>
 
                 <div class="col-md-3">
-                    <label for="">.</label>
-                    <br>
+                    <div class="pull-right">
+                        <label for="">.</label>
+                        <br>
 
-                    <div class="btn-group mt-2">
-                        <button type="button" class="btn btn-success" onclick="cargarReporte()"><i class="fa fa-search"><b>&nbsp;consultar</b></i></button>
-                        <button type="button" class="btn btn-secundary" onclick="recargar()"><i class="fa fa-refresh"><b>&nbsp;refrescar</b></i></button>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-success" onclick="cargarReporte()"><i class="fa fa-search"><b>&nbsp;consultar</b></i></button>
+                            <button type="button" class="btn btn-secundary" onclick="recargar()"><i class="fa fa-refresh"><b>&nbsp;refrescar</b></i></button>
+                        </div>
                     </div>
+
                 </div>
 
             </div>
