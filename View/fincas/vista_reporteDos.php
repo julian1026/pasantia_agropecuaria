@@ -2,11 +2,14 @@
 
 
 <div class="col-md-12">
-    <div class="box box-primary box-solid">
+    <div class="box box-white box-solid">
         <div class="box-header with-border">
             <h3 class="box-title">Generar Reporte</h3>
 
-
+            <div class="box-tools pull-right">
+                <button type="button" onclick="cargar_contenido('contenido_principal','menu/vista_menu.php')" class="btn btn-box-tool" data-widget="collapse"><i class="fa  fa-arrow-left"></i>
+                </button>
+            </div>
             <!-- /.box-tools -->
         </div>
         <!-- /.box-header -->

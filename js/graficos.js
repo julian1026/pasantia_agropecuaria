@@ -210,11 +210,16 @@ function generarNumero(numero){
 
 
     function imprimirDatos() {
-        var valor=document.getElementById("identificador-grafica").value;
-        console.log(valor);
-            var ficha=document.getElementById('contenedor');
-            $("#contenedor").printArea();
-          window.print();
+
+        
+        // var elemento=document.getElementById("grupoButton").innerHTML;
+       
+        // elemento.className += "hidden";
+        $('#grupoButton').addClass('hidden');
+        $('#buttonSolo').addClass('hidden');
+        window.print();
+        $('#grupoButton').removeClass('hidden');
+        $('#buttonSolo').removeClass('hidden');
       }
 
 

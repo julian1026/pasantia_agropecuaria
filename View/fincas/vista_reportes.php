@@ -1,7 +1,7 @@
 <script type="text/javascript" src="../js/visitarFinca.js?rev=<?php echo time(); ?>"></script>
 
 <div class="col-md-12">
-    <div class="box box-primary box-solid">
+    <div class="box box-white box-solid">
         <div class="box-header with-border">
             <h3 class="box-title">Reportes de Visitas de Finca</h3>
             <div class="box-tools pull-right">

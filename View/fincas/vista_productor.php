@@ -1,3 +1,5 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.1/html2pdf.bundle.min.js"></script>
+
 <script type="text/javascript" src="../js/fincas.js?rev=<?php echo time(); ?>"></script>
 <script type="text/javascript" src="../js/vegetales.js?rev=<?php echo time(); ?>"></script>
 <script type="text/javascript" src="../js/animales.js?rev=<?php echo time(); ?>"></script>
@@ -20,7 +22,7 @@
 </style>
 <div class="col-md-12" id="contenedor">
 
-    <div class="box box-primary box-solid">
+    <div class="box box-white box-solid">
         <div class="box-header with-border">
             <h3 class="box-title">Caracterizacion del Pequeño Productor</h3>
 

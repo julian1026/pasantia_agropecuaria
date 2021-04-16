@@ -3,10 +3,13 @@
 <script type="text/javascript" src="../js/personas_adm.js?rev=<?php echo time(); ?>"></script>
 
 <div class="col-md-12">
-    <div class="box box-primary box-solid">
+    <div class="box box-white box-solid">
         <div class="box-header with-border">
             <h3 class="box-title">Gestion de Datos Personales de los Administrativo</h3>
-
+            <div class="box-tools pull-right">
+                <button type="button" onclick="cargar_contenido('contenido_principal','menu/vista_menu.php')" class="btn btn-box-tool" data-widget="collapse"><i class="fa  fa-arrow-left"></i>
+                </button>
+            </div>
 
             <!-- /.box-tools -->
         </div>
@@ -381,11 +384,7 @@
                                     <input type="text" class='form-control' placeholder='Ingresar # telefonico' id='txt_telefono_editar'>
                                 </div>
 
-                                <div class="col-md-3">
-                                    <label for="txt_foto">foto</label><br />
-                                    <input type="file" class='form-control-file' id='txt_foto_editar'><br />
 
-                                </div>
 
                             </div>
 

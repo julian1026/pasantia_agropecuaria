@@ -481,7 +481,7 @@ function modificarEstado(idUsuario,estado){
     })
 }
 
-// cargarRoles();
+cargarRoles();
 
 //actualizarDatos
 $('#tabla_usuario').on('click','.editar',function(){

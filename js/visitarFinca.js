@@ -24,7 +24,7 @@ tabla = $("#tabla_visitar_finca").DataTable({
        {"data":"registrador"},
        {"data":"nombreVereda"},
         {"defaultContent":
-       "<button style='font-size:10px;' type='button' class='reporte btn btn-primary'><i class='fa fa-edit'>&nbsp; Visitar</i> </button>&nbsp;"}
+       "<div class='text-center'><button style='font-size:10px;' type='button' class='reporte btn-lg btn-primary'><i class='fa fa-edit'>&nbsp; Visitar</i> </button>&nbsp;</div>"}
    ],
    
    "language":idioma_espanol,

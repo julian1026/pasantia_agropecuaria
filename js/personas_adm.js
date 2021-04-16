@@ -183,20 +183,10 @@ function actualizarDatosPersonas(){
         })
 }
 
-function imprimirDatos() {
-        var objeto=document.getElementById('registrarFormulario'); 
-    
-        //obtenemos el objeto a imprimir
-            var ventana=window.open('','_blank');  //abrimos una ventana vacía nueva
-            ventana.document.write(objeto.innerHTML);  //imprimimos el HTML del objeto en la nueva ventana
-            ventana.document.close();  //cerramos el documento
-            ventana.print();  //imprimimos la ventana
-            ventana.close();  //cerramos la ventana
-        // $.print('#registrarFormulario');
-    }
+
 
     function GeneratePdf() {
-        let element=document.querySelector('#registrarFormulario');
+        let element=document.querySelector('#print1');
         var opt = {
             margin:       0.5,
             filename:     'DatosPersonales.pdf',
@@ -209,13 +199,13 @@ function imprimirDatos() {
     }
 
     function printDiv() {
-        var printContents = document.getElementById('registrarFormulario').innerHTML;
-        var originalContents = document.body.innerHTML;
+        // var printContents = document.getElementById('registrarFormulario').innerHTML;
+        // var originalContents = document.body.innerHTML;
     
-        document.body.innerHTML = printContents;
+        // document.body.innerHTML = printContents;
     
         window.print();
     
-        document.body.innerHTML = originalContents;
+        // document.body.innerHTML = originalContents;
     }
     

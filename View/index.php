@@ -80,7 +80,7 @@ if (!isset($_SESSION['S_iduser'])) {
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-black-light sidebar-mini">
   <div class="wrapper">
 
     <header class="main-header">
@@ -149,7 +149,7 @@ if (!isset($_SESSION['S_iduser'])) {
               </ul>
             </li>
             <!-- Control Sidebar Toggle Button -->
-            <li>
+            <li class="hidden">
               <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
             </li>
           </ul>
@@ -563,7 +563,7 @@ if (!isset($_SESSION['S_iduser'])) {
     $.widget.bridge('uibutton', $.ui.button);
 
 
-    cargar_contenido("contenido_principal", "graficas/vista_graficas.php");
+    cargar_contenido("contenido_principal", "menu/vista_menu.php");
   </script>
 
   <!-- datatable -->
