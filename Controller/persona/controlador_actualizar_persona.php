@@ -1,5 +1,9 @@
 <?php
 require '../../Model/modelo_personas.php';
+require '../../Model/modelo_agricultor.php';
+require '../../Model/modelo_tecnico.php';
+
+
 $idPersona = htmlspecialchars($_POST['idPersona'], ENT_QUOTES, 'utf-8');
 $nombre1 = htmlspecialchars($_POST['nombre1'], ENT_QUOTES, 'utf-8');
 $nombre2 = htmlspecialchars($_POST['nombre2'], ENT_QUOTES, 'utf-8');
@@ -14,7 +18,18 @@ $correo = $_POST['correo'];
 $telefono = $_POST['telefono'];
 $foto = $_POST['foto'];
 $etnia = htmlspecialchars($_POST['etnia'], ENT_QUOTES, 'utf-8');
-$discapacidad = htmlspecialchars($_POST['discapacidad'], ENT_QUOTES, 'utf-8');
+$idRol = htmlspecialchars($_POST['idRol'], ENT_QUOTES, 'utf-8');
+
+if ($idRol == 2 || $idRol == 1) {
+    $descripcion_estudio = htmlspecialchars($_POST['descripcion_estudio'], ENT_QUOTES, 'utf-8');
+    $idTecnico = htmlspecialchars($_POST['idTecnico'], ENT_QUOTES, 'utf-8');
+}
+if ($idRol == 3) {
+    $acargo = htmlspecialchars($_POST['acargo'], ENT_QUOTES, 'utf-8');
+    $idAgricultor = htmlspecialchars($_POST['idAgricultor'], ENT_QUOTES, 'utf-8');
+}
+
+// $discapacidad = htmlspecialchars($_POST['discapacidad'], ENT_QUOTES, 'utf-8');
 
 $MP = new Modelo_Persona();
 
@@ -29,10 +44,22 @@ $actualizarPer = $MP->actualizarPersona(
     $numero_ide,
     $sexo,
     $etnia,
-    $discapacidad,
     $fecha_n,
     $correo,
     $telefono,
     $foto
 );
-echo $actualizarPer;
+// echo $actualizarPer;
+if ($idRol == 2 || $idRol == 1) {
+    $MT = new Modelo_Tecnico();
+    $actualizarTec = $MT->actualizarTecnico(
+        $idTecnico,
+        $descripcion_estudio
+    );
+    echo $actualizarTec;
+}
+if ($idRol == 3) {
+    $MA = new Modelo_Agricultor();
+    $actualizarAgro = $MA->actualizarAgricultor($idAgricultor, $acargo);
+    echo $actualizarAgro;
+}

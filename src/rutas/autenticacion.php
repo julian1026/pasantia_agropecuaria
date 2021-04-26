@@ -19,7 +19,7 @@ function autenticarse(Request $request, Response $response)
     $contrasena = $param["contrasena"];
 
     $sql = "SELECT * FROM (SELECT u.idUsuario, u.user_name,u.contrasena,u.estado,u.idRol,r.nombre_rol,p.num_identificacion
-    from persona p JOIN usuario u on (p.idUsuario=u.idUsuario) JOIN rol r on (u.idRol=r.idRol) where user_name= BINARY :user_name)R  where contrasena= BINARY :contrasena";
+    from persona p JOIN usuario u on (p.idUsuario=u.idUsuario) JOIN rol r on (u.idRol=r.idRol) where user_name= BINARY :user_name)R";
     try {
         $db = new Conexion();
         $db = $db->conectar();
@@ -31,14 +31,17 @@ function autenticarse(Request $request, Response $response)
         if (count($data) > 0) {
             foreach ($data as $value) {
                 // var_dump($value["estado"]);
-                if ($value['estado'] == "ACTIVO") {
-                    session_start();
-                    $_SESSION['S_idUsuario'] = $value['idUsuario'];
-                    $_SESSION['S_rol'] = $value['idRol'];
-                } else {
-                    return json_encode('El usuario se encuentra inactivo..');
+                if (password_verify($contrasena, $value['contrasena'])) {
+                    if ($value['estado'] == "ACTIVO") {
+                        session_start();
+                        $_SESSION['S_idUsuario'] = $value['idUsuario'];
+                        $_SESSION['S_rol'] = $value['idRol'];
+                    } else {
+                        return json_encode('El usuario se encuentra inactivo..');
+                    }
                 }
-                return json_encode($data);
+
+                return json_encode('usuario no encontrado');
             }
         }
         return json_encode('Usuario no Exite');

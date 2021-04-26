@@ -19,7 +19,6 @@ class Modelo_Persona
         $numero_ide,
         $sexo,
         $etnia,
-        $discapacidad,
         $fecha_n,
         $correo,
         $telefono,
@@ -36,10 +35,10 @@ class Modelo_Persona
         if ($ultimoidUser) {
             $insertar = $this->pdo->conectar()->prepare(
                 'INSERT INTO persona (primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,
-                tipo_identificacion,num_identificacion,sexo,etnia,discapacidad,fecha_ncm,nivel_escolaridad,telefono,
+                tipo_identificacion,num_identificacion,sexo,etnia,fecha_ncm,nivel_escolaridad,telefono,
                 foto,correo,idUsuario) 
                 VALUES (:nombre1, :nombre2, :apellido1, :apellido2, :tipoid, :numeroid, :sexo,
-                :etnia, :discapacidad, :fechaN, :educacion, :telefono, :foto, :correo, :userIde)'
+                :etnia,:fechaN, :educacion, :telefono, :foto, :correo, :userIde)'
             );
 
             $insertar->bindparam(':nombre1', $nombre1);
@@ -51,7 +50,6 @@ class Modelo_Persona
             $insertar->bindparam(':numeroid', $numero_ide);
             $insertar->bindparam(':sexo', $sexo);
             $insertar->bindparam(':etnia', $etnia);
-            $insertar->bindparam(':discapacidad', $discapacidad);
             $insertar->bindparam(':fechaN', $fecha_n);
             $insertar->bindparam(':correo', $correo);
             $insertar->bindparam(':telefono', $telefono);
@@ -68,11 +66,10 @@ class Modelo_Persona
 
     function  listarPersona()
     {
-        $listar = $this->pdo->conectar()->prepare("SELECT idPersona, CONCAT(primer_nombre,' ',segundo_nombre,' ',primer_apellido,' ',segundo_apellido) nombreCompleto, primer_nombre, segundo_nombre,primer_apellido,
+        $listar = $this->pdo->conectar()->prepare("SELECT p.idPersona, CONCAT(primer_nombre,' ',segundo_nombre,' ',primer_apellido,' ',segundo_apellido) nombreCompleto, primer_nombre, segundo_nombre,primer_apellido,
         segundo_apellido, etnia,discapacidad,tipo_identificacion,num_identificacion,
-        sexo,fecha_ncm,nivel_escolaridad,telefono,correo,u.idUsuario, r.idRol FROM persona p
-         join usuario u on (p.idUsuario=u.idUsuario) join rol r on (u.idRol=r.idRol)
-        where r.idRol=3 ORDER BY idPersona DESC");
+        sexo,fecha_ncm,nivel_escolaridad,telefono,correo,u.idUsuario, r.idRol,a.PersonasAcargo,a.idAgricultor FROM persona p
+         join usuario u on (p.idUsuario=u.idUsuario) join rol r on (u.idRol=r.idRol) join agricultor a on(p.idPersona=a.idPersona) where u.idRol=3 ORDER BY p.idPersona DESC");
         $listar->execute();
         $arreglo = array();
         $valores = $listar->fetchAll(PDO::FETCH_ASSOC);
@@ -88,11 +85,11 @@ class Modelo_Persona
 
     function  listarPersonaADM()
     {
-        $listar = $this->pdo->conectar()->prepare("SELECT idPersona, CONCAT(primer_nombre,' ',segundo_nombre,' ',primer_apellido,' ',segundo_apellido) nombreCompleto, primer_nombre, segundo_nombre,primer_apellido,
+        $listar = $this->pdo->conectar()->prepare("SELECT p.idPersona, CONCAT(primer_nombre,' ',segundo_nombre,' ',primer_apellido,' ',segundo_apellido) nombreCompleto, primer_nombre, segundo_nombre,primer_apellido,
         segundo_apellido, etnia,discapacidad,tipo_identificacion,num_identificacion,
-        sexo,fecha_ncm,nivel_escolaridad,telefono,correo,u.idUsuario, r.idRol FROM persona p
-         join usuario u on (p.idUsuario=u.idUsuario) join rol r on (u.idRol=r.idRol)
-        where r.idRol!=3 ORDER BY idPersona DESC");
+        sexo,fecha_ncm,nivel_escolaridad,telefono,correo,u.idUsuario, r.idRol,t.idTecnico,t.descripcion_estudio FROM persona p
+         join usuario u on (p.idUsuario=u.idUsuario) join rol r on (u.idRol=r.idRol) join tecnicos t on (p.idPersona=t.idPersona)
+        where r.idRol!=3 ORDER BY p.idPersona DESC");
         $listar->execute();
         $arreglo = array();
         $valores = $listar->fetchAll(PDO::FETCH_ASSOC);
@@ -117,14 +114,13 @@ class Modelo_Persona
         $numero_ide,
         $sexo,
         $etnia,
-        $discapacidad,
         $fecha_n,
         $correo,
         $telefono,
         $foto
     ) {
         $insertar = $this->pdo->conectar()->prepare('UPDATE persona SET primer_nombre=:nombre1,
-        segundo_nombre=:nombre2,primer_apellido=:apellido1,segundo_apellido=:apellido2,etnia=:etnia,discapacidad=:discapacidad,tipo_identificacion=:tipoid,
+        segundo_nombre=:nombre2,primer_apellido=:apellido1,segundo_apellido=:apellido2,etnia=:etnia,tipo_identificacion=:tipoid,
         num_identificacion=:numeroid,sexo=:sexo,fecha_ncm=:fechaN,nivel_escolaridad=:educacion,telefono=:telefono,correo=:correo,foto=:foto
          WHERE idPersona =:idPersona');
         $insertar->bindparam(':idPersona', $idPersona);
@@ -137,7 +133,6 @@ class Modelo_Persona
         $insertar->bindparam(':numeroid', $numero_ide);
         $insertar->bindparam(':sexo', $sexo);
         $insertar->bindparam(':etnia', $etnia);
-        $insertar->bindparam(':discapacidad', $discapacidad);
         $insertar->bindparam(':fechaN', $fecha_n);
         $insertar->bindparam(':correo', $correo);
         $insertar->bindparam(':telefono', $telefono);

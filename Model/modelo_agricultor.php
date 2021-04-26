@@ -44,4 +44,21 @@ class Modelo_Agricultor
         return $listar->fetchAll(PDO::FETCH_ASSOC);
         $this->pdo->cerrar();
     }
+
+    function actualizarAgricultor(
+        $idAgricultor,
+        $acargo
+    ) {
+        $actualizar = $this->pdo->conectar()->prepare('UPDATE agricultor SET
+         PersonasAcargo=:acargo
+         WHERE idAgricultor =:idAgricultor');
+        $actualizar->bindparam(':idAgricultor', $idAgricultor);
+        $actualizar->bindparam(':acargo', $acargo);
+        if ($actualizar->execute()) {
+            $this->pdo->cerrar();
+            return 1;
+        }
+        $this->pdo->cerrar();
+        return 0;
+    }
 }

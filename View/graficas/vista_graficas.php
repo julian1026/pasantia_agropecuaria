@@ -31,7 +31,7 @@
                             <button type="button" class="btn btn-secundary" onclick="imprimirDatos()"><i class="fa  fa-print"><b>&nbsp;Imprimir</b></i></button>
                         </div>
                     </div>
-                    <div class="col-md-5 ">
+                    <div class="col-md-6">
                         <div class="card" id="graficaUno">
                             <h5 class="card-header">Datos Registro (Lineas Productivas) </h5>
                             <div class="card-body">
@@ -54,7 +54,7 @@
 
                         </div>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-7">
                         <div class="card" id="graficaDos">
                             <h5 class="card-header">Servicios Publicos</h5>
                             <div class="card-body">

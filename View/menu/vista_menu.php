@@ -8,7 +8,7 @@
 
         <div class="box-tools pull-right">
             <!-- <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button> -->
+            </button> -->
         </div>
         <!-- /.box-tools -->
         <!-- </div> -->
@@ -22,52 +22,56 @@
 
                 <div class="group">
 
-                    <a id="opc1">
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="info-box bg-blue">
-                                <span class="info-box-icon"><i class="fa fa-users"></i></span>
 
-                                <div class="info-box-content">
+                    <?php
+                    session_start();
+                    if ($_SESSION['S_rol'] == 1) {
+                    ?>
+                        <a id="opc1">
+                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                <div class="info-box bg-blue">
+                                    <span class="info-box-icon"><i class="fa fa-users"></i></span>
 
-                                    <span class="info-box-text">Datos de Usuarios</span>
-                                    <span class="info-box-number">Gestion de Usuarios</span>
-                                    <span class="progress-description">
-                                        click
-                                    </span>
+                                    <div class="info-box-content">
+
+                                        <span class="info-box-text">Datos de Usuarios</span>
+                                        <span class="info-box-number">Gestion de Usuarios</span>
+                                        <span class="progress-description">
+                                            click
+                                        </span>
 
 
+                                    </div>
+
+                                    <!-- /.info-box-content -->
                                 </div>
-
-                                <!-- /.info-box-content -->
+                                <!-- /.info-box -->
                             </div>
-                            <!-- /.info-box -->
-                        </div>
-                    </a>
+                        </a>
 
 
 
+                        <a id="opc2">
+                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                <div class="info-box bg-gray">
+                                    <span class="info-box-icon"><i class="fa  fa-user"></i></span>
 
+                                    <div class="info-box-content">
+                                        <span class="info-box-text">Datos Personales</span>
+                                        <span class="info-box-number">Administradores</span>
+                                        <span class="progress-description">
+                                            click
+                                        </span>
+                                    </div>
 
-
-                    <a id="opc2">
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="info-box bg-gray">
-                                <span class="info-box-icon"><i class="fa  fa-user"></i></span>
-
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Datos Personales</span>
-                                    <span class="info-box-number">Administradores</span>
-                                    <span class="progress-description">
-                                        click
-                                    </span>
+                                    <!-- /.info-box-content -->
                                 </div>
-
-                                <!-- /.info-box-content -->
+                                <!-- /.info-box -->
                             </div>
-                            <!-- /.info-box -->
-                        </div>
-                    </a>
-
+                        </a>
+                    <?php
+                    }
+                    ?>
 
                     <a id="opc3">
                         <div class="col-md-4 col-sm-6 col-xs-12">
@@ -188,6 +192,11 @@
 
 
                 </div>
+
+                <!-- imagenes -->
+
+
+
             </div>
 
         </div>
@@ -208,7 +217,3 @@
 </div>
 
 <!-- cierre de modal de actualizar de plantas -->
-
-<script>
-
-</script>

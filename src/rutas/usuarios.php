@@ -65,7 +65,8 @@ function crearUsuario(Request $request, Response $response)
     if (count($param) > 0) {
         foreach ($param as $value) {
             $usuario = $value['user_name'];
-            $contrasena = md5($value['contrasena']);
+            // $contrasena = md5($value['contrasena']);
+            $contrasena = password_hash($value['contrasena'], PASSWORD_DEFAULT);
             $idRol = $value['idRol'];
             $estado = 'ACTIVO';
             var_dump($contrasena);

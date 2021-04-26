@@ -25,7 +25,7 @@ $correo = $_POST['correo'];
 $telefono = $_POST['telefono'];
 $foto = $_POST['foto'];
 $etnia = htmlspecialchars($_POST['etnia'], ENT_QUOTES, 'utf-8');
-$discapacidad = htmlspecialchars($_POST['discapacidad'], ENT_QUOTES, 'utf-8');
+// $discapacidad = htmlspecialchars($_POST['discapacidad'], ENT_QUOTES, 'utf-8');
 /* datos Agricultor*/
 
 
@@ -64,7 +64,6 @@ if ($consultaUsu[0] == '1') {
         $numero_ide,
         $sexo,
         $etnia,
-        $discapacidad,
         $fecha_n,
         $correo,
         $telefono,
@@ -74,10 +73,15 @@ if ($consultaUsu[0] == '1') {
     if ($consultaPer[0] == '1') {
         switch ($rol) {
             case 1:
-                $data1 = array();
-                $data1 = [1];
-                $data1 = json_encode($consultaPer);
-                echo $data1;
+                // $data1 = array();
+                // $data1 = [1];
+                // $data1 = json_encode($consultaPer);
+                // echo $data1;
+                $estudio = '';
+                $tecnico = new Modelo_Tecnico();
+                $consultarTec = $tecnico->registrarTecnico($estudio);
+                $data = json_encode($consultarTec);
+                echo $data;
                 break;
             case 2:
                 $tecnico = new Modelo_Tecnico();

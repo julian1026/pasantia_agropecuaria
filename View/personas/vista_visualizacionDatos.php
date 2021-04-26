@@ -5,7 +5,7 @@
 
     <div class="box box-white box-solid">
         <div class="box-header with-border">
-            <h3 class="box-title">Datos Personales</h3>
+            <h3 class="box-title">Datos Personal de Administrativo</h3>
 
             <div class="box-tools pull-right">
                 <button type="button" onclick="cargar_contenido('contenido_principal','personas/vista_personas_administrativos.php')" class="btn btn-box-tool" data-widget="collapse"><i class="fa  fa-arrow-left"></i>
@@ -52,16 +52,16 @@
                             <div class="group mt-5">
                                 <div class="col-md-3">
                                     <label for="txt_nombre"> Primer Nombre</label><br />
-                                    <input type="text" class='form-control' placeholder='' id='txt_nombre'>
+                                    <input type="text" class='form-control' placeholder='' id='txt_nombre' disabled>
                                 </div>
                                 <div class="col-md-3">
                                     <label for="txt_nombre2">Segundo Nombre</label><br />
-                                    <input type="text" class='form-control' placeholder='' id='txt_nombre2'>
+                                    <input type="text" class='form-control' placeholder='' id='txt_nombre2' disabled>
                                 </div>
 
                                 <div class="col-md-3">
                                     <label for="txt_ape">Primer Apellido</label><br />
-                                    <input type="text" class='form-control' placeholder='' id='txt_ape'>
+                                    <input type="text" class='form-control' placeholder='' id='txt_ape' disabled>
                                 </div>
 
 
@@ -72,18 +72,18 @@
 
                                 <div class="col-md-3">
                                     <label for="txt_ape2">Segundo Apellido</label><br />
-                                    <input type="text" class='form-control' placeholder='' id='txt_ape2'>
+                                    <input type="text" class='form-control' placeholder='' id='txt_ape2' disabled>
                                 </div>
 
                                 <div class="col-md-3">
                                     <label for="">Sexo</label><br />
-                                    <input type="text" class="form-control" id="txt_sexo">
+                                    <input type="text" class="form-control" id="txt_sexo" disabled>
 
                                 </div>
 
                                 <div class="col-md-3">
                                     <label for="">Formaci&oacute;n Academica</label><br />
-                                    <input type="text" class="form-control" id="txt_educacion">
+                                    <input type="text" class="form-control" id="txt_educacion" disabled>
                                 </div>
 
                             </div>
@@ -93,19 +93,19 @@
 
                                 <div class="col-md-3">
                                     <label for="">Tipo de Identificaci&oacute;n</label><br />
-                                    <input type="text" class="form-control" id="txt_tipoIdentificacion">
+                                    <input type="text" class="form-control" id="txt_tipoIdentificacion" disabled>
 
                                 </div>
 
 
                                 <div class="col-md-3">
                                     <label for="txt_identificacion">Numero de Identicaci&oacute;n</label><br />
-                                    <input type="text" class='form-control' placeholder='' id='txt_num_ide'>
+                                    <input type="text" class='form-control' placeholder='' id='txt_num_ide' disabled>
                                 </div>
 
                                 <div class="col-md-3">
                                     <label for="">Etnia</label><br />
-                                    <input type="text" class="form-control" id="txt_etnia">
+                                    <input type="text" class="form-control" id="txt_etnia" disabled>
                                 </div>
 
 
@@ -117,23 +117,23 @@
 
                                 <div class="col-md-3">
                                     <label for="">Fecha Nacimiento</label><br />
-                                    <input type="date" class='form-control' min="1940-01-01" max="2005-12-31" placeholder='' id='txt_fecha_nacimiento'>
+                                    <input type="date" class='form-control' min="1940-01-01" max="2005-12-31" placeholder='' id='txt_fecha_nacimiento' disabled>
                                 </div>
 
 
                                 <div class="col-md-3">
                                     <label for="">Correo Electronico</label><br />
-                                    <input type="email" class='form-control' placeholder='' id='txt_correo'>
+                                    <input type="email" class='form-control' placeholder='' id='txt_correo' disabled>
                                 </div>
 
                                 <div class="col-md-3">
                                     <label for="">Telefono</label><br />
-                                    <input type="text" class='form-control' placeholder='' id='txt_telefono'>
+                                    <input type="text" class='form-control' placeholder='' id='txt_telefono' disabled>
                                 </div>
 
                                 <div class="col-md-3">
                                     <label for="">Descripcion de Estudio</label><br />
-                                    <input type="text" class='form-control' placeholder='' id='txt_descripcion'>
+                                    <input type="text" class='form-control' placeholder='' id='txt_descripcion' disabled>
                                 </div>
                             </div>
 

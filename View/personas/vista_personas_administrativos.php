@@ -196,12 +196,16 @@
                                 </div>
 
                                 <div class="col-md-3">
+                                    <label for="">Telefono</label><br />
+                                    <input type="text" class='form-control' placeholder='Ingresar # telefonico' id='txt_telefono'>
+                                </div>
+                                <!-- <div class="col-md-3">
                                     <label for="">Discapacidad</label><br />
                                     <select class="form-control" name="discapacidad" id='txt_discapacidad' value='no' style='width: 100%;'>
                                         <option value="no">no</option>
                                         <option value="si">si</option>
                                     </select>
-                                </div>
+                                </div> -->
                             </div>
 
                             <!-- fecha,foto, correo, telefono -->
@@ -219,10 +223,7 @@
                                     <input type="email" class='form-control' placeholder='ingresa correo' id='txt_correo'>
                                 </div>
 
-                                <div class="col-md-3">
-                                    <label for="">Telefono</label><br />
-                                    <input type="text" class='form-control' placeholder='Ingresar # telefonico' id='txt_telefono'>
-                                </div>
+
 
 
                             </div>
@@ -277,6 +278,8 @@
                             <div class="group mt-5">
                                 <div class="col-md-12">
                                     <input type="text" id='txt_idUsuario_editar' hidden />
+                                    <input type="text" id='txt_idRol_editar' hidden />
+                                    <input type="text" id='txt_idTecnico_editar' hidden />
                                 </div>
                             </div>
                             <div class="group mt-5">
@@ -356,12 +359,16 @@
                                 </div>
 
                                 <div class="col-md-3">
+                                    <label for="">Telefono</label><br />
+                                    <input type="text" class='form-control' placeholder='Ingresar # telefonico' id='txt_telefono_editar'>
+                                </div>
+                                <!-- <div class="col-md-3">
                                     <label for="">Discapacidad</label><br />
                                     <select class="form-control" name="discapacidad" id='txt_discapacidad_editar' value='no' style='width: 100%;'>
                                         <option value="no">no</option>
                                         <option value="si">si</option>
                                     </select>
-                                </div>
+                                </div> -->
                             </div>
 
                             <!-- fecha,foto, correo, telefono -->
@@ -378,11 +385,12 @@
                                     <label for="">Correo Electronico</label><br />
                                     <input type="email" class='form-control' placeholder='ingresa correo' id='txt_correo_editar'>
                                 </div>
-
                                 <div class="col-md-3">
-                                    <label for="">Telefono</label><br />
-                                    <input type="text" class='form-control' placeholder='Ingresar # telefonico' id='txt_telefono_editar'>
+                                    <label for="">Descripcion de estudio</label><br />
+                                    <input type="text" class='form-control' placeholder='ingresar' id='txt_estudio_editar'>
                                 </div>
+
+
 
 
 

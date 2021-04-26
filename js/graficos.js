@@ -103,7 +103,7 @@ function lineasProductivaTres(){
 function graficarLineasProductivas(nombre,cantidad,colores,tituloTabla,tipo){
     // contenedor.innerHTML+=`<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css">
     // `;
-    contenedor.innerHTML=`<canvas id="myChart" width="200" height="200"></canvas>`;
+    contenedor.innerHTML=`<canvas id="myChart" width="10" height="10"></canvas>`;
     var canvas = document.getElementById('myChart');
     var ctx = canvas.getContext('2d');
       var myChart = new Chart(ctx, {

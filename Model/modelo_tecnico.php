@@ -34,11 +34,31 @@ class Modelo_Tecnico
         }
         return $show;
     }
+
+
     function listarTecnicos()
     {
-        $listar = $this->pdo->conectar()->prepare("SELECT * from persona p JOIN tecnicos t on (p.idPersona=t.idPersona)");
+        $listar = $this->pdo->conectar()->prepare("SELECT r.idRol,p.primer_nombre,p.segundo_nombre,p.primer_apellido,p.segundo_apellido,p.num_identificacion from rol r join usuario u  on (r.idRol=u.idRol) join persona p on (u.idUsuario=p.idUsuario)");
         $listar->execute();
         return $listar->fetchAll(PDO::FETCH_ASSOC);
         $this->pdo->cerrar();
+    }
+
+
+    function actualizarTecnico(
+        $idTecnico,
+        $descripcion_estudio
+    ) {
+        $actualizar = $this->pdo->conectar()->prepare('UPDATE tecnicos SET
+         descripcion_estudio=:descripcion_estudio
+         WHERE idTecnico =:idTecnico');
+        $actualizar->bindparam(':idTecnico', $idTecnico);
+        $actualizar->bindparam(':descripcion_estudio', $descripcion_estudio);
+        if ($actualizar->execute()) {
+            $this->pdo->cerrar();
+            return 1;
+        }
+        $this->pdo->cerrar();
+        return 0;
     }
 }

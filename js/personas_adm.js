@@ -53,8 +53,9 @@ $('#tabla_personaADM').on('click','.editar',function(){
     
     $("#modal_actualizar_personales").modal({backdrop:'static', keyboard:false});
     $("#modal_actualizar_personales").modal('show');
-    console.log(data);
+    // console.log(data);
     $("#txt_idUsuario_editar").val(data.idPersona);
+    $("#txt_idRol_editar").val(data.idRol);
     $("#txt_nombre_editar").val(data.primer_nombre);
     $("#txt_nombre2_editar").val(data.segundo_nombre);
     $("#txt_ape_editar").val(data.primer_apellido);
@@ -68,6 +69,8 @@ $('#tabla_personaADM').on('click','.editar',function(){
     $("#txt_fecha_nacimiento_editar").val(data.fecha_ncm);
     $("#txt_correo_editar").val(data.correo);
     $("#txt_telefono_editar").val(data.telefono);
+    $("#txt_estudio_editar").val(data.descripcion_estudio);
+    $("#txt_idTecnico_editar").val(data.idTecnico);
 })
 
 $('#tabla_personaADM').on('click','.datos',function(){
@@ -79,7 +82,7 @@ $('#tabla_personaADM').on('click','.datos',function(){
     // console.log(data);
     cargar_contenido('contenido_principal','personas/vista_visualizacionDatos.php');
     idPersona=data.idPersona;
-    console.log(idPersona);
+    // console.log(idPersona);
     llenarDatos(idPersona);
     
 })
@@ -92,9 +95,9 @@ function llenarDatos(idPersona){
     }).done(function(res){
         if(res.length>0){ 
         datoX=JSON.parse(res); 
-        console.log(datoX);
+        // console.log(datoX);
         datoP=datoX[0];
-        console.log(datoP);
+        // console.log(datoP);
 
            
             $("#txt_nombre").val(datoP.primer_nombre);
@@ -120,6 +123,7 @@ function llenarDatos(idPersona){
 
 function actualizarDatosPersonas(){
     idPersona=$('#txt_idUsuario_editar').val();
+    idTecnico=$('#txt_idTecnico_editar').val();
     nombre1=$('#txt_nombre_editar').val();
     nombre2=$('#txt_nombre2_editar').val();
     apellido1=$('#txt_ape_editar').val();
@@ -134,6 +138,8 @@ function actualizarDatosPersonas(){
     sexo=$('#txt_sexo_editar').val();
     etnia=$('#txt_etnia_editar').val();
     discapacidad=$('#txt_discapacidad_editar').val();
+    rolId=$('#txt_idRol_editar').val();
+    estudio=$('#txt_estudio_editar').val();
 
     const nuevo3 = new FormData();
 
@@ -158,6 +164,9 @@ function actualizarDatosPersonas(){
         nuevo3.append('sexo',sexo);
         nuevo3.append('etnia',etnia);
         nuevo3.append('discapacidad',discapacidad);
+        nuevo3.append('idRol',rolId);
+        nuevo3.append('descripcion_estudio',estudio);
+        nuevo3.append('idTecnico',idTecnico);
         $.ajax({
             url:'../Controller/persona/controlador_actualizar_persona.php',
             type:'POST',

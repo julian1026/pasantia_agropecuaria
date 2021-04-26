@@ -298,7 +298,7 @@ telefono=$('#txt_telefono').val();
 foto=$('#txt_foto').val();
 sexo=$('#txt_sexo').val();
 etnia=$('#txt_etnia').val();
-discapacidad=$('#txt_discapacidad').val();
+// discapacidad=$('#txt_discapacidad').val();
 
 
 const nuevo3 = new FormData();
@@ -365,7 +365,7 @@ nuevo3.append('telefono',telefono);
 nuevo3.append('foto',foto);
 nuevo3.append('sexo',sexo);
 nuevo3.append('etnia',etnia);
-nuevo3.append('discapacidad',discapacidad);
+// nuevo3.append('discapacidad',discapacidad);
 $.ajax({
     url:'../Controller/usuario/controlador_registrar_usuario.php',
     type:'POST',

@@ -197,12 +197,17 @@
                   </select>
                 </div>
 
-                <div class="col-md-3">
+                <!-- <div class="col-md-3">
                   <label for="">Discapacidad</label><br />
                   <select class="form-control" name="discapacidad" id='txt_discapacidad' value='no' style='width: 100%;'>
                     <option value="no">no</option>
                     <option value="si">si</option>
                   </select>
+                </div> -->
+
+                <div class="col-md-3">
+                  <label for="">Telefono</label><br />
+                  <input type="text" class='form-control' placeholder='Ingresar # telefonico' id='txt_telefono'>
                 </div>
               </div>
 
@@ -221,10 +226,7 @@
                   <input type="email" class='form-control' placeholder='ingresa correo' id='txt_correo'>
                 </div>
 
-                <div class="col-md-3">
-                  <label for="">Telefono</label><br />
-                  <input type="text" class='form-control' placeholder='Ingresar # telefonico' id='txt_telefono'>
-                </div>
+
               </div>
 
               <!--  -->

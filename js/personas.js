@@ -32,9 +32,9 @@ tabla = $("#tabla_persona").DataTable({
        {"data":"idRol",
        render: function (data,type,row){
             if(data=='3'){
-               return "<button style='font-size:10px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i> </button>&nbsp;"
-                +"<button style='font-size:10px;' type='button'  class='reg_finca btn btn-success'><i class='fa fa-newspaper-o'></i> </button>&nbsp;"
-                +"<button style='font-size:10px;' type='button'  class='datosAgri btn btn-white'><i class='fa  fa-eye'></i> </button>"
+               return "<button style='font-size:10px;' type='button'  class='datosAgri btn-lg btn-secondary btn-sm'><i class='fa  fa-eye'></i> </button>&nbsp;<button style='font-size:10px;' type='button' class='editar btn-lg btn-primary'><i class='fa fa-edit'></i>Editar</button>&nbsp;"
+                +"<button style='font-size:10px;' type='button'  class='reg_finca btn-lg btn-success'><i class='fa fa-newspaper-o'></i>Reg finca </button>&nbsp;"
+                +""
                 }else{
                    return "<button style='font-size:10px;' type='button' class='editar btn btn-warning'><i class='fa fa-edit'></i> </button>&nbsp;"
                 }
@@ -77,6 +77,7 @@ $('#tabla_persona').on('click','.editar',function(){
     $("#modal_actualizar_personales").modal('show');
     // console.log(data);
     $("#txt_idUsuario_editar").val(data.idPersona);
+    $("#txt_idAgricultor_editar").val(data.idAgricultor);
     $("#txt_nombre_editar").val(data.primer_nombre);
     $("#txt_nombre2_editar").val(data.segundo_nombre);
     $("#txt_ape_editar").val(data.primer_apellido);
@@ -90,6 +91,9 @@ $('#tabla_persona').on('click','.editar',function(){
     $("#txt_fecha_nacimiento_editar").val(data.fecha_ncm);
     $("#txt_correo_editar").val(data.correo);
     $("#txt_telefono_editar").val(data.telefono);
+    $("#txt_acargo_editar").val(data.PersonasAcargo);
+    $("#txt_rol_editar").val(data.idRol);
+
 })
 
 // ------------mostrar datos de un solo agricultor---------------//
@@ -144,6 +148,7 @@ function cargar(idPersona){
 
 function actualizarDatosPersonas(){
     idPersona=$('#txt_idUsuario_editar').val();
+    idAgricultor=$('#txt_idAgricultor_editar').val();
     nombre1=$('#txt_nombre_editar').val();
     nombre2=$('#txt_nombre2_editar').val();
     apellido1=$('#txt_ape_editar').val();
@@ -157,11 +162,12 @@ function actualizarDatosPersonas(){
     foto=$('#txt_foto_editar').val();
     sexo=$('#txt_sexo_editar').val();
     etnia=$('#txt_etnia_editar').val();
-    discapacidad=$('#txt_discapacidad_editar').val();
+    acargo=$('#txt_acargo_editar').val();
+    rolId=$('#txt_rol_editar').val();
 
     const nuevo3 = new FormData();
 
-    if(idPersona.length==0 || etnia==0 || discapacidad==0 || nombre1.length==0 || apellido1.length==0 || educacion.length==0 ||
+    if(idPersona.length==0 || etnia==0 || nombre1.length==0 || apellido1.length==0 || educacion.length==0 ||
         tipo_identificacion==''  || numero_ide.length==0 || fecha_nacimiento.length==0 
         || telefono.length==0 || sexo.length==0)
         {
@@ -181,7 +187,9 @@ function actualizarDatosPersonas(){
         nuevo3.append('foto',foto);
         nuevo3.append('sexo',sexo);
         nuevo3.append('etnia',etnia);
-        nuevo3.append('discapacidad',discapacidad);
+        nuevo3.append('acargo',acargo);
+        nuevo3.append('idAgricultor',idAgricultor);
+        nuevo3.append('idRol',rolId);
         $.ajax({
             url:'../Controller/persona/controlador_actualizar_persona.php',
             type:'POST',

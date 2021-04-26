@@ -206,7 +206,7 @@ function cargarActividadesAgro(){
              e.preventDefault(); 
              let dato=e.target.value;
              let identificador1=e.target.id;
-             console.log(identificador1);
+            //  console.log(identificador1);
              cargarLineasProductivas(dato,identificador1);
      })
   }
@@ -215,7 +215,7 @@ function cargarActividadesAgro(){
              e.preventDefault(); 
              let dato=e.target.value;
              let identificador2=e.target.id;
-             console.log(identificador2);
+            //  console.log(identificador2);
              cargarLineasProductivas(dato,identificador2);
      })
   }
@@ -225,7 +225,7 @@ function cargarActividadesAgro(){
              e.preventDefault(); 
              let dato=e.target.value;
              let identificador3=e.target.id;
-             console.log(identificador3);
+            //  console.log(identificador3);
              cargarLineasProductivas(dato,identificador3);
      })
   }
@@ -242,11 +242,18 @@ $('#tabla_finca').on('click','.editar',function(){
     if(tabla.row(this).child.isShown()){
         var data=tabla.row(this).data();
     }
+
+    cargarCorregimientos();
+    cargarActividadesAgro();
+    cargarLineasProductivas1();
+    capturarIdentificadorCorregimiento();
+    obcionesLineasPro();
     // idPer=data.idPersona;
     // console.log(idPer);
     // obtenerIdAgricultor(idPer);
     // const geolocalizacion=navigator.geolocation;
     //  geolocalizacion.getCurrentPosition(getPosition,error,options)//geolocalizador  
+
     $("#modalActualizarFinca").modal({backdrop:'static', keyboard:false});
     $("#modalActualizarFinca").modal('show');
     // console.log(data);
@@ -296,11 +303,7 @@ $('#tabla_finca').on('click','.editar',function(){
     fincaId=data.idFinca;
     // listarVeredasPrincipal();
     // cargarCorregimientos();
-    cargarCorregimientos();
-    cargarActividadesAgro();
-    cargarLineasProductivas1();
-    capturarIdentificadorCorregimiento();
-    obcionesLineasPro();
+    
 
 })
 
@@ -419,7 +422,7 @@ function cargarLineasProductivas1(){
 
 
 function actualizarFinca(){
-    
+   
     longitud=$('#txt_longitud').val();
     latitud=$('#txt_latitud').val();
     nombre_finca=$('#txt_fincaNombre').val();
