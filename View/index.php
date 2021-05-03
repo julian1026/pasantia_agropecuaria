@@ -140,7 +140,7 @@ if (!isset($_SESSION['S_iduser'])) {
                 <!-- Menu Footer-->
                 <li class="user-footer">
                   <div class="pull-left">
-                    <a href="#" class="btn btn-default btn-flat" onclick="cargar_contenido('mostrar','usuarios/vista_cambiar_contrasena.php')">Cambiar Contrasena</a>
+                    <a href="#" class="btn btn-default btn-flat" onclick="cargar_contenido('mostrar','usuarios/vista_cambiar_contrasena.php')">Cambiar Contrase&ntilde;a</a>
                   </div>
                   <div class="pull-right">
                     <a href="../Controller/usuario/controlador_cerrar_session.php" class="btn btn-default btn-flat">Salir</a>

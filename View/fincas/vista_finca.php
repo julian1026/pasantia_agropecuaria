@@ -367,6 +367,13 @@
                             </div>
                         </div>
 
+                        <div class="group">
+                            <div class="column col-md-4">
+                                <label for="">Fecha Registro</label>
+                                <input type="date" class="form-control" id="txt_registroFinca">
+                            </div>
+                        </div>
+
                         <!-- no -->
                         <div class="col-md-12">
 

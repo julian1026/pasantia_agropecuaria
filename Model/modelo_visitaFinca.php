@@ -104,6 +104,7 @@ class Modelo_VisitarFinca
 
 
     function actualizarVisitaFinca(
+        $fecha,
         $objetivoVisita,
         $sistemasProduccion,
         $situacionEncontrada,
@@ -112,13 +113,16 @@ class Modelo_VisitarFinca
         $idvisitas
     ) {
         $actualizar = $this->pdo->conectar()->prepare('UPDATE visitas_fincas
-         SET objetivoVisita=:objetivoVisita,
+         SET 
+         fecha=:fecha,
+         objetivoVisita=:objetivoVisita,
          sistemasProduccion=:sistemasProduccion,
          situacionEncontrada=:situacionEncontrada,
          actividadRealizada=:actividadRealizada,
          actividadPendientes=:actividadPendientes
         WHERE idvisitas =:idvisitas');
 
+        $actualizar->bindparam(':fecha', $fecha);
         $actualizar->bindparam(':objetivoVisita', $objetivoVisita);
         $actualizar->bindparam(':sistemasProduccion',  $sistemasProduccion);
         $actualizar->bindparam(':situacionEncontrada', $situacionEncontrada);

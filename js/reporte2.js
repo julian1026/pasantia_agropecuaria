@@ -85,12 +85,14 @@ function CargarTecnicos(){
             selectTecnicos.innerHTML=`<option value="0">Selecionar</option>`;
             selectTecnicos.innerHTML=`<option value="0">Selecionar</option>`;
             
-
-            for(let s of dato){
-                selectTecnicos.innerHTML+=`
-                <option value="${s.num_identificacion}">${s.primer_nombre} ${s.segundo_nombre} ${s.primer_apellido} ${s.segundo_apellido} </option>
-                `
+            if(dato){
+                for(let s of dato){
+                    selectTecnicos.innerHTML+=`
+                    <option value="${s.num_identificacion}">${s.primer_nombre} ${s.segundo_nombre} ${s.primer_apellido} ${s.segundo_apellido} </option>
+                    `
+                }
             }
+         
         }
     }) 
 }

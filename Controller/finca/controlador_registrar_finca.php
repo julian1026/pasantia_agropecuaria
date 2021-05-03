@@ -19,11 +19,13 @@ $energiaAlternativas = $_POST['energiaAlternativas'];
 $servicioSanitario = $_POST['servicioSanitario'];
 $vereda = $_POST['Vereda'];
 $idAgricultor = $_POST['idAgricultor'];
+$fecha = $_POST['fecha'];
 $registrador = $_SESSION['S_registrador'];
 
 $registrar = $MU->registrarFinca(
     $longitud,
     $latitud,
+    $fecha,
     $nombre_finca,
     $hectareas,
     $linea_productiva1,

@@ -330,7 +330,7 @@ function capturarIdentificadorCorregimiento(){
             e.preventDefault(); 
             let dato=e.target.value;
             let identificador1=e.target.id;
-            console.log(identificador1);
+            // console.log(identificador1);
             cargarVeredas(dato,identificador1);
     })
  }
@@ -351,7 +351,7 @@ function cargarVeredas(id_corregimiento,txt_cambio_id){
         if(res.length>0){
             if(txt_cambio_id=='txt_corregimiento'){
                 dato_actividad=JSON.parse(res); 
-                console.log(dato_actividad);
+                // console.log(dato_actividad);
                 selectVereda.innerHTML=``;
                 selectVereda.innerHTML=`<option value="0">Selecionar</option>`;
                 for(let s of dato_actividad){
@@ -382,11 +382,13 @@ function RegistrarFinca(){
     energiaElectrica=$('input[name=energia_electrica]:checked').val();
     energiasAlternativas=$('input[name=energia_alternativa]:checked').val();
     servicioSanitario=$('input[name=servicio_sanitario]:checked').val();
+    registroFinca=$('#txt_registroFinca').val();
     linea_pro1=$('#txt_pro_1').val();
     linea_pro2=$('#txt_pro_2').val();
     linea_pro3=$('#txt_pro_3').val();
     vereda=$('#txt_vered').val();
-    console.log(vereda);
+    fecha=registroFinca.split('/').reverse().join('/');
+    // console.log(fecha);
 
     // console.log(hetereas,linea_productiva,actividad_Agropecuaria,idAgricultor,vereda);
     if(longitud.length==0 || latitud.length==0 || nombre_finca.length==0 || hetereas.length==0
@@ -407,9 +409,12 @@ function RegistrarFinca(){
         if(linea_pro2==linea_pro3){
             return Swal.fire("Mensaje De Error","Las lineas productivas no pueden ser iguales ","warning");
         }
-        
     }
 
+
+   if(!fecha){
+    return Swal.fire("Mensaje De Error","ingresar fecha de registro ","warning");
+   }
    if(linea_pro2==0){
        linea_pro2=46;
    }
@@ -432,6 +437,7 @@ function RegistrarFinca(){
         r_finca.append('linea_productiva2',linea_pro2);
         r_finca.append('linea_productiva3',linea_pro3);
         r_finca.append('idAgricultor',idAgricultor);
+        r_finca.append('fecha',fecha);
        
 
         let url='../Controller/finca/controlador_registrar_finca.php';
@@ -441,11 +447,12 @@ function RegistrarFinca(){
     
         xhttp.onreadystatechange=function(){
             if(this.status==200 && this.readyState==4){
-                console.log(this.responseText);
+                // console.log(this.responseText);
                 let datos=JSON.parse(this.responseText);
                 if(datos>0){
                     $("#modalRegistrarFinca").modal('hide');
                      Swal.fire("Mensaje De Confirmacion","Registro Exitoso ","success");
+                     limpiarRegistroFinca();
                      tabla.ajax.reload();
                     
                 }else{
@@ -455,6 +462,23 @@ function RegistrarFinca(){
             
         }
     
+}
+
+
+function limpiarRegistroFinca(){
+    $('#txt_longitud').val('');
+    $('#txt_latitud').val('');
+    $('#txt_fincaNombre').val('');
+    $('#txt_hetareas').val('');
+    $('input[name=servicioAgua]:checked').val('');
+    $('input[name=energia_electrica]:checked').val('');
+    $('input[name=energia_alternativa]:checked').val('');
+    $('input[name=servicio_sanitario]:checked').val('');
+    $('#txt_registroFinca').val('');
+    $('#txt_pro_1').val('');
+    $('#txt_pro_2').val('');
+    $('#txt_pro_3').val('');
+    $('#txt_vered').val('');
 }
 
 
@@ -573,7 +597,7 @@ function obcionesLineasPro(){
             e.preventDefault(); 
             let dato=e.target.value;
             let identificador1=e.target.id;
-            console.log(identificador1);
+            // console.log(identificador1);
             cargarLineasProductivas(dato,identificador1);
     })
  }
@@ -582,7 +606,7 @@ function obcionesLineasPro(){
             e.preventDefault(); 
             let dato=e.target.value;
             let identificador2=e.target.id;
-            console.log(identificador2);
+            // console.log(identificador2);
             cargarLineasProductivas(dato,identificador2);
     })
  }
@@ -592,7 +616,7 @@ function obcionesLineasPro(){
             e.preventDefault(); 
             let dato=e.target.value;
             let identificador3=e.target.id;
-            console.log(identificador3);
+            // console.log(identificador3);
             cargarLineasProductivas(dato,identificador3);
     })
  }

@@ -12,6 +12,7 @@ class Modelo_Finca
     function registrarFinca(
         $longitud,
         $latitud,
+        $fecha,
         $nombre_finca,
         $hectareas,
         $linea_productiva1,
@@ -26,10 +27,11 @@ class Modelo_Finca
         $registrador
     ) {
         $insertar = $this->pdo->conectar()->prepare(
-            'INSERT INTO finca (nombre_finca,hectareas,ab_agua,e_electrica,e_alternativas,s_sanitario,latitud,longitud,registrador,
+            'INSERT INTO finca (nombre_finca,hectareas,ab_agua,e_electrica,e_alternativas,s_sanitario,latitud,longitud,
+            fecha_registro,registrador,
             id_linea_pro1,id_linea_pro2,id_linea_pro3,idAgricultor,id_Vereda) 
                  VALUES (:nombre,:hectareas,:agua,:energiaElectrica,:energiaAlternativas,:servicioSanitario,
-                 :latitud,:longitud,:registrador,:lineaPro1,:lineaPro2,:lineaPro3,:idAgricultor,:idVereda)'
+                 :latitud,:longitud,:fecha,:registrador,:lineaPro1,:lineaPro2,:lineaPro3,:idAgricultor,:idVereda)'
         );
 
         $insertar->bindparam(':nombre', $nombre_finca);
@@ -40,6 +42,7 @@ class Modelo_Finca
         $insertar->bindparam(':servicioSanitario', $servicioSanitario, PDO::PARAM_INT);
         $insertar->bindparam(':latitud', $latitud);
         $insertar->bindparam(':longitud', $longitud);
+        $insertar->bindparam(':fecha', $fecha);
         $insertar->bindparam(':lineaPro1', $linea_productiva1);
         $insertar->bindparam(':lineaPro2', $linea_productiva2);
         $insertar->bindparam(':lineaPro3', $linea_productiva3);
@@ -80,6 +83,7 @@ class Modelo_Finca
     function actualizarFinca(
         $longitud,
         $latitud,
+        $fecha,
         $nombre_finca,
         $hectareas,
         $linea_productiva1,
@@ -97,6 +101,7 @@ class Modelo_Finca
             hectareas=:hectareas,
             latitud=:latitud,
             longitud=:longitud,
+            fecha_registro=:fecha,
             ab_agua=:agua,
             e_electrica=:electrica,
             e_alternativas=:alternativa,
@@ -111,6 +116,7 @@ class Modelo_Finca
         $actualizar->bindparam(':hectareas', $hectareas);
         $actualizar->bindparam(':latitud', $latitud);
         $actualizar->bindparam(':longitud', $longitud);
+        $actualizar->bindparam(':fecha', $fecha);
 
         $actualizar->bindparam(':pro1', $linea_productiva1, PDO::PARAM_INT);
         $actualizar->bindparam(':pro2', $linea_productiva2, PDO::PARAM_INT);

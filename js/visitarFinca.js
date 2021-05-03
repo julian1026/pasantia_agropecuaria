@@ -40,6 +40,7 @@ $('#tabla_visitar_finca').on('click','.reporte',function(){
         var data=tabla.row(this).data();
     }
     idFinca=data.idFinca;
+    cedulaAgricultor=data.num_identificacion;
     cargar_contenido('contenido_principal','fincas/vista_reportes.php');
     
 
@@ -75,7 +76,7 @@ function listarAll(){
       contentType: false   // tell jQuery not to set contentType
   }).done(function(res){
      var valor=JSON.parse(res);
-    //  console.log(valor);
+     console.log(valor);
     mostrar(valor);
   })
 }
@@ -95,7 +96,7 @@ function mostrar(arreglo){
                         <div class="card-header">
                             visita #<b>${numero}</b>
                             <div class="pull-right">
-                                <b>Registrador :</b> ${valor.nombreRegistrador}  <b>CC:</b>${valor.registrador_cedula}
+                                <b>Registrador :</b> ${valor.nombreRegistrador}  <b>CC:</b>${valor.registrador_cedula} <b>fecha_Visita</b> ${valor.fecha}
                             </div>
                         </div>
                         <div class="card-body">
@@ -145,9 +146,11 @@ function cargarValoresCabecera(datos){
 }
 
 function registrarVisita(){
-  var hoy=new Date();
-  var fecha=hoy.getFullYear()+'-'+(hoy.getMonth()+1)+'-'+hoy.getDate();
+//   var hoy=new Date();
+//   var fecha=hoy.getFullYear()+'-'+(hoy.getMonth()+1)+'-'+hoy.getDate();
 
+  let fechaVisita=document.getElementById('txt_fechaVisita').value;
+  fecha=fechaVisita.split('/').reverse().join('/');
   let visita=document.getElementById('txt_objetivo').value;
   let sistema=document.getElementById('txt_produccion').value;
   let situacion=document.getElementById('txt_situacion').value;
@@ -158,7 +161,7 @@ function registrarVisita(){
     return Swal.fire("Mensaje De Error","Por favor verificar que los campos se encuentren diligenciados ","warning");
   }
 
-  console.log(visita,sistema,situacion,actividad1,actividad2,fecha);
+//   console.log(visita,sistema,situacion,actividad1,actividad2,fecha);
   nuevo3.append('visita',visita);
   nuevo3.append('sistemas',sistema);
   nuevo3.append('situacion',situacion);
@@ -196,6 +199,7 @@ function limpiarFormularioR(){
   document.getElementById('txt_situacion').value='';
   document.getElementById('txt_actividad1').value='';
   document.getElementById('txt_actividad2').value='';
+  document.getElementById('txt_fechaVisita').value='';
 }
 
 
@@ -224,6 +228,7 @@ function listar_fincasActualizar(){
             {"data":"numero"},
             {"data":"objetivoVisita"},
             {"data":"registrador_cedula"},
+            {"data":"fecha"},
              {"defaultContent":
             "<button style='font-size:10px;' type='button' class='reporte btn btn-primary'><i class='fa fa-edit'></i> </button>&nbsp;"}
         ],
@@ -246,14 +251,19 @@ $('#tabla_fincaActualizar').on('click','.reporte',function(){
     }
     $("#modal_actualizarRegistroFinca").modal({backdrop:'static', keyboard:false});
     $("#modal_actualizarRegistroFinca").modal('show');
-    console.log(data);
+    // console.log(data);
+
+    fecha=data.fecha.split('/').reverse().join('/');
     idVisitas=data.idvisitas;
+
     $("#txt_objetivo").val(data.objetivoVisita);
     $("#txt_produccion").val(data.sistemasProduccion);
     $("#txt_situacion").val(data.situacionEncontrada);
     $("#txt_actividad1").val(data.actividadRealizada);
     $("#txt_actividad2").val(data.actividadPendientes);
+    $("#txt_fechaVisita").val(fecha);
     // document.querySelector('#')
+    // console.log(fecha)
 
 })
 
@@ -264,8 +274,10 @@ function ActualizarVisita(){
     let situacion=document.getElementById('txt_situacion').value;
     let actividad1=document.getElementById('txt_actividad1').value;
     let actividad2=document.getElementById('txt_actividad2').value;
+    let fechaVisita=document.getElementById('txt_fechaVisita').value;
+    fecha=fechaVisita.split('/').reverse().join('/');
     const nuevo7 = new FormData();
-    if(!visita || !sistema || !situacion || !actividad1 || !actividad2){
+    if(!visita || !sistema || !situacion || !actividad1 || !actividad2 || !fecha){
       return Swal.fire("Mensaje De Error","Por favor verificar que los campos se encuentren diligenciados ","warning");
     }
     nuevo7.append('objetivoVisita',visita);
@@ -273,6 +285,7 @@ function ActualizarVisita(){
     nuevo7.append('situacionEncontrada',situacion);
     nuevo7.append('actividadRealizada',actividad1);
     nuevo7.append('actividadPendientes',actividad2);
+    nuevo7.append('fecha',fecha);
     nuevo7.append('idVisitas',idVisitas);
     nuevo7.append('cod',4);
     nuevo7.append('idFinca',null);
@@ -302,15 +315,19 @@ function ActualizarVisita(){
 
 
 function GeneratePdf() {
+
     let element=document.querySelector('#pdf');
     var opt = {
         margin:       0.5,
-        filename:     'historialVisitas.pdf',
+        filename:     `historialVisitas-agricultor-${cedulaAgricultor}.pdf`,
         image:        { type: 'jpeg', quality: 0.98 },
         html2canvas:  { scale: 2 },
         jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
       };
       html2pdf(element, opt);
+
+      $('#pdf').removeClass('hidden');
+   
 
 }
 

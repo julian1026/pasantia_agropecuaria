@@ -1,3 +1,4 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.1/html2pdf.bundle.min.js"></script>
 <script type="text/javascript" src="../js/visitarFinca.js?rev=<?php echo time(); ?>"></script>
 
 <div class="col-md-12">
@@ -49,6 +50,10 @@
                                     <label>Actividad Realizada/Recomendacion Ambiental</label>
                                     <textarea class="form-control" id="txt_actividad2" rows="3" maxlength="400" placeholder="Enter ..."></textarea>
                                 </div>
+                                <div class="col-md-4">
+                                    <label for="">Fecha Visita</label>
+                                    <input type="date" class='form-control' id="txt_fechaVisita">
+                                </div>
                                 <div class="col-md-12">
                                     <br>
                                     <div class="pull-left">
@@ -57,6 +62,7 @@
 
                                 </div>
                             </div>
+
                         </form>
                     </div>
                 </div>
@@ -113,12 +119,12 @@
                                 </div>
 
                                 <div class="col-md-2">
-                                    <div class="pull-left">
+                                    <div class="pull-left" id="pdf">
                                         <button class="btn btn-success" onclick="GeneratePdf()">
                                             <li class='fa fa-download'></li>&nbsp;Pdf
                                         </button>
                                     </div>
-                                    <div>
+                                    <div id="editar">
                                         <button class="btn btn-primary" onclick="UXactualizarFinca()">
                                             <li class="fa fa-edit"></li>&nbsp;Editar
                                         </button>

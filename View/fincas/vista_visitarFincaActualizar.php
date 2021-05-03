@@ -26,6 +26,8 @@
                         <th scope="col">num</th>
                         <th scope="col">objetivo</th>
                         <th scope="col">cc registrador</th>
+                        <th scope="col">fecha Visita</th>
+
                         <th>Acci&oacute;n</th>
                     </tr>
                 </thead>
@@ -35,6 +37,7 @@
                         <th scope="col">num</th>
                         <th scope="col">objetivo</th>
                         <th scope="col">cc registrador</th>
+                        <th scope="col">fecha Visita</th>
                         <th>Acci&oacute;n</th>
                     </tr>
                 </tfoot>
@@ -82,6 +85,10 @@
                         <div class="col-md-6 mt-2">
                             <label>Actividad Realizada/Recomendacion Ambiental</label>
                             <textarea class="form-control" id="txt_actividad2" rows="4" maxlength="400" placeholder="Enter ..."></textarea>
+                        </div>
+                        <div class="col-md-4 mt-2">
+                            <label>Fecha Visita</label>
+                            <input type="date" class='form-control' id="txt_fechaVisita">
                         </div>
                     </div>
                 </form>

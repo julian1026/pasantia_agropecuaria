@@ -44,9 +44,11 @@ if ($cod == 4) {
     $situacionEncontrada = $_POST['situacionEncontrada'];
     $actividadRealizada = $_POST['actividadRealizada'];
     $actividadPendientes = $_POST['actividadPendientes'];
+    $fecha = $_POST['fecha'];
     $idVisitas = $_POST['idVisitas'];
 
     $consulta = $MU->actualizarVisitaFinca(
+        $fecha,
         $objetivoVisita,
         $sistemasProduccion,
         $situacionEncontrada,

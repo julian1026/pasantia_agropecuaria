@@ -253,6 +253,9 @@ $('#tabla_finca').on('click','.editar',function(){
     // obtenerIdAgricultor(idPer);
     // const geolocalizacion=navigator.geolocation;
     //  geolocalizacion.getCurrentPosition(getPosition,error,options)//geolocalizador  
+    fecha=data.fecha_registro.substr(0, 10);
+
+ 
 
     $("#modalActualizarFinca").modal({backdrop:'static', keyboard:false});
     $("#modalActualizarFinca").modal('show');
@@ -261,6 +264,7 @@ $('#tabla_finca').on('click','.editar',function(){
     $("#txt_latitud").val(data.latitud);
     $("#txt_fincaNombre").val(data.nombre_finca);
     $("#txt_hetareas").val(data.hectareas);
+    $("#txt_registroFinca").val(fecha);
     
     // console.log(data.ab_agua);
     if(data.ab_agua==1){
@@ -427,6 +431,7 @@ function actualizarFinca(){
     latitud=$('#txt_latitud').val();
     nombre_finca=$('#txt_fincaNombre').val();
     hetereas=$('#txt_hetareas').val();
+    registroFinca=$('#txt_registroFinca').val();
     servicio_agua=$('input[name=servicioAgua]:checked').val();
     energiaElectrica=$('input[name=energia_electrica]:checked').val();
     energiasAlternativas=$('input[name=energia_alternativa]:checked').val();
@@ -435,7 +440,8 @@ function actualizarFinca(){
     linea_pro2=$('#txt_pro_2').val();
     linea_pro3=$('#txt_pro_3').val();
     vereda=$('#txt_vereda').val();
-    console.log(vereda);
+    fecha=registroFinca.split('/').reverse().join('/');
+
 
     // console.log(hetereas,linea_productiva,actividad_Agropecuaria,idAgricultor,vereda);
     if(longitud.length==0 || latitud.length==0 || nombre_finca.length==0 || hetereas.length==0
@@ -461,6 +467,11 @@ function actualizarFinca(){
        
     }
 
+    if(!fecha){
+        return Swal.fire("Mensaje De Error","ingresar Fecha de actualizacion ","warning");
+            
+    }
+
    if(linea_pro2==0){
        linea_pro2=46;
    }
@@ -484,6 +495,7 @@ function actualizarFinca(){
         r_finca.append('linea_productiva2',linea_pro2);
         r_finca.append('linea_productiva3',linea_pro3);
         r_finca.append('idFinca',idFinca);
+        r_finca.append('fecha',fecha);
        
 
         let url='../Controller/finca/controlador_actualizar_finca.php';
@@ -493,11 +505,11 @@ function actualizarFinca(){
     
         xhttp.onreadystatechange=function(){
             if(this.status==200 && this.readyState==4){
-                console.log(this.responseText);
+            
                 let datos=JSON.parse(this.responseText);
                 if(datos>0){
                     $("#modalActualizarFinca").modal('hide');
-                     Swal.fire("Mensaje De Confirmacion","Registro Exitoso ","success");
+                     Swal.fire("Mensaje De Confirmacion","Actualizacion Exitosa ","success");
                      tabla.ajax.reload();
                     
                 }else{

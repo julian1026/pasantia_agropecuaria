@@ -10,12 +10,12 @@
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Cambiar Contrasena</h4>
+                <h4 class="modal-title">Cambiar Contrase&ntilde;a</h4>
             </div>
             <div class="modal-body">
-                <input type="password" class="form-control" id="txt_password" maxlength="20" aria-label="contrasena" placeholder="contrasena Actual"><br>
-                <input type="password" class="form-control" id="txt_password1" maxlength="20" aria-label="contrasena" placeholder="contrasena nueva"><br>
-                <input type="password" class="form-control" id="txt_password2" maxlength="20" aria-label="repetir contrasena" placeholder="verificar contrasena nueva">
+                <input type="password" class="form-control" id="txt_password" maxlength="20" aria-label="contrasena" placeholder=" contrase&ntilde;a Actual"><br>
+                <input type="password" class="form-control" id="txt_password1" maxlength="20" aria-label="contrasena" placeholder=" contrase&ntilde;a nueva"><br>
+                <input type="password" class="form-control" id="txt_password2" maxlength="20" aria-label="repetir contrasena" placeholder="verificar  contrase&ntilde;a nueva">
             </div>
 
             <div class="modal-footer">
