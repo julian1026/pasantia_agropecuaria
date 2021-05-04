@@ -38,7 +38,6 @@ if ($rol == '2') {
 
 if ($rol == '3') {
     $usuario = $numero_ide;
-    $contra = md5($numero_ide);
     $numPersonas = htmlspecialchars($_POST['personas_acargo'], ENT_QUOTES, 'utf-8');
 }
 
