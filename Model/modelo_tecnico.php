@@ -38,7 +38,7 @@ class Modelo_Tecnico
 
     function listarTecnicos()
     {
-        $listar = $this->pdo->conectar()->prepare("SELECT r.idRol,p.primer_nombre,p.segundo_nombre,p.primer_apellido,p.segundo_apellido,p.num_identificacion from rol r join usuario u  on (r.idRol=u.idRol) join persona p on (u.idUsuario=p.idUsuario) where r.idRol!=3");
+        $listar = $this->pdo->conectar()->prepare("SELECT r.idRol,p.primer_nombre,p.segundo_nombre,p.primer_apellido,p.segundo_apellido,p.num_identificacion,p.idPersona from rol r join usuario u  on (r.idRol=u.idRol) join persona p on (u.idUsuario=p.idUsuario) where r.idRol!=3");
         $listar->execute();
         return $listar->fetchAll(PDO::FETCH_ASSOC);
         $this->pdo->cerrar();

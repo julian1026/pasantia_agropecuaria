@@ -13,7 +13,7 @@ class Modelo_Usuario
    {
       //$result=array();
       // $con = md5($contra);
-      $listar = $this->pdo->conectar()->prepare("SELECT * FROM (SELECT u.idUsuario, u.user_name,u.contrasena,u.estado,u.idRol,r.nombre_rol,p.num_identificacion
+      $listar = $this->pdo->conectar()->prepare("SELECT * FROM (SELECT u.idUsuario, u.user_name,u.contrasena,u.estado,u.idRol,r.nombre_rol,p.num_identificacion,p.idPersona
       from persona p JOIN usuario u on (p.idUsuario=u.idUsuario) JOIN rol r on (u.idRol=r.idRol) where user_name= BINARY :user)R");
       $listar->bindparam(':user', $usuario);
       $array = array();

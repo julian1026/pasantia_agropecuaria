@@ -20,7 +20,7 @@ $servicioSanitario = $_POST['servicioSanitario'];
 $vereda = $_POST['Vereda'];
 $idAgricultor = $_POST['idAgricultor'];
 $fecha = $_POST['fecha'];
-$registrador = $_SESSION['S_registrador'];
+$R_idPersona = $_SESSION['S_idPersona'];
 
 $registrar = $MU->registrarFinca(
     $longitud,
@@ -37,7 +37,8 @@ $registrar = $MU->registrarFinca(
     $servicioSanitario,
     $vereda,
     $idAgricultor,
-    $registrador
+    // $registrador,
+    $R_idPersona
 );
 $data = json_encode($registrar);
 echo $data;

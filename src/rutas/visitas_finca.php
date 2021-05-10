@@ -67,7 +67,7 @@ function crearVisitasFincas(Request $request, Response $response)
             $situacionEncontrada = $value['situacionEncontrada'];
             $actividadRealizada = $value['actividadRealizada'];
             $actividadPendientes = $value['actividadPendientes'];
-            $registrador_cedula = $value['registrador_cedula'];
+            $R_idPersona = $value['R_idPersona'];
             $idFinca = $value['idFinca'];
 
             $sql = "INSERT INTO visitas_fincas (
@@ -77,7 +77,7 @@ function crearVisitasFincas(Request $request, Response $response)
                 situacionEncontrada,
                 actividadRealizada,
                 actividadPendientes,
-                registrador_cedula,
+                R_idPersona,
                 idFinca
                 )
             VALUES (
@@ -87,7 +87,7 @@ function crearVisitasFincas(Request $request, Response $response)
                 :situacionEncontrada,
                 :actividadRealizada,
                 :actividadPendientes,
-                :registrador_cedula,
+                :R_idPersona,
                 :idFinca
                     )";
             try {
@@ -101,7 +101,7 @@ function crearVisitasFincas(Request $request, Response $response)
                 $resultado->bindParam(':situacionEncontrada', $situacionEncontrada);
                 $resultado->bindParam(':actividadRealizada', $actividadRealizada);
                 $resultado->bindParam(':actividadPendientes', $actividadPendientes);
-                $resultado->bindParam(':registrador_cedula', $registrador_cedula);
+                $resultado->bindParam(':R_idPersona', $R_idPersona);
                 $resultado->bindParam(':idFinca', $idFinca);
                 $resultado->execute();
                 echo json_encode('success');
@@ -128,7 +128,7 @@ function actualizarVisitasFinca(Request $request, Response $response)
             $situacionEncontrada = $value['situacionEncontrada'];
             $actividadRealizada = $value['actividadRealizada'];
             $actividadPendientes = $value['actividadPendientes'];
-            $registrador_cedula = $value['registrador_cedula'];
+            $R_idPersona = $value['R_idPersona'];
             $idFinca = $value['idFinca'];
 
             $sql = "UPDATE visitas_fincas SET 
@@ -138,7 +138,7 @@ function actualizarVisitasFinca(Request $request, Response $response)
                 situacionEncontrada=:situacionEncontrada,
                 actividadRealizada=:actividadRealizada,
                 actividadPendientes=:actividadPendientes,
-                registrador_cedula=:registrador_cedula,
+                R_idPersona=:R_idPersona,
                 idFinca=:idFinca
                 WHERE idvisitas=:idvisitas
                 ";
@@ -154,7 +154,7 @@ function actualizarVisitasFinca(Request $request, Response $response)
                 $resultado->bindParam(':situacionEncontrada', $situacionEncontrada);
                 $resultado->bindParam(':actividadRealizada', $actividadRealizada);
                 $resultado->bindParam(':actividadPendientes', $actividadPendientes);
-                $resultado->bindParam(':registrador_cedula', $registrador_cedula);
+                $resultado->bindParam(':R_idPersona', $R_idPersona);
                 $resultado->bindParam(':idFinca', $idFinca);
 
                 $resultado->execute();

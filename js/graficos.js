@@ -1,7 +1,15 @@
 var contenedor = document.getElementById('contenedor');
 var contenedor2 = document.getElementById('contenedor2');
 
+// genera colores aleatoriamente
+function generarNumero(numero){
+	return (Math.random()*numero).toFixed(0);
+    }
 
+    function colorRGB(){
+        var coolor = "("+generarNumero(255)+"," + generarNumero(255) + "," + generarNumero(255) +")";
+        return "rgb" + coolor;
+    }
 
 
 
@@ -146,6 +154,7 @@ function serviciosFinca(){
       var dato=JSON.parse(res);
       var datos=dato.data;
       let numero;
+
       if(datos.length>0){
           for(s of datos){
             cantidad.push(s.aguaSi);
@@ -159,7 +168,8 @@ function serviciosFinca(){
             numero=s.cantidaFincas;
              
           }
-          for(let i=1 ; i<=numero; i++  ){
+          let cantidadColores=parseInt(numero)*2;
+          for(let i=1 ; i<=cantidadColores; i++  ){
             colores.push(colorRGB());
           }
 
@@ -173,6 +183,7 @@ function serviciosFinca(){
 
 function graficarServicios(nombre,cantidad,colores,tituloTabla,tipo){
     contenedor2.innerHTML=`<canvas id="myChart2" width="200" height="200"></canvas>`;
+//    var canvas= document.getElementById('myChart2').style.height = "300px"; 
     var canvas = document.getElementById('myChart2');
     var ctx = canvas.getContext('2d');
       var myChart = new Chart(ctx, {
@@ -199,15 +210,7 @@ function graficarServicios(nombre,cantidad,colores,tituloTabla,tipo){
     });
 }
 
-// genera colores aleatoriamente
-function generarNumero(numero){
-	return (Math.random()*numero).toFixed(0);
-    }
 
-    function colorRGB(){
-        var coolor = "("+generarNumero(255)+"," + generarNumero(255) + "," + generarNumero(255) +")";
-        return "rgb" + coolor;
-    }
 
 
     function imprimirDatos() {
@@ -256,5 +259,3 @@ function generarNumero(numero){
     }
 
     
-
-

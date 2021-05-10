@@ -54,7 +54,7 @@
 
                         </div>
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                         <div class="card" id="graficaDos">
                             <h5 class="card-header">Servicios Publicos</h5>
                             <div class="card-body">

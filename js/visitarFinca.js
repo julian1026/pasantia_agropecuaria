@@ -76,7 +76,7 @@ function listarAll(){
       contentType: false   // tell jQuery not to set contentType
   }).done(function(res){
      var valor=JSON.parse(res);
-     console.log(valor);
+     
     mostrar(valor);
   })
 }

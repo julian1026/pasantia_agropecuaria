@@ -24,14 +24,14 @@ class Modelo_Finca
         $servicioSanitario,
         $vereda,
         $idAgricultor,
-        $registrador
+        $R_idPersona
     ) {
         $insertar = $this->pdo->conectar()->prepare(
             'INSERT INTO finca (nombre_finca,hectareas,ab_agua,e_electrica,e_alternativas,s_sanitario,latitud,longitud,
-            fecha_registro,registrador,
+            fecha_registro,R_idPersona,
             id_linea_pro1,id_linea_pro2,id_linea_pro3,idAgricultor,id_Vereda) 
                  VALUES (:nombre,:hectareas,:agua,:energiaElectrica,:energiaAlternativas,:servicioSanitario,
-                 :latitud,:longitud,:fecha,:registrador,:lineaPro1,:lineaPro2,:lineaPro3,:idAgricultor,:idVereda)'
+                 :latitud,:longitud,:fecha,:R_idPersona,:lineaPro1,:lineaPro2,:lineaPro3,:idAgricultor,:idVereda)'
         );
 
         $insertar->bindparam(':nombre', $nombre_finca);
@@ -46,7 +46,7 @@ class Modelo_Finca
         $insertar->bindparam(':lineaPro1', $linea_productiva1);
         $insertar->bindparam(':lineaPro2', $linea_productiva2);
         $insertar->bindparam(':lineaPro3', $linea_productiva3);
-        $insertar->bindparam(':registrador', $registrador);
+        $insertar->bindparam(':R_idPersona', $R_idPersona);
         $insertar->bindparam(':idAgricultor', $idAgricultor, PDO::PARAM_INT);
         $insertar->bindparam(':idVereda', $vereda, PDO::PARAM_INT);
         if ($insertar->execute()) {
@@ -60,11 +60,11 @@ class Modelo_Finca
 
     function listarFincas()
     {
-        $listar = $this->pdo->conectar()->prepare("SELECT p.num_identificacion,f.idFinca,f.nombre_finca,f.hectareas,f.ab_agua,f.e_electrica,f.e_alternativas,        f.s_sanitario,f.id_linea_pro1,f.id_linea_pro2,f.id_linea_pro3,f.latitud,f.longitud,f.fecha_registro,f.registrador,v.nombreVereda,v.id_vereda,l1.linea_nombre,c.idCorregimiento,agro1.id_actividad_agro idAgro1,agro2.id_actividad_agro idAgro2,agro3.id_actividad_agro idAgro3 from persona p join agricultor a on (p.idPersona=a.idPersona)
-         join finca f on (a.idAgricultor=f.idAgricultor) join vereda v on (f.id_Vereda=v.id_vereda) join linea_productiva l1 on 
-        (f.id_linea_pro1=l1.id_linea_pro) JOIN corregimiento c on (c.idCorregimiento=v.corregimiento_id) JOIN clase_productiva cp1 on (l1.id_clase_pro=cp1.id_clase_pro) join Actividad_agro agro1 on (cp1.id_actividad_agro=agro1.id_actividad_agro) join linea_productiva l2 on (f.id_linea_pro2=l2.id_linea_pro) JOIN clase_productiva cp2 on (l2.id_clase_pro=cp2.id_clase_pro) join Actividad_agro agro2 on (cp2.id_actividad_agro=agro2.id_actividad_agro) JOIN linea_productiva l3 on (f.id_linea_pro3=l3.id_linea_pro)
-         JOIN clase_productiva cp3 on (l3.id_clase_pro=cp3.id_clase_pro) JOIN Actividad_agro agro3
-         on (cp3.id_actividad_agro=agro3.id_actividad_agro)  ORDER BY idFinca DESC");
+        $listar = $this->pdo->conectar()->prepare("SELECT p.num_identificacion,f.idFinca,f.nombre_finca,f.hectareas,f.ab_agua,f.e_electrica,f.e_alternativas,        f.s_sanitario,f.id_linea_pro1,f.id_linea_pro2,f.id_linea_pro3,f.latitud,f.longitud,f.fecha_registro,v.nombreVereda,v.id_vereda,l1.linea_nombre,c.idCorregimiento,agro1.id_actividad_agro idAgro1,agro2.id_actividad_agro idAgro2,agro3.id_actividad_agro idAgro3, pe.num_identificacion registrador from persona p join agricultor a on (p.idPersona=a.idPersona)
+        join finca f on (a.idAgricultor=f.idAgricultor) join vereda v on (f.id_Vereda=v.id_vereda) join linea_productiva l1 on 
+       (f.id_linea_pro1=l1.id_linea_pro) JOIN corregimiento c on (c.idCorregimiento=v.corregimiento_id) JOIN clase_productiva cp1 on (l1.id_clase_pro=cp1.id_clase_pro) join Actividad_agro agro1 on (cp1.id_actividad_agro=agro1.id_actividad_agro) join linea_productiva l2 on (f.id_linea_pro2=l2.id_linea_pro) JOIN clase_productiva cp2 on (l2.id_clase_pro=cp2.id_clase_pro) join Actividad_agro agro2 on (cp2.id_actividad_agro=agro2.id_actividad_agro) JOIN linea_productiva l3 on (f.id_linea_pro3=l3.id_linea_pro)
+        JOIN clase_productiva cp3 on (l3.id_clase_pro=cp3.id_clase_pro) JOIN Actividad_agro agro3
+        on (cp3.id_actividad_agro=agro3.id_actividad_agro) join persona pe on(pe.idPersona=f.R_idPersona)  ORDER BY idFinca DESC");
         $listar->execute();
         $arreglo = array();
 
@@ -192,11 +192,9 @@ class Modelo_Finca
 
     function reporte2($cedula, $fechaI, $fechaF)
     {
-        $listar = $this->pdo->conectar()->prepare("SELECT p.num_identificacion,f.idFinca,f.nombre_finca,f.hectareas,f.ab_agua,f.e_electrica,f.e_alternativas,        f.s_sanitario,f.id_linea_pro1,f.id_linea_pro2,f.id_linea_pro3,f.latitud,f.longitud,f.fecha_registro,f.registrador,v.nombreVereda,v.id_vereda,l1.linea_nombre,c.idCorregimiento,agro1.id_actividad_agro idAgro1,agro2.id_actividad_agro idAgro2,agro3.id_actividad_agro idAgro3 from persona p join agricultor a on (p.idPersona=a.idPersona)
+        $listar = $this->pdo->conectar()->prepare("SELECT p.num_identificacion,f.idFinca,f.nombre_finca,f.hectareas,f.ab_agua,f.e_electrica,f.e_alternativas,pe.num_identificacion registrador,      f.s_sanitario,f.id_linea_pro1,f.id_linea_pro2,f.id_linea_pro3,f.latitud,f.longitud,f.fecha_registro,v.nombreVereda,v.id_vereda,l1.linea_nombre,c.idCorregimiento,agro1.id_actividad_agro idAgro1,agro2.id_actividad_agro idAgro2,agro3.id_actividad_agro idAgro3 from persona p join agricultor a on (p.idPersona=a.idPersona)
         join finca f on (a.idAgricultor=f.idAgricultor) join vereda v on (f.id_Vereda=v.id_vereda) join linea_productiva l1 on 
-       (f.id_linea_pro1=l1.id_linea_pro) JOIN corregimiento c on (c.idCorregimiento=v.corregimiento_id) JOIN clase_productiva cp1 on (l1.id_clase_pro=cp1.id_clase_pro) join Actividad_agro agro1 on (cp1.id_actividad_agro=agro1.id_actividad_agro) join linea_productiva l2 on (f.id_linea_pro2=l2.id_linea_pro) JOIN clase_productiva cp2 on (l2.id_clase_pro=cp2.id_clase_pro) join Actividad_agro agro2 on (cp2.id_actividad_agro=agro2.id_actividad_agro) JOIN linea_productiva l3 on (f.id_linea_pro3=l3.id_linea_pro)
-        JOIN clase_productiva cp3 on (l3.id_clase_pro=cp3.id_clase_pro) JOIN Actividad_agro agro3
-        on (cp3.id_actividad_agro=agro3.id_actividad_agro) where f.fecha_registro BETWEEN :fechaI and :fechaF  and f.registrador=:cedula ORDER BY idFinca DESC");
+       (f.id_linea_pro1=l1.id_linea_pro) JOIN corregimiento c on (c.idCorregimiento=v.corregimiento_id) JOIN clase_productiva cp1 on (l1.id_clase_pro=cp1.id_clase_pro) join Actividad_agro agro1 on (cp1.id_actividad_agro=agro1.id_actividad_agro) join linea_productiva l2 on (f.id_linea_pro2=l2.id_linea_pro) JOIN clase_productiva cp2 on (l2.id_clase_pro=cp2.id_clase_pro) join Actividad_agro agro2 on (cp2.id_actividad_agro=agro2.id_actividad_agro) JOIN linea_productiva l3 on (f.id_linea_pro3=l3.id_linea_pro) JOIN clase_productiva cp3 on (l3.id_clase_pro=cp3.id_clase_pro) JOIN Actividad_agro agro3 on (cp3.id_actividad_agro=agro3.id_actividad_agro) join persona pe on (pe.idPersona=f.R_idPersona) where f.fecha_registro BETWEEN :fechaI and :fechaF  and f.R_idPersona=:cedula ORDER BY idFinca DESC");
 
         $listar->bindParam(':cedula', $cedula);
         $listar->bindParam(':fechaI', $fechaI);

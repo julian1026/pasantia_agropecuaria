@@ -16,8 +16,8 @@ class Modelo_VisitarFinca
         $actividadRealizada,
         $actividadPendientes,
         $fecha,
-        $registrador_cedula,
-        $idFinca
+        $idFinca,
+        $R_idPersona
     ) {
         $insertar = $this->pdo->conectar()->prepare(
             'INSERT INTO visitas_fincas (
@@ -27,7 +27,7 @@ class Modelo_VisitarFinca
                                         actividadRealizada,
                                         actividadPendientes,
                                         fecha,
-                                        registrador_cedula,
+                                        R_idPersona,
                                         idFinca
                                         ) 
                  VALUES (
@@ -37,7 +37,7 @@ class Modelo_VisitarFinca
                         :actividadRealizada,
                         :actividadPendientes,
                         :fecha,
-                        :registrador_cedula,
+                        :R_idPersona,
                         :idFinca
                         )'
         );
@@ -48,7 +48,7 @@ class Modelo_VisitarFinca
         $insertar->bindparam(':actividadRealizada', $actividadRealizada);
         $insertar->bindparam(':actividadPendientes', $actividadPendientes);
         $insertar->bindparam(':fecha', $fecha);
-        $insertar->bindparam(':registrador_cedula', $registrador_cedula);
+        $insertar->bindparam(':R_idPersona', $R_idPersona);
         $insertar->bindparam(':idFinca', $idFinca, PDO::PARAM_INT);
         if ($insertar->execute()) {
 
@@ -71,7 +71,7 @@ class Modelo_VisitarFinca
 
     function listarAll($idFinca)
     {
-        $listar = $this->pdo->conectar()->prepare("SELECT concat(p.primer_nombre,' ',p.segundo_nombre,' ',p.primer_apellido,' ',p.segundo_apellido) nombreRegistrador, vf.registrador_cedula, vf.idvisitas,vf.fecha,vf.objetivoVisita,vf.sistemasProduccion,vf.situacionEncontrada,vf.actividadRealizada,vf.actividadPendientes FROM finca f JOIN visitas_fincas vf on (f.idFinca=vf.idFinca) join persona p on (p.num_identificacion=vf.registrador_cedula) where f.idFinca=:idFinca ORDER by vf.idvisitas DESC");
+        $listar = $this->pdo->conectar()->prepare("SELECT concat(p.primer_nombre,' ',p.segundo_nombre,' ',p.primer_apellido,' ',p.segundo_apellido) nombreRegistrador,p.num_identificacion registrador_cedula, vf.idvisitas,vf.fecha,vf.objetivoVisita,vf.sistemasProduccion,vf.situacionEncontrada,vf.actividadRealizada,vf.actividadPendientes FROM finca f JOIN visitas_fincas vf on (f.idFinca=vf.idFinca) join persona p on (p.idPersona=vf.R_idPersona) where f.idFinca=:idFinca ORDER by vf.idvisitas DESC");
         $listar->bindparam(':idFinca', $idFinca);
         $listar->execute();
         $valores = $listar->fetchAll(PDO::FETCH_OBJ);
@@ -84,7 +84,7 @@ class Modelo_VisitarFinca
 
     function listarAll2($idFinca)
     {
-        $listar = $this->pdo->conectar()->prepare("SELECT concat(p.primer_nombre,' ',p.segundo_nombre,' ',p.primer_apellido,' ',p.segundo_apellido) nombreRegistrador, vf.registrador_cedula, vf.idvisitas,vf.fecha,vf.objetivoVisita,vf.sistemasProduccion,vf.situacionEncontrada,vf.actividadRealizada,vf.actividadPendientes FROM finca f JOIN visitas_fincas vf on (f.idFinca=vf.idFinca) join persona p on (p.num_identificacion=vf.registrador_cedula) where f.idFinca=:idFinca ORDER by vf.idvisitas DESC");
+        $listar = $this->pdo->conectar()->prepare("SELECT concat(p.primer_nombre,' ',p.segundo_nombre,' ',p.primer_apellido,' ',p.segundo_apellido) nombreRegistrador,p.num_identificacion registrador_cedula, vf.idvisitas,vf.fecha,vf.objetivoVisita,vf.sistemasProduccion,vf.situacionEncontrada,vf.actividadRealizada,vf.actividadPendientes FROM finca f JOIN visitas_fincas vf on (f.idFinca=vf.idFinca) join persona p on (p.idPersona=vf.R_idPersona) where f.idFinca=:idFinca ORDER by vf.idvisitas DESC");
         $listar->bindparam(':idFinca', $idFinca);
         $listar->execute();
 

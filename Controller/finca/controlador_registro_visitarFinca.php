@@ -12,7 +12,7 @@ $situacionEncontrada = htmlspecialchars($_POST['situacion'], ENT_QUOTES, 'utf-8'
 $actividadRealizada = htmlspecialchars($_POST['actividad1'], ENT_QUOTES, 'utf-8');
 $actividadPendientes = htmlspecialchars($_POST['actividad2'], ENT_QUOTES, 'utf-8');
 $fecha = $_POST['fecha'];
-$registrador_cedula = $_SESSION['S_registrador'];
+$R_idPersona = $_SESSION['S_idPersona'];
 $idFinca = $_POST['idFinca'];
 
 $registrar = $MU->registrarVisitaFinca(
@@ -22,8 +22,8 @@ $registrar = $MU->registrarVisitaFinca(
     $actividadRealizada,
     $actividadPendientes,
     $fecha,
-    $registrador_cedula,
-    $idFinca
+    $idFinca,
+    $R_idPersona
 );
 $data = json_encode($registrar);
 echo $data;

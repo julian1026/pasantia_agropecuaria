@@ -37,6 +37,7 @@
 body, html {
 	height: 100%;
 	font-family: Raleway-Regular, sans-serif;
+
 }
 
 /*---------------------------------------------*/
@@ -181,8 +182,8 @@ iframe {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  
-  background-color: #ebebeb;
+  background-image: url('../../assets/img/loginFondo.jpg');
+  /* background-color: #ebebeb; */
 }
 
 
@@ -497,3 +498,4 @@ iframe {
     padding-right: 15px;
   }
 }
+

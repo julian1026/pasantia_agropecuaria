@@ -15,6 +15,7 @@ if (!isset($_SESSION['S_iduser'])) {
 
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="icon" type="image/png" href="../assets/img/logo1.jpg" />
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="../plantilla/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
@@ -305,9 +306,10 @@ if (!isset($_SESSION['S_iduser'])) {
     <!-- /.content-wrapper eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee -->
     <footer class="main-footer">
       <div class="pull-right hidden-xs">
-        <b>Version</b> 1
+        <b>Version</b> 2.4.18
       </div>
-      <strong>Gestion Agricola del Patia.</strong>
+      <strong>Copyright &copy; 2014-2019 <a href="">Gestion Agricola Del Patia</a>.</strong> All rights
+      reserved.
     </footer>
 
     <!-- Control Sidebar -->

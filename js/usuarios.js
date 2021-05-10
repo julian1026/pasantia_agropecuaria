@@ -39,7 +39,7 @@ var rol_id //variable importante
 function controlarSessiones(R_usuario){
 
   
-
+    console.log(R_usuario);
     if(R_usuario.estado==='INACTIVO'){
         Swal.fire("Mensaje De Advertencia","Lo sentimos el usuario <b> "+R_usuario.user_name+ " </b> se encuentra suspendido, comuniquese con el administrador  ","warning");
     }else{
@@ -48,6 +48,7 @@ function controlarSessiones(R_usuario){
         nuevo1.append('user', R_usuario.user_name);
         nuevo1.append('rol', R_usuario.idRol);
         nuevo1.append('numero_registro', R_usuario.num_identificacion);
+        nuevo1.append('R_idPersona', R_usuario.idPersona);
         let url='../Controller/usuario/controlador_crear_sessiones.php';
         const xhttp= new XMLHttpRequest();
         xhttp.open('POST',url,true);

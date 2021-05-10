@@ -70,7 +70,7 @@ function crearFinca(Request $request, Response $response)
             $s_sanitario = $value['s_sanitario'];
             $latitud = $value['latitud'];
             $longitud = $value['longitud'];
-            $registrador = $value['registrador'];
+            $R_idPersona = $value['R_idPersona'];
             $id_linea_pro1 = $value['id_linea_pro1'];
             $id_linea_pro2 = $value['id_linea_pro2'];
             $id_linea_pro3 = $value['id_linea_pro3'];
@@ -78,7 +78,7 @@ function crearFinca(Request $request, Response $response)
             $id_Vereda = $value['id_Vereda'];
 
             $sql = "INSERT INTO finca (nombre_finca,hectareas,ab_agua,e_electrica,e_alternativas,s_sanitario,
-            latitud,longitud,registrador,id_linea_pro1,id_linea_pro2,id_linea_pro3,idAgricultor,id_Vereda)
+            latitud,longitud,R_idAgricultor,id_linea_pro1,id_linea_pro2,id_linea_pro3,idAgricultor,id_Vereda)
             values (:nombre_finca,
             :hectareas,
             :ab_agua,
@@ -87,7 +87,7 @@ function crearFinca(Request $request, Response $response)
             :s_sanitario,
             :latitud,
             :longitud,
-            :registrador,
+            :R_idPersona,
             :id_linea_pro1,
             :id_linea_pro2,
             :id_linea_pro3,

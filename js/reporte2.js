@@ -86,9 +86,10 @@ function CargarTecnicos(){
             selectTecnicos.innerHTML=`<option value="0">Selecionar</option>`;
             
             if(dato){
+                // console.log(dato)
                 for(let s of dato){
                     selectTecnicos.innerHTML+=`
-                    <option value="${s.num_identificacion}">${s.primer_nombre} ${s.segundo_nombre} ${s.primer_apellido} ${s.segundo_apellido} </option>
+                    <option value="${s.idPersona}">${s.primer_nombre} ${s.segundo_nombre} ${s.primer_apellido} ${s.segundo_apellido} </option>
                     `
                 }
             }
@@ -101,14 +102,11 @@ function CargarTecnicos(){
 
 
 
-function cargarReporte(){
 
-    const valores= new FormData();
+function cargarReporte(){
     let cedulaTecnico=document.getElementById('txt_tecnicoSelect').value;
     let fechaI=document.getElementById('txt-fechaInicio').value;
     let fechaf=document.getElementById('txt-fechaFinal').value;
-
-    
 
     if(cedulaTecnico==0 || !fechaI || !fechaf){
         return Swal.fire("Mensaje De Error","Por favor debe seleccionar un tecnico, una fecha inicial y final  ","warning");
@@ -118,11 +116,6 @@ function cargarReporte(){
         return Swal.fire("Mensaje De Error","La fecha inicial debe ser menor a la final ","warning");
     }
 
-
-    
-    valores.append('cedula',cedulaTecnico);
-    valores.append('fechaI',fechaI);
-    valores.append('fechaF',fechaf);
 
     $.ajax({
         url:'../Controller/finca/controlador_reporte2.php',
@@ -203,6 +196,8 @@ function recargar(){
     cargar_contenido('contenido_principal','fincas/vista_reporteDos.php');
 }
 
-                    
+
+   
+          
                     
                     
