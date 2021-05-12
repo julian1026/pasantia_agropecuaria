@@ -134,11 +134,13 @@ class Modelo_Usuario
       return 0;
    }
 
-   function editarUsuario($idUsuario, $idRol)
+   function editarUsuario($idUsuario, $idRol, $contrasena)
    {
-      $editar = $this->pdo->conectar()->prepare('UPDATE usuario SET idRol=:Rol WHERE idUsuario =:idUsuario');
+      $editar = $this->pdo->conectar()->prepare('UPDATE usuario SET 
+      contrasena=:contrasena, idRol=:Rol WHERE idUsuario =:idUsuario');
       $editar->bindparam(':Rol', $idRol);
       $editar->bindparam(':idUsuario', $idUsuario);
+      $editar->bindparam(':contrasena', $contrasena);
       if ($editar->execute()) {
          $this->pdo->cerrar();
          return 1;

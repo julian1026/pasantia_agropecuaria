@@ -149,9 +149,9 @@ table = $("#tabla_usuario").DataTable({
          }
        },  
        {"defaultContent":
-       "<button style='font-size:10px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i></button>&nbsp;"+
-       "<button style='font-size:10px;' type='button' class='desactivar btn btn-secondary'><i class='fa fa-trash'></i></button>&nbsp;"
-        + "</button>&nbsp; <button style='font-size:10px;' type='button' class='activar btn btn-success'><i class='fa fa-check'></i></button>"}
+       "<button style='font-size:10px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i>Editar</button>&nbsp;"+
+       "<button style='font-size:10px;' type='button' class='desactivar btn btn-secondary'><i class='fa fa-trash'></i>Desactivar</button>&nbsp;"
+        + "</button>&nbsp; <button style='font-size:10px;' type='button' class='activar btn btn-success'><i class='fa fa-check'></i>Activar</button>"}
    ],
 
    "language":idioma_espanol,
@@ -503,17 +503,22 @@ $('#tabla_usuario').on('click','.editar',function(){
 function modificarUsuario(){
     idUsu=$('#txt_idusuario').val();
     idRol=$('#txt_com_rol_editar').val();
+    contrasena=$('#txt_contra').val();
 
     if(idUsu.length==0 || idRol.length==0)
         {
             return Swal.fire("Mensaje De Error","Por favor no pueden ir campos vacios ","warning");
         }
+    if (contrasena.length<6){
+        return Swal.fire("Mensaje De Error","la contrasena debe de tener mas de seis caracteres  ","warning");
+    }
         $.ajax({
             url:'../Controller/usuario/controlador_editarUsuario.php',
             type:'POST',
             data:{
                 idUsuario:idUsu,
-                idRol:idRol
+                idRol:idRol,
+                contrasena:contrasena
             }
         }).done(function(res){
             if(res>0){

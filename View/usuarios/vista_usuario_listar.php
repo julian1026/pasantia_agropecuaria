@@ -273,6 +273,10 @@
             <select class="form-control" name="rol1" id="txt_com_rol_editar" style='width: 100%;'>
             </select>
 
+            <label for="">Nueva Contrase&ntilde;a</label>
+            <input type="text" class="form-control" id="txt_contra" placeholder="ingrese nueva contrase&ntilde;a">
+
+
 
           </div>
 

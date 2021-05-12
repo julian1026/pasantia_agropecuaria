@@ -17,21 +17,12 @@ tabla = $("#tabla_personaADM").DataTable({
        {"data":"numero"},
        {"data":"nombreCompleto"},
        {"data":"num_identificacion"},
-    //    {"data":"sexo",
-    //    render: function (data, type, row ) {
-    //        if(data=='M'){
-    //         return "Maculino";                    
-    //        }else{
-    //         return "Femenino";                 
-    //        }
-    //      }
-    // 
        {"data":"telefono"},
        {"data":"correo"},
        {"data":"idRol",
        render: function (data,type,row){
             
-               return "<button style='font-size:10px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i> </button>&nbsp;"
+               return "<button style='font-size:10px;' type='button' class='editar btn btn-primary'><i class='fa fa-edit'></i> Editar </button>&nbsp;"
                 +"<button style='font-size:10px;' type='button'   class='datos btn btn-white'><i class='fa  fa-eye'></i> </button>";
            }
        }

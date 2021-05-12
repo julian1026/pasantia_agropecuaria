@@ -108,7 +108,7 @@
                                 <div class="info-box-content">
 
                                     <span class="info-box-text">Fincas Registradas</span>
-                                    <span class="info-box-number">Gestion de Fincas</span>
+                                    <span class="info-box-number">Fincas</span>
                                     <span class="progress-description">
                                         click
                                     </span>
@@ -129,7 +129,7 @@
                                 <div class="info-box-content">
 
                                     <span class="info-box-text">VISITAS TECNICAS</span>
-                                    <span class="info-box-number">Gestion de Visitas</span>
+                                    <span class="info-box-number">Visitar Finca</span>
                                     <span class="progress-description">
                                         Click
                                     </span>
@@ -152,7 +152,7 @@
                                 <div class="info-box-content">
 
                                     <span class="info-box-text">Reporte</span>
-                                    <span class="info-box-number">Fincas Registradas</span>
+                                    <span class="info-box-number">Generar Reportes</span>
                                     <span class="progress-description">
                                         Click
                                     </span>
