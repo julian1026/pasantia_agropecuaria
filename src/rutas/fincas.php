@@ -78,7 +78,7 @@ function crearFinca(Request $request, Response $response)
             $id_Vereda = $value['id_Vereda'];
 
             $sql = "INSERT INTO finca (nombre_finca,hectareas,ab_agua,e_electrica,e_alternativas,s_sanitario,
-            latitud,longitud,R_idAgricultor,id_linea_pro1,id_linea_pro2,id_linea_pro3,idAgricultor,id_Vereda)
+            latitud,longitud,R_idPersona,id_linea_pro1,id_linea_pro2,id_linea_pro3,idAgricultor,id_Vereda)
             values (:nombre_finca,
             :hectareas,
             :ab_agua,
@@ -106,7 +106,7 @@ function crearFinca(Request $request, Response $response)
                 $resultado->bindParam(':s_sanitario', $s_sanitario, PDO::PARAM_INT);
                 $resultado->bindParam(':latitud', $latitud);
                 $resultado->bindParam(':longitud', $longitud);
-                $resultado->bindParam(':registrador', $registrador);
+                $resultado->bindParam(':R_idPersona', $R_idPersona);
                 $resultado->bindParam(':id_linea_pro1', $id_linea_pro1);
                 $resultado->bindParam(':id_linea_pro2', $id_linea_pro2);
                 $resultado->bindParam(':id_linea_pro3', $id_linea_pro3);
@@ -217,5 +217,75 @@ function eliminarFinca(Request $request, Response $response)
         $db = null;
     } catch (PDOException $e) {
         echo '{"error" :{"text":}' . $e->getMessage() . '}';
+    }
+}
+
+
+function crearFinca1(Request $request, Response $response)
+{
+    $param  = $request->getParsedBody();
+    // var_dump($param);
+    if (count($param) > 0) {
+        foreach ($param as $value) {
+            $nombre_finca = $value['nombre_finca'];
+            $hectareas = $value['hectareas'];
+            $ab_agua = $value['ab_agua'];
+            $e_electrica = $value['e_electrica'];
+            $e_alternativas = $value['e_alternativas'];
+            $s_sanitario = $value['s_sanitario'];
+            $latitud = $value['latitud'];
+            $longitud = $value['longitud'];
+            $R_idPersona = $value['R_idPersona'];
+            $id_linea_pro1 = $value['id_linea_pro1'];
+            $id_linea_pro2 = $value['id_linea_pro2'];
+            $id_linea_pro3 = $value['id_linea_pro3'];
+            $idAgricultor = $value['idAgricultor'];
+            $id_Vereda = $value['id_Vereda'];
+
+            $sql = "INSERT INTO finca (nombre_finca,hectareas,ab_agua,e_electrica,e_alternativas,s_sanitario,
+            latitud,longitud,R_idPersona,id_linea_pro1,id_linea_pro2,id_linea_pro3,idAgricultor,id_Vereda)
+            values (:nombre_finca,
+            :hectareas,
+            :ab_agua,
+            :e_electrica,
+            :e_alternativas,
+            :s_sanitario,
+            :latitud,
+            :longitud,
+            :R_idPersona,
+            :id_linea_pro1,
+            :id_linea_pro2,
+            :id_linea_pro3,
+            :idAgricultor,
+            :id_Vereda
+            )";
+            try {
+                $db = new Conexion();
+                $db = $db->conectar();
+                $resultado = $db->prepare($sql);
+                $resultado->bindParam(':nombre_finca', $nombre_finca);
+                $resultado->bindParam(':hectareas', $hectareas);
+                $resultado->bindParam(':ab_agua', $ab_agua, PDO::PARAM_INT);
+                $resultado->bindParam(':e_electrica', $e_electrica, PDO::PARAM_INT);
+                $resultado->bindParam(':e_alternativas', $e_alternativas, PDO::PARAM_INT);
+                $resultado->bindParam(':s_sanitario', $s_sanitario, PDO::PARAM_INT);
+                $resultado->bindParam(':latitud', $latitud);
+                $resultado->bindParam(':longitud', $longitud);
+                $resultado->bindParam(':R_idPersona', $R_idPersona);
+                $resultado->bindParam(':id_linea_pro1', $id_linea_pro1);
+                $resultado->bindParam(':id_linea_pro2', $id_linea_pro2);
+                $resultado->bindParam(':id_linea_pro3', $id_linea_pro3);
+                $resultado->bindParam(':idAgricultor', $idAgricultor);
+                $resultado->bindParam(':id_Vereda', $id_Vereda);
+                $resultado->execute();
+                echo json_encode('success');
+                $resultado = null;
+                $db = null;
+            } catch (PDOException $e) {
+                echo '{"error" :{"text":}' . $e->getMessage() . '}';
+            }
+        }
+    } else {
+        echo '{"error" :{"text":"Envio un Array vacio.","longitud":"0"}}';
     }
 }

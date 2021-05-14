@@ -39,7 +39,7 @@ var rol_id //variable importante
 function controlarSessiones(R_usuario){
 
   
-    console.log(R_usuario);
+    // console.log(R_usuario);
     if(R_usuario.estado==='INACTIVO'){
         Swal.fire("Mensaje De Advertencia","Lo sentimos el usuario <b> "+R_usuario.user_name+ " </b> se encuentra suspendido, comuniquese con el administrador  ","warning");
     }else{
@@ -187,6 +187,7 @@ var cadena=document.querySelector('#txt_com_rol_editar');
 
     xhttp.onreadystatechange=function(){
         if(this.status==200 && this.readyState==4){
+            console.log(this.responseText);
             var datos=JSON.parse(this.responseText);
             if(datos.length>0){
                 $("#opciones").val('0');
@@ -482,7 +483,7 @@ function modificarEstado(idUsuario,estado){
     })
 }
 
-cargarRoles();
+// cargarRoles();
 
 //actualizarDatos
 $('#tabla_usuario').on('click','.editar',function(){
