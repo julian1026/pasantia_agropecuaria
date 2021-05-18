@@ -253,15 +253,17 @@ $('#tabla_finca').on('click','.editar',function(){
     // obtenerIdAgricultor(idPer);
     // const geolocalizacion=navigator.geolocation;
     //  geolocalizacion.getCurrentPosition(getPosition,error,options)//geolocalizador  
+   
     fecha=data.fecha_registro.substr(0, 10);
 
  
 
     $("#modalActualizarFinca").modal({backdrop:'static', keyboard:false});
     $("#modalActualizarFinca").modal('show');
-    // console.log(data);
+  
     $("#txt_longitud").val(data.longitud);
     $("#txt_latitud").val(data.latitud);
+    $("#txt_Altitud").val(data.altitud);
     $("#txt_fincaNombre").val(data.nombre_finca);
     $("#txt_hetareas").val(data.hectareas);
     $("#txt_registroFinca").val(fecha);
@@ -429,6 +431,7 @@ function actualizarFinca(){
    
     longitud=$('#txt_longitud').val();
     latitud=$('#txt_latitud').val();
+    altitud=$('#txt_Altitud').val();
     nombre_finca=$('#txt_fincaNombre').val();
     hetereas=$('#txt_hetareas').val();
     registroFinca=$('#txt_registroFinca').val();
@@ -444,7 +447,7 @@ function actualizarFinca(){
 
 
     // console.log(hetereas,linea_productiva,actividad_Agropecuaria,idAgricultor,vereda);
-    if(longitud.length==0 || latitud.length==0 || nombre_finca.length==0 || hetereas.length==0
+    if(longitud.length==0 || latitud.length==0 ||altitud.length==0 || nombre_finca.length==0 || hetereas.length==0
         ){
             return Swal.fire("Mensaje De Error","Por favor verificar que los campos se encuentren diligenciados ","warning");
         }
@@ -484,6 +487,7 @@ function actualizarFinca(){
 
         r_finca.append('longitud',longitud);
         r_finca.append('latitud',latitud);
+        r_finca.append('altitud',altitud);
         r_finca.append('nombre_finca',nombre_finca);
         r_finca.append('hetareas',hetereas);
         r_finca.append('Vereda',vereda);
@@ -755,6 +759,7 @@ function mostrar(){
                 document.querySelector('#_via').innerHTML=`<p>via ${dato.nombreVereda}</p>`;
                 document.querySelector('#_latitud').innerHTML=`<p>${dato.latitud}</p>`;
                 document.querySelector('#_longitud').innerHTML=`<p>${dato.longitud}</p>`;   
+                document.querySelector('#_altitud').innerHTML=`<p>${dato.altitud}</p>`;   
                 document.querySelector('#_departamento').innerHTML=`<p>${dato.nombre_department}</p>`;
                 if(dato.ab_agua=='0'){
                     document.querySelector('#_ab_agua').innerHTML=`<p>No</p>`;

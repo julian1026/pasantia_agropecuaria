@@ -64,9 +64,10 @@
                             <th scope="col">#</th>
                             <th scope="col">Finca</th>
                             <th scope="col">Linea Productiva 1</th>
-                            <th scope="col">Ha</th>
+                            <th scope="col">Hetareas</th>
                             <th scope="col">Longitud</th>
                             <th scope="col">Latitud</th>
+                            <th scope="col">Altitud</th>
                             <th scope="col">Vereda</th>
                             <th scope="col">Cedula</th>
                             <th scope="col">Registrador</th>
@@ -80,9 +81,10 @@
                             <th scope="col">#</th>
                             <th scope="col">finca</th>
                             <th scope="col">Linea Productiva 1</th>
-                            <th scope="col">Ha</th>
+                            <th scope="col">Hetareas</th>
                             <th scope="col">Longitud</th>
                             <th scope="col">Latitud</th>
+                            <th scope="col">Altitud</th>
                             <th scope="col">Vereda</th>
                             <th scope="col">Cedula</th>
                             <th scope="col">registrador</th>

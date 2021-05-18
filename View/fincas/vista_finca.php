@@ -277,8 +277,8 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label for="txt_fincaNombre" class="col-form-label">Nombre Finca: </label>
-                                <input type="text" class="form-control" id="txt_fincaNombre" maxlength="40" required="">
+                                <label for="txt_fincaNombre" class="col-form-label">Altitud: </label>
+                                <input type="text" class="form-control" id="txt_Altitud" maxlength="40" required="">
                             </div>
 
                         </div>
@@ -286,9 +286,10 @@
                         <div class="group">
 
                             <div class="col-md-4">
-                                <label for="txt_hetareas" class="col-form-label">#Hectareas de la finca:</label>
-                                <input type="number" class="form-control" min="10" max="100" id="txt_hetareas" required="">
+                                <label for="txt_fincaNombre" class="col-form-label">Nombre Finca: </label>
+                                <input type="text" class="form-control" id="txt_fincaNombre" maxlength="40" required="">
                             </div>
+
 
                             <div class="col-md-4">
                                 <label for="">Corregimiento</label>
@@ -368,6 +369,10 @@
                         </div>
 
                         <div class="group">
+                            <div class="col-md-4">
+                                <label for="txt_hetareas" class="col-form-label">#Hectareas de la finca:</label>
+                                <input type="text" class="form-control" min="10" max="100" id="txt_hetareas" required="">
+                            </div>
                             <div class="column col-md-4">
                                 <label for="">Fecha Registro</label>
                                 <input type="date" class="form-control" id="txt_registroFinca">

@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <script type="text/javascript" src="../js/menu.js?rev=<?php echo time(); ?>"></script>
 
 <div class="col-md-12">
@@ -24,7 +27,7 @@
 
 
                     <?php
-                    session_start();
+
                     if ($_SESSION['S_rol'] == 1) {
                     ?>
                         <a id="opc1">
@@ -187,6 +190,37 @@
                             <!-- /.info-box -->
                         </div>
                     </a>
+
+                    <?php
+                    if ($_SESSION['S_rol'] == 1) {
+                    ?>
+
+                        <a id="opc8">
+                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                <div class="info-box bg-white">
+                                    <span class="info-box-icon"><i class="fa fa-edit"></i></span>
+
+                                    <div class="info-box-content">
+
+                                        <span class="info-box-text">Gestion</span>
+                                        <span class="info-box-number">Lineas Productivas</span>
+                                        <span class="progress-description">
+                                            Click
+                                        </span>
+
+
+                                    </div>
+
+                                    <!-- /.info-box-content -->
+                                </div>
+                                <!-- /.info-box -->
+                            </div>
+                        </a>
+                    <?php
+                    }
+                    ?>
+
+
 
 
 

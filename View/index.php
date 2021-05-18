@@ -191,14 +191,20 @@ if (!isset($_SESSION['S_iduser'])) {
           // echo var_dump($_SESSION['S_rol']);
 
           if ($_SESSION['S_rol'] == 1) {
+            // var_dump($_SESSION['S_rol']);
           ?>
-            <li class="active treeview">
-              <a onclick="cargar_contenido('contenido_principal','usuarios/vista_usuario_listar.php')">
-                <i class="fa fa-users"></i> <span>Usuarios</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
+
+
+            <li class="nav-item">
+              <a href="#" onclick="cargar_contenido('contenido_principal','usuarios/vista_usuario_listar.php')" class="nav-link">
+                <i class="fa fa-users"></i>
+                <span class="pull-left-container">Usuarios
+
                 </span>
               </a>
+            </li>
+
+
 
 
             <li class="treeview" style="height: auto;">
@@ -210,57 +216,81 @@ if (!isset($_SESSION['S_iduser'])) {
                 </span>
               </a>
               <ul class="treeview-menu" style="display: none;">
-                <li><a onclick="cargar_contenido('contenido_principal','personas/vista_personas_administrativos.php')"><i class="fa fa-circle-o"></i> Administrativos</a></li>
-                <li><a onclick="cargar_contenido('contenido_principal','personas/vista_persona_listar.php')"><i class="fa fa-circle-o"></i> Agricultores</a></li>
+                <li> <a href="#" onclick="cargar_contenido('contenido_principal','personas/vista_personas_administrativos.php')"><i class="fa fa-circle-o"></i> Administrativos</a></li>
+                <li><a href="#" onclick="cargar_contenido('contenido_principal','personas/vista_persona_listar.php')"><i class="fa fa-circle-o"></i> Agricultores</a></li>
               </ul>
             </li>
 
           <?php
           } else {
           ?>
-            <li class="active treeview">
-              <a onclick="cargar_contenido('contenido_principal','personas/vista_persona_listar.php')">
-                <i class="fa fa-user"></i> <span>Datos De Agricultores</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
+
+            <li class="nav-item">
+              <a href="#" onclick="cargar_contenido('contenido_principal','personas/vista_persona_listar.php')" class="nav-link">
+                <i class="fa  fa-user"></i>
+                <span class="pull-left-container">Datos De Agricultores
                 </span>
               </a>
-            <?php
+            </li>
+
+          <?php
           }
-            ?>
+          ?>
 
-            <li class="active treeview">
-              <a onclick="cargar_contenido('contenido_principal','fincas/vista_finca.php')">
-                <i class="fa fa-leaf"></i> <span>Fincas</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
+
+          <li class="nav-item">
+            <a href="#" onclick="cargar_contenido('contenido_principal','fincas/vista_finca.php')" class="nav-link">
+              <i class="fa fa-leaf"></i>
+              <span class="pull-left-container">Fincas
+
+              </span>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="#" onclick="cargar_contenido('contenido_principal','fincas/vista_visitar_finca.php')" class="nav-link">
+              <i class="fa  fa-edit"></i>
+              <span class="pull-left-container">Visitar Fincas
+              </span>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="#" onclick="cargar_contenido('contenido_principal','fincas/vista_reporteDos.php')" class="nav-link">
+              <i class="fa  fa-file-text"></i>
+              <span class="pull-left-container">Generar Reportes
+              </span>
+            </a>
+          </li>
+
+
+
+          <li class="nav-item">
+            <a href="#" onclick="cargar_contenido('contenido_principal','graficas/vista_graficas.php')" class="nav-link">
+              <i class="fa  fa-bar-chart"></i>
+              <span class="pull-left-container">Graficas
+              </span>
+            </a>
+          </li>
+
+          <?php
+          if ($_SESSION['S_rol'] == 1) {
+          ?>
+
+            <li class="nav-item">
+              <a href="#" onclick="cargar_contenido('contenido_principal','lineasProductivas/vista_lineasProductivas.php')" class="nav-link">
+                <i class="fa  fa-edit"></i>
+                <span class="pull-left-container">lineas_Productivas
                 </span>
               </a>
+            </li>
 
+          <?php
+          }
+          ?>
 
-            <li class="active treeview">
-              <a onclick="cargar_contenido('contenido_principal','fincas/vista_visitar_finca.php')">
-                <i class="fa  fa-edit"></i> <span>Visitar Fincas</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-
-            <li class="active treeview">
-              <a onclick="cargar_contenido('contenido_principal','fincas/vista_reporteDos.php')">
-                <i class="fa  fa-file-text"></i> <span>Generar Reportes</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-
-            <li class="active treeview">
-              <a onclick="cargar_contenido('contenido_principal','graficas/vista_graficas.php')">
-                <i class="fa  fa-bar-chart"></i> <span>Graficas</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
 
 
         </ul>

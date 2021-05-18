@@ -151,6 +151,9 @@
                     <label for="">Longitud:</label>
                     <div id="_longitud"></div>
 
+                    <label for="">Altitud:</label>
+                    <div id="_altitud"></div>
+
                     <label for="">Ubicacion:</label>
                     <div id="_via"></div>
 

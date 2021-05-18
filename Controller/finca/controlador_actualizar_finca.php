@@ -8,6 +8,7 @@ $MU = new Modelo_Finca();
 /* datos finca */
 $longitud = htmlspecialchars($_POST['longitud'], ENT_QUOTES, 'utf-8');
 $latitud = htmlspecialchars($_POST['latitud'], ENT_QUOTES, 'utf-8');
+$altitud = htmlspecialchars($_POST['altitud'], ENT_QUOTES, 'utf-8');
 $nombre_finca = htmlspecialchars($_POST['nombre_finca'], ENT_QUOTES, 'utf-8');
 $hectareas = htmlspecialchars($_POST['hetareas'], ENT_QUOTES, 'utf-8');
 $fecha = htmlspecialchars($_POST['fecha'], ENT_QUOTES, 'utf-8');
@@ -26,6 +27,7 @@ $idFinca = htmlspecialchars($_POST['idFinca'], ENT_QUOTES, 'utf-8');
 $actualizar = $MU->actualizarFinca(
     $longitud,
     $latitud,
+    $altitud,
     $fecha,
     $nombre_finca,
     $hectareas,

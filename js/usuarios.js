@@ -187,7 +187,6 @@ var cadena=document.querySelector('#txt_com_rol_editar');
 
     xhttp.onreadystatechange=function(){
         if(this.status==200 && this.readyState==4){
-            console.log(this.responseText);
             var datos=JSON.parse(this.responseText);
             if(datos.length>0){
                 $("#opciones").val('0');

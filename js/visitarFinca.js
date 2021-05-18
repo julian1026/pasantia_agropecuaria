@@ -208,8 +208,7 @@ var tabla1;
 
 function listar_fincasActualizar(){
   
-    const nuevo6 = new FormData();
-    nuevo6.append('cod',3);
+
     tabla1 = $("#tabla_fincaActualizar").DataTable({
         "ordering":false,
         "paging": true,

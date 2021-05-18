@@ -367,6 +367,7 @@ function RegistrarFinca(){
     
     longitud=$('#txt_longitud').val();
     latitud=$('#txt_latitud').val();
+    altitud=$('#txt_Altitud').val();
     nombre_finca=$('#txt_fincaNombre').val();
     hetereas=$('#txt_hetareas').val();
     servicio_agua=$('input[name=servicioAgua]:checked').val();
@@ -379,13 +380,12 @@ function RegistrarFinca(){
     linea_pro3=$('#txt_pro_3').val();
     vereda=$('#txt_vered').val();
     fecha=registroFinca.split('/').reverse().join('/');
-    // console.log(fecha);
 
     // console.log(hetereas,linea_productiva,actividad_Agropecuaria,idAgricultor,vereda);
-    if(longitud.length==0 || latitud.length==0 || nombre_finca.length==0 || hetereas.length==0
+    if(longitud.length==0 || latitud.length==0 || altitud.length==0 || nombre_finca.length==0 || hetereas.length==0
         ){
             return Swal.fire("Mensaje De Error","Por favor verificar que los campos se encuentren diligenciados ","warning");
-        }
+      }
     if(vereda==0){
         return Swal.fire("Mensaje De Error","Por favor seleccionar Vereda ","warning");
     }
@@ -417,6 +417,7 @@ function RegistrarFinca(){
 
         r_finca.append('longitud',longitud);
         r_finca.append('latitud',latitud);
+        r_finca.append('altitud',altitud);
         r_finca.append('nombre_finca',nombre_finca);
         r_finca.append('hetareas',hetereas);
         r_finca.append('Vereda',vereda);
@@ -459,6 +460,7 @@ function RegistrarFinca(){
 function limpiarRegistroFinca(){
     $('#txt_longitud').val('');
     $('#txt_latitud').val('');
+    $('#txt_Altitud').val('');
     $('#txt_fincaNombre').val('');
     $('#txt_hetareas').val('');
     $('input[name=servicioAgua]:checked').val('');

@@ -310,6 +310,6 @@
       responsive: true
     })
     listar_usuario();
-
+    cargarRoles();
   });
 </script>

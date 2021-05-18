@@ -7,6 +7,7 @@ var opc4=document.getElementById("opc4");
 var opc5=document.getElementById("opc5");
 var opc6=document.getElementById("opc6");
 var opc7=document.getElementById("opc7");
+var opc8=document.getElementById("opc8");
 
 if(opc1){
     opc1.addEventListener('click', function(){
@@ -14,6 +15,9 @@ if(opc1){
     });
     opc2.addEventListener('click', function(){
         cargar_contenido('contenido_principal','personas/vista_personas_administrativos.php');
+    });
+    opc8.addEventListener('click', function(){
+        cargar_contenido('contenido_principal','lineasProductivas/vista_lineasProductivas.php');
     });
 }
 

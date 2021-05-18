@@ -39,7 +39,8 @@ tabla = $("#tabla_reporte2").DataTable({
        {"data":"linea_nombre"},
        {"data":"hectareas"},  
        {"data":"longitud"},  
-       {"data":"latitud"},  
+       {"data":"latitud"},
+       {"data":"altitud"},
        {"data":"nombreVereda"},  
        {"data":"num_identificacion"},
        {"data":"registrador"},
@@ -127,6 +128,7 @@ function cargarReporte(){
             let numero=dato.length;
             if(numero>0){
                 // console.log(dato);
+                Swal.fire('mensaje de Confirmacion','Registro encontrados','success');
                 listarReporte2(dato);
             }else{
                 Swal.fire('mensaje de Advertencia','No se encontraron registros','warning');
@@ -175,6 +177,7 @@ function listarReporte2(data1){
             {"data":"hectareas"},  
             {"data":"longitud"},  
             {"data":"latitud"},  
+            {"data":"altitud"},  
             {"data":"nombreVereda"},  
             {"data":"num_identificacion"},
             {"data":"registrador"},
