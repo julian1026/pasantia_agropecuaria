@@ -18,7 +18,7 @@ if(opc1){
     });
     opc8.addEventListener('click', function(){
         cargar_contenido('contenido_principal','lineasProductivas/vista_lineasProductivas.php');
-    });
+     });
 }
 
 opc3.addEventListener('click', function(){

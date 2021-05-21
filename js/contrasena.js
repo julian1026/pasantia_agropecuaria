@@ -1,5 +1,4 @@
 
-
 function abrirModal(){
     $("#modalUpdatePassword").modal({backdrop:'static', keyboard:false});
     $("#modalUpdatePassword").modal('show');

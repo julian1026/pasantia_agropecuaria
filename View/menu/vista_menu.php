@@ -7,7 +7,7 @@ session_start();
     <!--class="box box-success box-solid"  -->
     <div class="">
         <!-- <div class="box-header with-border"> -->
-        <h1 class="box-title text-center"> Gestion Agricola del Municipio del Patia</h1>
+        <h1 class="box-title text-center"> Gestion Agropecuaria del Municipio del Patia</h1>
 
         <div class="box-tools pull-right">
             <!-- <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
